@@ -2,6 +2,7 @@ import { Badge, Card, CardBody, HStack, Heading, Image, Text } from '@chakra-ui/
 import { Game } from '../hooks/useGames'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'
+import cropImage from '../services/img-crop'
 
 interface GameCardProps {
 	game: Game
@@ -9,9 +10,8 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
 	return (
-		<Card borderRadius={'10px'} overflow={'hidden'}>
-			<Image src={game.background_image} />
-
+		<Card>
+			<Image src={cropImage(game.background_image)} />
 			<CardBody>
 				<Heading fontSize={'2xlg'}>{game.name}</Heading>
 				<HStack justifyContent={'space-between'}>
