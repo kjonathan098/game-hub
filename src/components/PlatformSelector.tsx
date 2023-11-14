@@ -1,0 +1,30 @@
+import { useEffect } from 'react'
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { BsChevronDown } from 'react-icons/bs'
+import usePlatforms from '../hooks/usePlatforms'
+
+const PlatformSelector = () => {
+	const { data, error, loading } = usePlatforms()
+
+	useEffect(() => {
+		console.log(data)
+	}, [data])
+
+	if (loading) return <div>Loading...</div>
+	if (error) return null
+
+	return (
+		<Menu>
+			<MenuButton as={Button} rightIcon={<BsChevronDown />}>
+				Platforms
+			</MenuButton>
+			<MenuList>
+				{data.map((platform) => {
+					return <MenuItem key={platform.id}>{platform.name}</MenuItem>
+				})}
+			</MenuList>
+		</Menu>
+	)
+}
+
+export default PlatformSelector
