@@ -1,42 +1,41 @@
+import { AxiosRequestConfig, CanceledError } from 'axios'
 import { useEffect, useState } from 'react'
 import apiClient from '../services/api-client'
-import { CanceledError } from 'axios'
 
-interface FetchGenresResponse<T> {
+interface FetchResponse<T> {
 	count: number
 	results: T[]
 }
 
-const useDataFetch = <T>(endPoint: string) => {
+const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
 	const [data, setData] = useState<T[]>([])
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
 
-	useEffect(() => {
-		setLoading(true)
-		const controller = new AbortController()
+	useEffect(
+		() => {
+			const controller = new AbortController()
+			console.log(requestConfig)
 
-		apiClient
-			.get<FetchGenresResponse<T>>(endPoint, { signal: controller.signal })
-			.then((response) => {
-				setData(response.data.results)
-				setLoading(false)
-			})
-			.catch((error) => {
-				if (error instanceof CanceledError) return
-				setError(error.message)
-				setLoading(false)
-			})
-			.finally(() => {
-				setLoading(false)
-			})
+			setLoading(true)
+			apiClient
+				.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
+				.then((res) => {
+					setData(res.data.results)
+					setLoading(false)
+				})
+				.catch((err) => {
+					if (err instanceof CanceledError) return
+					setError(err.message)
+					setLoading(false)
+				})
 
-		return () => {
-			controller.abort()
-		}
-	}, [])
+			return () => controller.abort()
+		},
+		deps ? [...deps] : []
+	)
 
 	return { data, error, loading }
 }
 
-export default useDataFetch
+export default useData

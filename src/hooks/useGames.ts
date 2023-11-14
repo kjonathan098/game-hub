@@ -1,4 +1,5 @@
 import useDataFetch from './useDataFetch'
+import { Genre } from './useGenre'
 
 export interface Platform {
 	id: number
@@ -13,8 +14,8 @@ export interface Game {
 	metacritic: number
 }
 
-const useGames = () => {
-	const { data, error, loading } = useDataFetch<Game>('/games')
+const useGames = (selectedGenre: Genre | null) => {
+	const { data, error, loading } = useDataFetch<Game>('/games', selectedGenre?.id ? { params: { genres: selectedGenre.id } } : undefined, [selectedGenre?.id])
 
 	return { data, error, loading }
 }
