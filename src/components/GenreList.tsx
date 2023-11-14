@@ -5,9 +5,10 @@ import cropImage from '../services/img-crop'
 
 interface Props {
 	onSelect: (genre: Genre) => void
+	selectedGenre: Genre | null
 }
 
-const GenreList = ({ onSelect }: Props) => {
+const GenreList = ({ onSelect, selectedGenre }: Props) => {
 	const { data, error, loading } = useGenre()
 
 	useEffect(() => {}, [])
@@ -27,6 +28,7 @@ const GenreList = ({ onSelect }: Props) => {
 								onClick={() => {
 									onSelect(genre)
 								}}
+								fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'normal'}
 							>
 								{genre.name}
 							</Button>
