@@ -1,6 +1,5 @@
 import { GamesQuery } from '../App'
 import useDataFetch from './useDataFetch'
-import { Genre } from './useGenre'
 
 export interface Platform {
 	id: number
