@@ -2,13 +2,14 @@ import { useEffect } from 'react'
 import useGenre, { Genre } from '../hooks/useGenre'
 import { Button, HStack, Image, List, ListItem, Spinner, Text, VStack } from '@chakra-ui/react'
 import cropImage from '../services/img-crop'
+import { GamesQuery } from '../App'
 
 interface Props {
 	onSelect: (genre: Genre) => void
-	selectedGenre: Genre | null
+	gamesQuery: GamesQuery
 }
 
-const GenreList = ({ onSelect, selectedGenre }: Props) => {
+const GenreList = ({ onSelect, gamesQuery }: Props) => {
 	const { data, error, loading } = useGenre()
 
 	useEffect(() => {}, [])
@@ -28,7 +29,7 @@ const GenreList = ({ onSelect, selectedGenre }: Props) => {
 								onClick={() => {
 									onSelect(genre)
 								}}
-								fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'normal'}
+								fontWeight={gamesQuery.genre?.id === genre.id ? 'bold' : 'normal'}
 							>
 								{genre.name}
 							</Button>
