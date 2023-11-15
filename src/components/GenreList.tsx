@@ -20,7 +20,7 @@ const GenreList = ({ onSelect, selectedGenre }: Props) => {
 		<List padding={'5px'}>
 			{data.map((genre) => {
 				return (
-					<ListItem marginBottom={'10px'}>
+					<ListItem key={genre.id} marginBottom={'10px'}>
 						<HStack key={genre.id} spacing={3}>
 							<Image src={cropImage(genre.image_background)} boxSize={'32px'} borderRadius={8} />
 							<Button

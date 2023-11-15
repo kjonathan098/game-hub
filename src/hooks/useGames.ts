@@ -14,8 +14,10 @@ export interface Game {
 	metacritic: number
 }
 
-const useGames = (selectedGenre: Genre | null) => {
-	const { data, error, loading } = useDataFetch<Game>('/games', selectedGenre?.id ? { params: { genres: selectedGenre.id } } : undefined, [selectedGenre?.id])
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => {
+	const params = { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } }
+
+	const { data, error, loading } = useDataFetch<Game>('/games', params, [selectedGenre?.id, selectedPlatform?.id])
 
 	return { data, error, loading }
 }
