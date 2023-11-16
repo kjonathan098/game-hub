@@ -13,10 +13,6 @@ interface Props {
 const PlatformSelector = ({ onSelect, gamesQuery }: Props) => {
 	const { data, error, loading } = usePlatforms()
 
-	useEffect(() => {
-		console.log(data)
-	}, [data])
-
 	if (loading) return <div>Loading...</div>
 	if (error) return null
 
