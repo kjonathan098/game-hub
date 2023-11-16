@@ -23,13 +23,15 @@ const GenreList = ({ onSelect, gamesQuery }: Props) => {
 				return (
 					<ListItem key={genre.id} marginBottom={'10px'}>
 						<HStack key={genre.id} spacing={3}>
-							<Image src={cropImage(genre.image_background)} boxSize={'32px'} borderRadius={8} />
+							<Image src={cropImage(genre.image_background)} boxSize={'32px'} borderRadius={8} objectFit={'cover'} />
 							<Button
 								variant={'link'}
 								onClick={() => {
 									onSelect(genre)
 								}}
 								fontWeight={gamesQuery.genre?.id === genre.id ? 'bold' : 'normal'}
+								whiteSpace={'normal'}
+								textAlign={'left'}
 							>
 								{genre.name}
 							</Button>
