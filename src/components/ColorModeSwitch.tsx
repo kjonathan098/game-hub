@@ -1,4 +1,4 @@
-import { HStack, Icon, Switch, Text, useColorMode } from '@chakra-ui/react'
+import { HStack, Icon, Switch, useColorMode } from '@chakra-ui/react'
 import { SunIcon, MoonIcon } from '@chakra-ui/icons'
 
 const ColorModeSwitch = () => {
