@@ -28,11 +28,13 @@ function App() {
 					}}
 				/>
 			</GridItem>
+
 			<Show above="lg">
 				<GridItem area="aside" padding={5}>
 					<GenreList onSelect={(genre: Genre) => setGamesQuery({ ...gamesQuery, genre })} gamesQuery={gamesQuery} />
 				</GridItem>
 			</Show>
+
 			<GridItem area="main">
 				<GameHeading gamesQuery={gamesQuery} />
 				<HStack spacing={3} padding={3} marginBottom={5}>
