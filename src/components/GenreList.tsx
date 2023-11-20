@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import useGenre, { Genre } from '../hooks/useGenre'
-import { Button, HStack, Image, List, ListItem, Spinner, Text, VStack } from '@chakra-ui/react'
+import { Button, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import cropImage from '../services/img-crop'
 import { GamesQuery } from '../App'
 
