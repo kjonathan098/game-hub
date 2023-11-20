@@ -1,5 +1,4 @@
-import useDataFetch from './useDataFetch'
-
+import { genreList } from '../data/genres'
 export interface Genre {
 	id: number
 	name: string
@@ -7,8 +6,7 @@ export interface Genre {
 }
 
 const useGenre = () => {
-	const { data, error, loading } = useDataFetch<Genre>('/genres')
-	return { data, error, loading }
+	return { data: genreList, error: null, loading: false }
 }
 
 export default useGenre
