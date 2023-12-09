@@ -14,6 +14,7 @@ export interface GamesQuery {
 	platform: Platform | null
 	sortBy: SortOption | null
 	searchText: string | null
+	page: number | null
 }
 
 function App() {
@@ -40,18 +41,23 @@ function App() {
 				<HStack spacing={3} padding={3} marginBottom={5}>
 					<PlatformSelector
 						onSelect={(platform: Platform) => {
-							setGamesQuery({ ...gamesQuery, platform })
+							setGamesQuery({ ...gamesQuery, platform, page: null })
 						}}
 						gamesQuery={gamesQuery}
 					/>
 					<SortGames
 						gamesQuery={gamesQuery}
 						onSelect={(sortBy: SortOption) => {
-							setGamesQuery({ ...gamesQuery, sortBy })
+							setGamesQuery({ ...gamesQuery, sortBy, page: null })
 						}}
 					/>
 				</HStack>
-				<GameGrid gamesQuery={gamesQuery} />
+				<GameGrid
+					gamesQuery={gamesQuery}
+					onSelect={(pageNum: number) => {
+						setGamesQuery({ ...gamesQuery, page: pageNum })
+					}}
+				/>
 			</GridItem>
 		</Grid>
 	)

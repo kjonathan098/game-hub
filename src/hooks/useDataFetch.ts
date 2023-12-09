@@ -15,12 +15,15 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 	useEffect(
 		() => {
 			const controller = new AbortController()
+			console.log({ requestConfig })
 
 			setLoading(true)
 			apiClient
 				.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
 				.then((res) => {
-					setData(res.data.results)
+					const games = requestConfig?.params.page ? [...data, ...res.data.results] : [...res.data.results]
+
+					setData(games)
 					setLoading(false)
 				})
 				.catch((err) => {
