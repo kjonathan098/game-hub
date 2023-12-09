@@ -15,9 +15,12 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 	useEffect(
 		() => {
 			const controller = new AbortController()
-			console.log({ requestConfig })
 
 			setLoading(true)
+			if (!requestConfig?.params.page) {
+				console.log('no page presences')
+				setData([])
+			}
 			apiClient
 				.get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
 				.then((res) => {
