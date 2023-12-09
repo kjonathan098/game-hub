@@ -8,6 +8,7 @@ import PlatformSelector from './components/GameCards/PlatformSelector'
 import { Platform } from './hooks/useGames'
 import SortGames, { SortOption } from './components/GameCards/SortGames'
 import GameHeading from './components/GameCards/GameHeading'
+import HeroBanner from './components/GameCards/HeroBanner'
 
 export interface GamesQuery {
 	genre: Genre | null
@@ -37,6 +38,7 @@ function App() {
 			</Show>
 
 			<GridItem area="main">
+				<HeroBanner />
 				<GameHeading gamesQuery={gamesQuery} />
 				<HStack spacing={3} padding={3} marginBottom={5}>
 					<PlatformSelector
