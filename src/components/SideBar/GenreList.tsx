@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import useGenre, { Genre } from '../hooks/useGenre'
+import useGenre, { Genre } from '../../hooks/useGenre'
 import { Button, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
-import cropImage from '../services/img-crop'
-import { GamesQuery } from '../App'
+import cropImage from '../../services/img-crop'
+import { GamesQuery } from '../../App'
 
 interface Props {
 	onSelect: (genre: Genre) => void
