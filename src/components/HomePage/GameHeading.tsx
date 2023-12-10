@@ -1,10 +1,9 @@
 import { Heading } from '@chakra-ui/react'
-import { GamesQuery } from '../../interfaces/games.interface'
+import { useContext } from 'react'
+import { queryContext } from '../../context/queryProvider'
 
-interface Props {
-	gamesQuery: GamesQuery | null
-}
-const GameHeading = ({ gamesQuery }: Props) => {
+const GameHeading = () => {
+	const { gamesQuery } = useContext(queryContext)
 	return (
 		<Heading as={'h1'} marginLeft={3} marginBottom={5}>
 			{gamesQuery?.platform?.name} {gamesQuery?.genre?.name} Games
