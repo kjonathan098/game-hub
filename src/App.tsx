@@ -46,12 +46,7 @@ function App() {
 					<HeroBanner />
 					<GameHeading gamesQuery={gamesQuery} />
 					<HStack spacing={3} padding={3} marginBottom={5}>
-						<PlatformSelector
-							onSelect={(platform: Platform) => {
-								setGamesQuery({ ...gamesQuery, platform, page: null })
-							}}
-							gamesQuery={gamesQuery}
-						/>
+						<PlatformSelector />
 						{/* <SortGames
 							gamesQuery={gamesQuery}
 							onSelect={(sortBy: SortOption) => {
@@ -59,12 +54,7 @@ function App() {
 							}}
 						/> */}
 					</HStack>
-					<GameGrid
-						gamesQuery={gamesQuery}
-						onSelect={(pageNum: number) => {
-							setGamesQuery({ ...gamesQuery, page: pageNum })
-						}}
-					/>
+					<GameGrid />
 				</GridItem>
 			</QueryProvider>
 		</Grid>

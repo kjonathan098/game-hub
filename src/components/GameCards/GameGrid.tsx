@@ -4,24 +4,23 @@ import GameCard from './GameCard'
 import GameCardSkeletong from './GameCardSkeletong'
 import GameCardContainer from './GameCardContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { GamesQuery } from '../../interfaces/games.interface'
+import { queryContext } from '../../context/queryProvider'
 
 interface Props {
 	gamesQuery: GamesQuery
 	onSelect: (pageNum: number) => void
 }
-const GameGrid = ({ gamesQuery, onSelect }: Props) => {
-	const { data, error, loading } = useGames(gamesQuery)
+const GameGrid = () => {
+	const { data, error, loading, nextPage } = useContext(queryContext)
 	const [hasMore, setHasMore] = useState(true)
-	const [page, setPage] = useState(1)
 
 	const skeleton = [1, 2, 3, 4, 5, 6]
 
 	function fetchNextPage() {
 		setTimeout(() => {
-			onSelect(page + 1)
-			setPage(page + 1)
+			nextPage()
 		}, 500)
 	}
 
