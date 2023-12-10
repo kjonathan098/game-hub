@@ -1,18 +1,17 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
 import { GamesQuery } from '../../interfaces/games.interface'
+import { queryContext } from '../../context/queryProvider'
+import { useContext } from 'react'
 
 export interface SortOption {
 	value: string
 	label: string
 }
 
-interface Props {
-	onSelect: (sortBy: SortOption) => void
-	gamesQuery: GamesQuery
-}
+const SortGames = () => {
+	const { sortBy, gamesQuery } = useContext(queryContext)
 
-const SortGames = ({ onSelect, gamesQuery }: Props) => {
 	const sortOptions: SortOption[] = [
 		{ value: '', label: 'Relevance' },
 		{ value: '-rating', label: 'Average Rating' },
@@ -33,7 +32,7 @@ const SortGames = ({ onSelect, gamesQuery }: Props) => {
 							key={index}
 							value={option.value}
 							onClick={() => {
-								onSelect(option)
+								sortBy(option)
 							}}
 						>
 							{option.label}
