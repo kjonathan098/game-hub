@@ -1,6 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import { BsChevronDown } from 'react-icons/bs'
-import { GamesQuery } from '../../App'
+import { GamesQuery } from '../../interfaces/games.interface'
 
 export interface SortOption {
 	value: string
