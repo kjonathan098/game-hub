@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import useGenre, { Genre } from '../../hooks/useGenre'
 import { Button, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
 import cropImage from '../../services/img-crop'
-import { GamesQuery } from '../../App'
+import { GamesQuery } from '../../interfaces/games.interface'
 
 interface Props {
 	onSelect: (genre: Genre) => void

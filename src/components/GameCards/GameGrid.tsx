@@ -3,9 +3,9 @@ import useGames from '../../hooks/useGames'
 import GameCard from './GameCard'
 import GameCardSkeletong from './GameCardSkeletong'
 import GameCardContainer from './GameCardContainer'
-import { GamesQuery } from '../../App'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useState } from 'react'
+import { GamesQuery } from '../../interfaces/games.interface'
 
 interface Props {
 	gamesQuery: GamesQuery
