@@ -1,4 +1,4 @@
-import { GamesQuery } from '../App'
+import { GamesQuery } from '../interfaces/games.interface'
 import useDataFetch from './useDataFetch'
 
 export interface Platform {
