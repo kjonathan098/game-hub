@@ -28,11 +28,11 @@ function App() {
 				/>
 			</GridItem>
 
-			{/* <Show above="lg">
+			<Show above="lg">
 				<GridItem area="aside" padding={5}>
 					<GenreList onSelect={(genre: Genre) => setGamesQuery({ ...gamesQuery, genre, page: null })} gamesQuery={gamesQuery} />
 				</GridItem>
-			</Show> */}
+			</Show>
 
 			{/* <Router>
 				<Routes>
@@ -47,12 +47,7 @@ function App() {
 					<GameHeading gamesQuery={gamesQuery} />
 					<HStack spacing={3} padding={3} marginBottom={5}>
 						<PlatformSelector />
-						{/* <SortGames
-							gamesQuery={gamesQuery}
-							onSelect={(sortBy: SortOption) => {
-								setGamesQuery({ ...gamesQuery, sortBy, page: null })
-							}}
-						/> */}
+						<SortGames />
 					</HStack>
 					<GameGrid />
 				</GridItem>
