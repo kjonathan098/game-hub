@@ -26,10 +26,6 @@ const QueryProvider: React.FC<IProps> = ({ children }) => {
 	const [page, setPage] = useState(1)
 	const { data, error, loading } = useGames(gamesQuery)
 
-	useEffect(() => {
-		console.log(data, 'hekko')
-	}, [data])
-
 	const searchGenre = (genre: Genre) => {
 		setGamesQuery({ ...gamesQuery, genre, page: null })
 	}

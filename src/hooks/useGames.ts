@@ -16,8 +16,9 @@ export interface Game {
 
 const useGames = (gamesQuery: GamesQuery) => {
 	const params = { params: { genres: gamesQuery.genre?.id, platforms: gamesQuery.platform?.id, ordering: gamesQuery.sortBy?.value, search: gamesQuery.searchText, page: gamesQuery.page } }
+	const endPoint = gamesQuery.id ? `/games/${gamesQuery.id}` : '/games'
 
-	const { data, error, loading } = useDataFetch<Game>('/games', params, [gamesQuery])
+	const { data, error, loading } = useDataFetch<Game>(endPoint, params, [gamesQuery])
 
 	return { data, error, loading }
 }

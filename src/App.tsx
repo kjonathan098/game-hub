@@ -12,7 +12,6 @@ import GamePage from './components/GamePage/GamePage'
 
 function App() {
 	const [gamesQuery, setGamesQuery] = useState({} as GamesQuery)
-	console.log({ gamesQuery })
 
 	return (
 		<BrowserRouter>

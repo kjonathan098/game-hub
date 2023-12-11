@@ -4,6 +4,7 @@ export interface GamesQuery {
 	sortBy: SortOption | null
 	searchText: string | null
 	page: number | null
+	id: number | null
 }
 
 export interface Genre {
