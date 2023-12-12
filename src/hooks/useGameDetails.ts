@@ -1,19 +1,10 @@
 import { useEffect, useState } from 'react'
-import { AxiosRequestConfig, CanceledError } from 'axios'
+import { CanceledError } from 'axios'
 import apiClient from '../services/api-client'
-import { Game } from './useGames'
+import { IGameDetails } from '../interfaces/games.interface'
 
-export interface GameDetails extends Game {
-	description: string
-	background_image_additional: string
-	website: string
-	rating: string
-	rating_top: number
-	play_time: number
-}
-
-const useGameDetails = (id: number) => {
-	const [data, setData] = useState<GameDetails>({} as GameDetails)
+const useGameDetails = (id: string) => {
+	const [data, setData] = useState<IGameDetails>({} as IGameDetails)
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
 
@@ -21,7 +12,7 @@ const useGameDetails = (id: number) => {
 		const controller = new AbortController()
 		setLoading(true)
 		apiClient
-			.get<GameDetails>(`/games/${id}`)
+			.get<IGameDetails>(`/games/${id}`)
 			.then((res) => {
 				setData({ ...res.data })
 			})

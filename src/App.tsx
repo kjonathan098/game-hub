@@ -2,8 +2,8 @@ import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
 import GenreList from './components/SideBar/GenreList'
 import { useState } from 'react'
-import { Genre } from './hooks/useGenre'
-import { GamesQuery } from './interfaces/games.interface'
+
+import { IGamesQuery } from './interfaces/games.interface'
 
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -11,7 +11,7 @@ import HomePage from './components/HomePage/HomePage'
 import GamePage from './components/GamePage/GamePage'
 
 function App() {
-	const [gamesQuery, setGamesQuery] = useState({} as GamesQuery)
+	const [gamesQuery, setGamesQuery] = useState({} as IGamesQuery)
 
 	return (
 		<BrowserRouter>
@@ -26,7 +26,7 @@ function App() {
 
 				<Show above="lg">
 					<GridItem area="aside" padding={5}>
-						<GenreList onSelect={(genre: Genre) => setGamesQuery({ ...gamesQuery, genre, page: null })} gamesQuery={gamesQuery} />
+						<GenreList />
 					</GridItem>
 				</Show>
 

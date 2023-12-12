@@ -1,26 +1,18 @@
-import { useContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
-import { Box, Center, Stack, Text } from '@chakra-ui/react'
-import { Game } from '../../hooks/useGames'
-import { queryContext } from '../../context/queryProvider'
+import { useParams } from 'react-router-dom'
+import { Box, Center, HStack, Image, Stack, Text } from '@chakra-ui/react'
+import { MdHexagon } from 'react-icons/md'
+
 import useGameDetails from '../../hooks/useGameDetails'
 
 const GamePage = () => {
-	const location = useLocation()
-	const { data, loading, error } = useGameDetails(location.state.id)
-
-	useEffect(() => {
-		console.log(data, 'data from use game Details')
-		return
-	}, [data])
-
-	useEffect(() => {}, [data])
+	const { id } = useParams()
+	const { data, loading, error } = useGameDetails(id!)
 
 	if (loading) return <>Loading...</>
 	return (
 		<Box p={2} display={'flex'} justifyContent={'center'}>
 			<Stack>
-				<Center position="relative" bg={'red'}>
+				<Center position="relative">
 					<Box
 						style={{
 							position: 'absolute',
@@ -32,16 +24,29 @@ const GamePage = () => {
 							backgroundSize: 'cover',
 							filter: 'blur(100px)',
 							zIndex: -1, // Place the overlay behind other content
+							width: 'auto',
+							height: '93%',
 						}}
 					></Box>
-					<Stack width="1000px" height="500px" rounded={'lg'} border={'1px'} style={{ backgroundImage: `url(${data?.background_image})`, backgroundSize: 'cover' }} display={'flex'} p={5}>
-						<Text fontSize="6xl" fontWeight={5}>
-							{data?.name}
-						</Text>
-						<Text>{data?.metacritic}</Text>
-					</Stack>
-					{/* <Image src={gameData?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} /> */}
+
+					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
 				</Center>
+				<HStack bg={'red'} p={4}>
+					<Stack bg={'green'} display={'flex'} alignItems={'center'} p={2}>
+						<Text fontSize={'2xl'} fontWeight={'extrabold'}>
+							{' '}
+							{data.metacritic}{' '}
+						</Text>
+						<Text>Meta Critic</Text>
+					</Stack>
+					<Stack bg={'green'} display={'flex'} alignItems={'center'} p={2}>
+						<Text fontSize={'2xl'} fontWeight={'extrabold'}>
+							{' '}
+							{data.play_time}
+						</Text>
+						<Text>PlayTime</Text>
+					</Stack>
+				</HStack>
 			</Stack>
 		</Box>
 	)
