@@ -37,5 +37,7 @@ export interface IGameDetails extends IGame {
 	website: string
 	rating: string
 	rating_top: number
-	play_time: number
+	playtime: number
+	achievements_count: number
+	esrb_rating: { name: string }
 }

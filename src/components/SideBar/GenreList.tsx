@@ -25,7 +25,7 @@ const GenreList = () => {
 								onClick={() => {
 									searchGenre(genre)
 								}}
-								fontWeight={gamesQuery.genre?.id === genre.id ? 'bold' : 'normal'}
+								fontWeight={gamesQuery?.genre?.id === genre.id ? 'bold' : 'normal'}
 								whiteSpace={'normal'}
 								textAlign={'left'}
 							>

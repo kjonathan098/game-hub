@@ -3,11 +3,18 @@ import { Box, Center, HStack, Image, Stack, Text } from '@chakra-ui/react'
 import { MdHexagon } from 'react-icons/md'
 
 import useGameDetails from '../../hooks/useGameDetails'
+import { useEffect } from 'react'
+import GameNumbersDetails from './GameNumbersDetails'
 
 const GamePage = () => {
 	const { id } = useParams()
 	const { data, loading, error } = useGameDetails(id!)
 
+	useEffect(() => {
+		console.log(data)
+	}, [data])
+
+	if (error) return <>error...</>
 	if (loading) return <>Loading...</>
 	return (
 		<Box p={2} display={'flex'} justifyContent={'center'}>
@@ -31,22 +38,7 @@ const GamePage = () => {
 
 					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
 				</Center>
-				<HStack bg={'red'} p={4}>
-					<Stack bg={'green'} display={'flex'} alignItems={'center'} p={2}>
-						<Text fontSize={'2xl'} fontWeight={'extrabold'}>
-							{' '}
-							{data.metacritic}{' '}
-						</Text>
-						<Text>Meta Critic</Text>
-					</Stack>
-					<Stack bg={'green'} display={'flex'} alignItems={'center'} p={2}>
-						<Text fontSize={'2xl'} fontWeight={'extrabold'}>
-							{' '}
-							{data.play_time}
-						</Text>
-						<Text>PlayTime</Text>
-					</Stack>
-				</HStack>
+				<GameNumbersDetails data={data} />
 			</Stack>
 		</Box>
 	)
