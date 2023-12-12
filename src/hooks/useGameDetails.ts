@@ -4,11 +4,13 @@ import apiClient from '../services/api-client'
 import { IGameDetails } from '../interfaces/games.interface'
 
 const useGameDetails = (id: string) => {
-	const [data, setData] = useState<IGameDetails>({} as IGameDetails)
+	const [data, setData] = useState<IGameDetails | null>()
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
+		console.log({ id })
+
 		const controller = new AbortController()
 		setLoading(true)
 		apiClient
