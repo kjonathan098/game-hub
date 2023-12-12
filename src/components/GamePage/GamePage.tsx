@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom'
-import { Box, Center, HStack, Image, Stack, Text } from '@chakra-ui/react'
-import { MdHexagon } from 'react-icons/md'
+import { Box, Center, Image, Stack } from '@chakra-ui/react'
 
 import useGameDetails from '../../hooks/useGameDetails'
 import { useEffect } from 'react'
 import GameNumbersDetails from './GameNumbersDetails'
+import GameSummary from './GameSummary'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -15,7 +15,8 @@ const GamePage = () => {
 	}, [data])
 
 	if (error) return <>error...</>
-	if (loading) return <>Loading...</>
+	if (loading || !data) return <>Loading...</>
+
 	return (
 		<Box p={2} display={'flex'} justifyContent={'center'}>
 			<Stack>
@@ -39,6 +40,7 @@ const GamePage = () => {
 					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
 				</Center>
 				<GameNumbersDetails data={data} />
+				<GameSummary data={data} />
 			</Stack>
 		</Box>
 	)
