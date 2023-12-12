@@ -5,11 +5,11 @@ import GameCardSkeletong from './GameCardSkeletong'
 import GameCardContainer from './GameCardContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useContext, useState } from 'react'
-import { GamesQuery } from '../../interfaces/games.interface'
+import { IGamesQuery } from '../../interfaces/games.interface'
 import { queryContext } from '../../context/queryProvider'
 
 interface Props {
-	gamesQuery: GamesQuery
+	gamesQuery: IGamesQuery
 	onSelect: (pageNum: number) => void
 }
 const GameGrid = () => {

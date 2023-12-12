@@ -1,18 +1,18 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { GamesQuery, Genre, SortOption } from '../interfaces/games.interface'
-import useGames, { Game, Platform } from '../hooks/useGames'
+import { IGamesQuery, IGenre, ISortOption, IGame, IPlatform } from '../interfaces/games.interface'
+import useGames from '../hooks/useGames'
 
 interface QueryContextValue {
-	gamesQuery: GamesQuery
-	data: Game[]
+	gamesQuery: IGamesQuery
+	data: IGame[]
 	error: string
 	loading: boolean
-	setGamesQuery: React.Dispatch<React.SetStateAction<GamesQuery>>
-	searchGenre: (genre: Genre) => void
+	setGamesQuery: React.Dispatch<React.SetStateAction<IGamesQuery>>
+	searchGenre: (genre: IGenre) => void
 	nextPage: () => void
 	searchText: (searchText: string) => void
-	selectPlatform: (platform: Platform) => void
-	sortBy: (sortBy: SortOption) => void
+	selectPlatform: (platform: IPlatform) => void
+	sortBy: (sortBy: ISortOption) => void
 }
 
 export const queryContext = createContext<QueryContextValue>({} as QueryContextValue)
@@ -22,11 +22,11 @@ interface IProps {
 }
 
 const QueryProvider: React.FC<IProps> = ({ children }) => {
-	const [gamesQuery, setGamesQuery] = useState({} as GamesQuery)
+	const [gamesQuery, setGamesQuery] = useState({} as IGamesQuery)
 	const [page, setPage] = useState(1)
 	const { data, error, loading } = useGames(gamesQuery)
 
-	const searchGenre = (genre: Genre) => {
+	const searchGenre = (genre: IGenre) => {
 		setGamesQuery({ ...gamesQuery, genre, page: null })
 	}
 
@@ -39,12 +39,12 @@ const QueryProvider: React.FC<IProps> = ({ children }) => {
 		setGamesQuery({ ...gamesQuery, searchText })
 	}
 
-	const selectPlatform = (platform: Platform) => {
+	const selectPlatform = (platform: IPlatform) => {
 		setGamesQuery({ ...gamesQuery, platform, page: null })
 		console.log('hello')
 	}
 
-	const sortBy = (sortBy: SortOption) => {
+	const sortBy = (sortBy: ISortOption) => {
 		setGamesQuery({ ...gamesQuery, sortBy, page: null })
 	}
 

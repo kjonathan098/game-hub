@@ -1,4 +1,4 @@
-import { Platform } from '../../hooks/useGames'
+import { IPlatform } from '../../interfaces/games.interface'
 import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from 'react-icons/fa'
 import { MdPhoneIphone } from 'react-icons/md'
 import { SiNintendo } from 'react-icons/si'
@@ -7,7 +7,7 @@ import { HStack, Icon } from '@chakra-ui/react'
 import { IconType } from 'react-icons'
 
 interface GamePlatformsProps {
-	platforms: Platform[]
+	platforms: IPlatform[]
 }
 
 const GamePlatforms = ({ platforms }: GamePlatformsProps) => {

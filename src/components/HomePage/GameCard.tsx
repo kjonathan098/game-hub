@@ -1,12 +1,12 @@
 import { Card, CardBody, HStack, Heading, Image, VStack } from '@chakra-ui/react'
-import { Game } from '../../hooks/useGames'
+import { IGame } from '../../interfaces/games.interface'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'
 import cropImage from '../../services/img-crop'
 import { useNavigate } from 'react-router-dom'
 
 interface GameCardProps {
-	game: Game
+	game: IGame
 }
 
 const GameCard = ({ game }: GameCardProps) => {
