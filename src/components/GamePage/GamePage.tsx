@@ -5,14 +5,11 @@ import useGameDetails from '../../hooks/useGameDetails'
 import { useEffect } from 'react'
 import GameNumbersDetails from './GameNumbersDetails'
 import GameSummary from './GameSummary'
+import GameImages from './GameImages'
 
 const GamePage = () => {
 	const { id } = useParams()
 	const { data, loading, error } = useGameDetails(id!)
-
-	useEffect(() => {
-		console.log(data)
-	}, [data])
 
 	if (error) return <>error...</>
 	if (loading || !data) return <>Loading...</>
@@ -41,6 +38,7 @@ const GamePage = () => {
 				</Center>
 				<GameNumbersDetails data={data} />
 				<GameSummary data={data} />
+				<GameImages gameDetails={data} />
 			</Stack>
 		</Box>
 	)

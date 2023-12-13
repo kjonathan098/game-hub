@@ -1,5 +1,6 @@
-import { Box, Grid, GridItem, HStack, SimpleGrid, Stack, Text } from '@chakra-ui/react'
+import { Center, Grid, GridItem, Text } from '@chakra-ui/react'
 import { IGameDetails } from '../../interfaces/games.interface'
+import { CiHeart } from 'react-icons/ci'
 
 interface Props {
 	data: IGameDetails
@@ -11,12 +12,12 @@ const GameNumbersDetails = ({ data }: Props) => {
 	return (
 		<Grid h={{ base: '300px', md: '200px' }} templateRows={{ base: 'repeat(5, 1fr)', md: 'repeat(2, 1fr)' }} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
 			<GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'} bg={gridBg}>
-				<Text fontSize={{ base: '3xl', md: '9xl' }} fontWeight={'extrabold'}>
-					{data.rating}
+				<Text fontSize={{ base: '3xl', md: '7xl' }} fontWeight={'extrabold'}>
+					{data.name}
 				</Text>
-				<Text fontSize={{ base: '3xl', md: '7xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
+				{/* <Text fontSize={{ base: '3xl', md: '7xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
 					RATING
-				</Text>
+				</Text> */}
 			</GridItem>
 
 			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'} bg={gridBg}>
@@ -43,7 +44,16 @@ const GameNumbersDetails = ({ data }: Props) => {
 				</Text>
 			</GridItem>
 
-			<GridItem colSpan={1} bg="tomato" />
+			<GridItem colSpan={1} bg="tomato" display={'flex'} justifyContent={'space-between'} alignItems={'center'} p={2}>
+				<Center border={'2px'} p={1} borderRadius={3} gap={3}>
+					<Text>Add to cart</Text>
+					<CiHeart className={{ fontSize: '50px' }} />
+				</Center>
+				<Center border={'2px'} p={1} borderRadius={3} gap={3}>
+					<Text>Add to wish list</Text>
+					<CiHeart className={{ fontSize: '50px' }} />
+				</Center>
+			</GridItem>
 		</Grid>
 	)
 }

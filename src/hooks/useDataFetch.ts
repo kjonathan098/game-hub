@@ -19,7 +19,6 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 
 			setLoading(true)
 			if (!requestConfig?.params.page) {
-				console.log('no page presences')
 				setData([])
 			}
 			apiClient

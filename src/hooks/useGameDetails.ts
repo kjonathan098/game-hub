@@ -9,8 +9,6 @@ const useGameDetails = (id: string) => {
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
-		console.log({ id })
-
 		const controller = new AbortController()
 		setLoading(true)
 		apiClient
