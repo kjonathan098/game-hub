@@ -23,7 +23,7 @@ const GameImages = ({ gameDetails }: Props) => {
 	if (loadingImages) return <>Loading. Image..</>
 
 	return (
-		<Grid w={'700px'} h={{ base: '300px', md: '500px' }} templateRows={{ base: 'repeat(5, 1fr)', md: 'repeat(2, 1fr)' }} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={2}>
+		<Grid w={'1fr'} h={{ base: 'fit-content', md: '500px' }} templateRows={{ base: 'repeat(5, 1fr)', md: 'repeat(2, 1fr)' }} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={2}>
 			<GridItem colSpan={{ base: 1 }} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={1} justifyContent={'center'}>
 				<Image src={galleryArray[0].src} objectFit={'cover'} h={'100%'} rounded={'4'} />
 			</GridItem>
