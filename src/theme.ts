@@ -6,6 +6,11 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
 	config,
+	styles: {
+		global: {
+			body: {},
+		},
+	},
 })
 
 export default theme

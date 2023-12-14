@@ -20,21 +20,21 @@ const GameNumbersDetails = ({ data }: Props) => {
 				</Text> */}
 			</GridItem>
 
-			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'} bg={gridBg}>
-				<Text fontSize={{ base: '3xl', md: '9xl' }} fontWeight={'extrabold'}>
-					{data.playtime}
+			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={2} justifyContent={'center'} bg={gridBg}>
+				<Text fontSize={{ base: '3xl', md: '8xl' }} fontWeight={'extrabold'}>
+					{data.rating}
 				</Text>
-				<Text fontSize={{ base: '3xl', md: '5xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
-					PLAYTIME
+				<Text fontSize={{ base: '3xl', md: '2xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
+					RATING
 				</Text>
 			</GridItem>
 
 			<GridItem colSpan={1} bg={gridBg} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'}>
 				<Text fontSize={'4xl'} fontWeight={'extrabold'}>
-					{data.achievements_count}
+					{data.playtime}
 				</Text>
 				<Text fontSize={'2xl'} fontWeight={'extrabold'} fontStyle={'italic'}>
-					ACHIEVEMENTS
+					PLAYTIME
 				</Text>
 			</GridItem>
 
