@@ -39,13 +39,13 @@ const GamePage = () => {
 				</Center>
 				<GameNumbersDetails data={data} />
 				<Stack direction={{ base: 'column', lg: 'row' }} display={'flex'} mt={4}>
-					<Box flex="0 0 45%">
+					<Box width={{ base: '1fr', md: '45%' }}>
 						<GameSummary data={data} />
 					</Box>
-					<Box h={'fit-content'} display={'flex-col'} justifyContent={'center'} flex={1}>
+					<Stack h={'fit-content'} justifyContent={'center'} flex={1} gap={9}>
 						<GameImages gameDetails={data} />
 						<GameBuyingOptions data={data} />
-					</Box>
+					</Stack>
 				</Stack>
 			</Stack>
 		</Box>
