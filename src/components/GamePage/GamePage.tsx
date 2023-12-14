@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import GameNumbersDetails from './GameNumbersDetails'
 import GameSummary from './GameSummary'
 import GameImages from './GameImages'
+import GameBuyingOptions from './GameBuyingOptions'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -37,8 +38,15 @@ const GamePage = () => {
 					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
 				</Center>
 				<GameNumbersDetails data={data} />
-				<GameSummary data={data} />
-				<GameImages gameDetails={data} />
+				<Box bg={'red'} display={'flex'} mt={4}>
+					<Box bg={'green'} flex="0 0 45%">
+						<GameSummary data={data} />
+					</Box>
+					<Box h={'fit-content'} display={'flex'} justifyContent={'center'} bg={'purple'} flex={1}>
+						{/* <GameImages gameDetails={data} /> */}
+						<GameBuyingOptions data={data} />
+					</Box>
+				</Box>
 			</Stack>
 		</Box>
 	)
