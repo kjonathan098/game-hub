@@ -5,12 +5,10 @@ interface Props {
 	data: IGameDetails
 }
 const GameBuyingOptions = ({ data }: Props) => {
-	console.log(data)
-
 	return (
 		<Box>
 			<Text fontSize={'2xl'}>More Buying Options</Text>
-			<Stack direction={{ base: 'column', lg: 'row' }} flexWrap={'wrap'}>
+			<Stack direction={'row'} flexWrap={'wrap'}>
 				{data.stores.map((item) => {
 					return (
 						<a target="_black" href={`https://${item.store.domain}`}>

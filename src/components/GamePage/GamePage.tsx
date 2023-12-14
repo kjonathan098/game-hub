@@ -38,15 +38,15 @@ const GamePage = () => {
 					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
 				</Center>
 				<GameNumbersDetails data={data} />
-				<Box bg={'red'} display={'flex'} mt={4}>
-					<Box bg={'green'} flex="0 0 45%">
+				<Stack direction={{ base: 'column', lg: 'row' }} display={'flex'} mt={4}>
+					<Box flex="0 0 45%">
 						<GameSummary data={data} />
 					</Box>
-					<Box h={'fit-content'} display={'flex'} justifyContent={'center'} bg={'purple'} flex={1}>
-						{/* <GameImages gameDetails={data} /> */}
+					<Box h={'fit-content'} display={'flex-col'} justifyContent={'center'} flex={1}>
+						<GameImages gameDetails={data} />
 						<GameBuyingOptions data={data} />
 					</Box>
-				</Box>
+				</Stack>
 			</Stack>
 		</Box>
 	)
