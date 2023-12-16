@@ -1,4 +1,4 @@
-import { Box, Button, Stack, Text, keyframes } from '@chakra-ui/react'
+import { Box, Button, HStack, Image, Stack, Text, keyframes } from '@chakra-ui/react'
 import { useContext, useState } from 'react'
 import { authContext } from '../../context/authProvider'
 
@@ -9,22 +9,33 @@ const pulse = keyframes`
 `
 
 const UserInfo = () => {
-	const { test } = useContext(authContext)
-	console.log({ test })
+	const { googleSignIn, user } = useContext(authContext)
 
-	const [loading, setLoading] = useState(false)
+	if (!user)
+		return (
+			<Stack>
+				<Text fontSize={'xl'} fontWeight={'bold'}>
+					Login
+				</Text>
+				<Button bg={'red.500'} _hover={{ bg: 'red.700' }} onClick={googleSignIn}>
+					Google
+				</Button>
+				<Button>Google</Button>
+				<Button bg={'blue.100'} animation={`${pulse} 2s infinite`}>
+					Demo Account
+				</Button>
+			</Stack>
+		)
+
 	return (
 		<Stack>
 			<Text fontSize={'xl'} fontWeight={'bold'}>
-				Login
+				Welcome Back!
 			</Text>
-			<Button bg={'red.500'} _hover={{ bg: 'red.700' }}>
-				Google
-			</Button>
-			<Button>Google</Button>
-			<Button bg={'blue.100'} animation={`${pulse} 2s infinite`}>
-				Demo Account
-			</Button>
+			<HStack>
+				<Image src={user.photoURL} alt={'profile pic'} rounded={'full'} width={'25px'} height={'25px'} />
+				<Text>{user.displayName}</Text>
+			</HStack>
 		</Stack>
 	)
 }
