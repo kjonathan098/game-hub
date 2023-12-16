@@ -1,8 +1,15 @@
 // Import the functions you need from the SDKs you need
+import { IUser } from '../interfaces/games.interface'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
-import { collection, addDoc, getDocs } from 'firebase/firestore'
-import { IUser } from '../interfaces/games.interface'
+import { collection, getDocs, where, query, doc, setDoc } from 'firebase/firestore'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+
+interface IAPIHandler {
+	googleAuth: () => Promise<IUser | null>
+	getUser: (id: string) => Promise<IUser | null>
+	addUser: (user: IUser) => Promise<boolean>
+}
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,17 +23,39 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-
 const db = getFirestore(app)
-
-interface IAPIHandler {
-	getUser: (id: string) => Promise<IUser>
-}
+const userCollection = collection(db, 'users')
 
 export const ApiHander: IAPIHandler = {
+	googleAuth: async () => {
+		const provider = new GoogleAuthProvider()
+		const auth = getAuth()
+		auth.useDeviceLanguage()
+
+		try {
+			const res = await signInWithPopup(auth, provider)
+			const user: IUser = { displayName: res.user.displayName!, photoURL: res.user.photoURL!, uid: res.user.uid }
+			return user
+		} catch (error) {
+			return null
+		}
+	},
 	getUser: async (id) => {
-		const user = await getDocs(collection(db, 'users'))
-		console.log(user)
-		return { name: 'john', id: 'des' }
+		const q = query(userCollection, where('uid', '==', id))
+		const querySnapshot = await getDocs(q)
+		const user = querySnapshot.docs.map((doc) => doc.data())
+
+		if (!user.length) return null
+
+		return { ...user[0] } as IUser
+	},
+	addUser: async (user) => {
+		try {
+			await setDoc(doc(userCollection), user)
+			return true
+		} catch (error) {
+			console.log('error adding user to DB')
+			return false
+		}
 	},
 }

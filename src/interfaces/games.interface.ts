@@ -50,6 +50,7 @@ export interface IGameScreenshots {
 }
 
 export interface IUser {
-	name: string
-	id: string
+	displayName: string
+	uid: string
+	photoURL: string
 }
