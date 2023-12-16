@@ -18,7 +18,7 @@ const UserInfo = () => {
 				Google
 			</Button>
 			<Button>Google</Button>
-			<Button bg={'blue.400'} animation={`${pulse} 2s infinite`}>
+			<Button bg={'blue.100'} animation={`${pulse} 2s infinite`}>
 				Demo Account
 			</Button>
 		</Stack>

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import useGenre from '../../hooks/useGenre'
-import { Button, HStack, Image, List, ListItem, Spinner, Box, Collapse, Text } from '@chakra-ui/react'
+import { Button, HStack, Image, List, ListItem, Spinner, Box, Collapse, Text, Stack } from '@chakra-ui/react'
 import cropImage from '../../services/img-crop'
 import { queryContext } from '../../context/queryProvider'
 
@@ -18,7 +18,10 @@ const GenreList = () => {
 	if (error) return null
 
 	return (
-		<>
+		<Stack spacing={2}>
+			<Text fontSize={'xl'} fontWeight={'bold'}>
+				Genres
+			</Text>
 			<Collapse startingHeight={300} in={show}>
 				<List>
 					{data.map((genre) => {
@@ -43,10 +46,10 @@ const GenreList = () => {
 					})}
 				</List>
 			</Collapse>
-			<Button size="sm" onClick={handleToggle}>
+			<Button size="sm" onClick={handleToggle} mt={'-15px'}>
 				{show ? 'Hide' : 'Show All'}
 			</Button>
-		</>
+		</Stack>
 	)
 }
 
