@@ -48,3 +48,8 @@ export interface IGameScreenshots {
 	count: number
 	image: string
 }
+
+export interface IUser {
+	name: string
+	id: string
+}
