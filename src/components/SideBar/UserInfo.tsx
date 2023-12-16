@@ -1,5 +1,6 @@
 import { Box, Button, Stack, Text, keyframes } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import { authContext } from '../../context/authProvider'
 
 const pulse = keyframes`
   0% { background-color: #3b82f6; }
@@ -8,6 +9,9 @@ const pulse = keyframes`
 `
 
 const UserInfo = () => {
+	const { test } = useContext(authContext)
+	console.log({ test })
+
 	const [loading, setLoading] = useState(false)
 	return (
 		<Stack>

@@ -7,37 +7,40 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import HomePage from './components/HomePage/HomePage'
 import GamePage from './components/GamePage/GamePage'
 import SideBar from './components/SideBar/SideBar'
+import AuthProvider from './context/authProvider'
 
 function App() {
 	const [gamesQuery, setGamesQuery] = useState({} as IGamesQuery)
 
 	return (
-		<BrowserRouter>
-			<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
-				<GridItem area="nav">
-					<NavBar
-						onSearch={(searchText: string) => {
-							setGamesQuery({ ...gamesQuery, searchText })
-						}}
-					/>
-				</GridItem>
-
-				<Show above="lg">
-					<GridItem area="aside">
-						<SideBar />
+		<AuthProvider>
+			<BrowserRouter>
+				<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
+					<GridItem area="nav">
+						<NavBar
+							onSearch={(searchText: string) => {
+								setGamesQuery({ ...gamesQuery, searchText })
+							}}
+						/>
 					</GridItem>
-				</Show>
 
-				<QueryProvider>
-					<GridItem area="main">
-						<Routes>
-							<Route path="/" element={<HomePage />} />
-							<Route path="/game/:id" element={<GamePage />} />
-						</Routes>
-					</GridItem>
-				</QueryProvider>
-			</Grid>
-		</BrowserRouter>
+					<Show above="lg">
+						<GridItem area="aside">
+							<SideBar />
+						</GridItem>
+					</Show>
+
+					<QueryProvider>
+						<GridItem area="main">
+							<Routes>
+								<Route path="/" element={<HomePage />} />
+								<Route path="/game/:id" element={<GamePage />} />
+							</Routes>
+						</GridItem>
+					</QueryProvider>
+				</Grid>
+			</BrowserRouter>
+		</AuthProvider>
 	)
 }
 
