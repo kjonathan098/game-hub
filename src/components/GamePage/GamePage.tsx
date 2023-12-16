@@ -7,6 +7,7 @@ import GameNumbersDetails from './GameNumbersDetails'
 import GameSummary from './GameSummary'
 import GameImages from './GameImages'
 import GameBuyingOptions from './GameBuyingOptions'
+import GameTags from './GameTags'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -45,6 +46,7 @@ const GamePage = () => {
 					<Stack h={'fit-content'} justifyContent={'center'} flex={1} gap={9}>
 						<GameImages gameDetails={data} />
 						<GameBuyingOptions data={data} />
+						<GameTags data={data} />
 					</Stack>
 				</Stack>
 			</Stack>

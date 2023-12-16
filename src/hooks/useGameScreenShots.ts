@@ -11,6 +11,11 @@ interface GalleryValues {
 	key?: string | undefined
 }
 
+interface ICarousel {
+	original: string
+	thumbnail: string
+}
+
 function useGameScreenShots(id: number) {
 	const { data, loading, error } = useData<IGameScreenshots>(`/games/${id}/screenshots`)
 	const [loadingImages, setLoadingImages] = useState(true)

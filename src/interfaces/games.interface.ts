@@ -41,6 +41,7 @@ export interface IGameDetails extends IGame {
 	achievements_count: number
 	esrb_rating: { name: string }
 	stores: { id: number; store: { name: string; domain: string; image_background: string } }[]
+	tags: { name: string }[]
 }
 
 export interface IGameScreenshots {
