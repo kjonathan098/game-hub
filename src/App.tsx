@@ -1,14 +1,12 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
-import GenreList from './components/SideBar/GenreList'
 import { useState } from 'react'
-
 import { IGamesQuery } from './interfaces/games.interface'
-
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import HomePage from './components/HomePage/HomePage'
 import GamePage from './components/GamePage/GamePage'
+import SideBar from './components/SideBar/SideBar'
 
 function App() {
 	const [gamesQuery, setGamesQuery] = useState({} as IGamesQuery)
@@ -25,8 +23,8 @@ function App() {
 				</GridItem>
 
 				<Show above="lg">
-					<GridItem area="aside" padding={5}>
-						<GenreList />
+					<GridItem area="aside" padding={5} bg="green">
+						<SideBar />
 					</GridItem>
 				</Show>
 
