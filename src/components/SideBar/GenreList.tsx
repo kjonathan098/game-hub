@@ -20,7 +20,7 @@ const GenreList = () => {
 	return (
 		<>
 			<Collapse startingHeight={300} in={show}>
-				<List padding={'5px'}>
+				<List>
 					{data.map((genre) => {
 						return (
 							<ListItem key={genre.id} marginBottom={'10px'}>
@@ -43,7 +43,7 @@ const GenreList = () => {
 					})}
 				</List>
 			</Collapse>
-			<Button size="sm" onClick={handleToggle} mt="1rem">
+			<Button size="sm" onClick={handleToggle}>
 				{show ? 'Hide' : 'Show All'}
 			</Button>
 		</>

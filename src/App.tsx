@@ -23,7 +23,7 @@ function App() {
 				</GridItem>
 
 				<Show above="lg">
-					<GridItem area="aside" padding={5} bg="green">
+					<GridItem area="aside">
 						<SideBar />
 					</GridItem>
 				</Show>
