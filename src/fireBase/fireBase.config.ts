@@ -3,12 +3,13 @@ import { IUser } from '../interfaces/games.interface'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { collection, getDocs, where, query, doc, setDoc } from 'firebase/firestore'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 
 interface IAPIHandler {
 	googleAuth: () => Promise<IUser | null>
 	getUser: (id: string) => Promise<IUser | null>
 	addUser: (user: IUser) => Promise<boolean>
+	signOut: () => Promise<void>
 }
 
 // Your web app's Firebase configuration
@@ -39,6 +40,10 @@ export const ApiHander: IAPIHandler = {
 		} catch (error) {
 			return null
 		}
+	},
+	signOut: async () => {
+		const auth = getAuth()
+		signOut(auth)
 	},
 	getUser: async (id) => {
 		const q = query(userCollection, where('uid', '==', id))

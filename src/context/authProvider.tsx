@@ -1,10 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { ApiHander } from '../fireBase/fireBase.config'
 import { IUser } from '../interfaces/games.interface'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 interface IAuthContext {
 	test: string
-	googleSignIn: () => void
 	user: IUser | null
 }
 
@@ -32,14 +32,22 @@ const AuthProvider = ({ children }: IProps) => {
 		}
 	}
 
-	const googleSignIn = async () => {
-		const res = await ApiHander.googleAuth()
-		if (!res) return
-		getUsers(res)
-	}
-	useEffect(() => {}, [])
+	useEffect(() => {
+		const auth = getAuth()
+		const unsubscribe = onAuthStateChanged(auth, (res) => {
+			if (res) {
+				const user: IUser = { displayName: res.displayName!, photoURL: res.photoURL!, uid: res.uid }
+				getUsers(user)
+			} else {
+				setUser(null)
+			}
+		})
 
-	return <authContext.Provider value={{ test, googleSignIn, user }}>{children}</authContext.Provider>
+		// Clean up subscription on unmount
+		return () => unsubscribe()
+	}, [])
+
+	return <authContext.Provider value={{ test, user }}>{children}</authContext.Provider>
 }
 
 export default AuthProvider
