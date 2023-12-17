@@ -1,4 +1,4 @@
-import { Button, HStack, Image, Stack, Text } from '@chakra-ui/react'
+import { Button, HStack, Image, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import { authContext } from '../../context/authProvider'
 import { useContext, useState } from 'react'
 import { CiGift, CiUser } from 'react-icons/ci'
@@ -7,27 +7,11 @@ import { ApiHander } from '../../fireBase/fireBase.config'
 import { IGameDetails, IUser } from '../../interfaces/games.interface'
 import apiClient from '../../services/api-client'
 import fetchList from '../../services/fetch-game-list'
+import WishListDrawer from './WishListDrawer'
 
 const UserOptions = () => {
 	const { user } = useContext(authContext)
-	const [wishList, setWishList] = useState<IGameDetails[] | null>(null)
-	const [loading, setLoading] = useState(false)
-
-	const fetchGameList = async () => {
-		if (!user) return
-
-		setLoading(true)
-		const res = await fetchList(user)
-
-		if (!res) {
-			setLoading(false)
-			return console.log('eroror')
-		}
-		console.log(res)
-
-		setWishList(res)
-		setLoading(false)
-	}
+	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	if (!user) return
 	return (
@@ -47,6 +31,7 @@ const UserOptions = () => {
 					width={'100%'}
 					colorScheme="whatsapp"
 					onClick={() => {
+						onOpen()
 						fetchGameList()
 					}}
 					isLoading={loading}
@@ -66,6 +51,7 @@ const UserOptions = () => {
 					Logout
 				</Button>
 			</HStack>
+			<WishListDrawer isOpen={isOpen} onClose={onClose} />
 		</Stack>
 	)
 }
