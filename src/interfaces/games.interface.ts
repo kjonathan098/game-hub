@@ -53,4 +53,6 @@ export interface IUser {
 	displayName: string
 	uid: string
 	photoURL: string
+	wishList?: string[]
+	cart?: string[]
 }
