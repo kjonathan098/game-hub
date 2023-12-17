@@ -1,12 +1,41 @@
 import { Button, HStack, Image, Stack, Text } from '@chakra-ui/react'
 import { authContext } from '../../context/authProvider'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CiGift, CiUser } from 'react-icons/ci'
 import { FiShoppingCart } from 'react-icons/fi'
 import { ApiHander } from '../../fireBase/fireBase.config'
+import { IGameDetails, IUser } from '../../interfaces/games.interface'
+import apiClient from '../../services/api-client'
 
 const UserOptions = () => {
 	const { user } = useContext(authContext)
+	const [wishList, setWishList] = useState<IGameDetails[]>([])
+
+	const fetchGameDetails = (id: string): Promise<IGameDetails> => {
+		return apiClient
+			.get<IGameDetails>(`/games/${id}`)
+			.then((res) => res.data)
+			.catch((err) => {
+				// Handle error, possibly return a default value or error indicator
+				console.error(err)
+				throw err
+			})
+	}
+
+	// Function to fetch wishlist games
+	async function fetchWishList() {
+		if (!user?.wishList) return
+
+		try {
+			const promises = user.wishList.map((gameId) => fetchGameDetails(gameId))
+			const gamesDetails = await Promise.all(promises)
+			setWishList(gamesDetails)
+		} catch (error) {
+			// Handle error for the whole wishlist fetching
+			console.error(error)
+			// You might want to return an error indicator or throw the error
+		}
+	}
 
 	if (!user) return
 	return (
@@ -26,7 +55,7 @@ const UserOptions = () => {
 					width={'100%'}
 					colorScheme="whatsapp"
 					onClick={() => {
-						console.log(user.wishList)
+						fetchWishList()
 					}}
 				>
 					Wish List
