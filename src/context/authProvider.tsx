@@ -28,7 +28,7 @@ const AuthProvider = ({ children }: IProps) => {
 		if (!res) {
 			addUser(user)
 		} else {
-			setUser(user)
+			setUser({ ...user, wishList: res.wishList, cart: res.cart })
 		}
 	}
 
