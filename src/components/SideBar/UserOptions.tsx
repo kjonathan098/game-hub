@@ -6,35 +6,27 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { ApiHander } from '../../fireBase/fireBase.config'
 import { IGameDetails, IUser } from '../../interfaces/games.interface'
 import apiClient from '../../services/api-client'
+import fetchList from '../../services/fetch-game-list'
 
 const UserOptions = () => {
 	const { user } = useContext(authContext)
-	const [wishList, setWishList] = useState<IGameDetails[]>([])
+	const [wishList, setWishList] = useState<IGameDetails[] | null>(null)
+	const [loading, setLoading] = useState(false)
 
-	const fetchGameDetails = (id: string): Promise<IGameDetails> => {
-		return apiClient
-			.get<IGameDetails>(`/games/${id}`)
-			.then((res) => res.data)
-			.catch((err) => {
-				// Handle error, possibly return a default value or error indicator
-				console.error(err)
-				throw err
-			})
-	}
+	const fetchGameList = async () => {
+		if (!user) return
 
-	// Function to fetch wishlist games
-	async function fetchWishList() {
-		if (!user?.wishList) return
+		setLoading(true)
+		const res = await fetchList(user)
 
-		try {
-			const promises = user.wishList.map((gameId) => fetchGameDetails(gameId))
-			const gamesDetails = await Promise.all(promises)
-			setWishList(gamesDetails)
-		} catch (error) {
-			// Handle error for the whole wishlist fetching
-			console.error(error)
-			// You might want to return an error indicator or throw the error
+		if (!res) {
+			setLoading(false)
+			return console.log('eroror')
 		}
+		console.log(res)
+
+		setWishList(res)
+		setLoading(false)
 	}
 
 	if (!user) return
@@ -55,8 +47,9 @@ const UserOptions = () => {
 					width={'100%'}
 					colorScheme="whatsapp"
 					onClick={() => {
-						fetchWishList()
+						fetchGameList()
 					}}
+					isLoading={loading}
 				>
 					Wish List
 				</Button>

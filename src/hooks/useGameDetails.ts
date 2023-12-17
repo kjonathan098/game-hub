@@ -4,7 +4,7 @@ import apiClient from '../services/api-client'
 import { IGameDetails } from '../interfaces/games.interface'
 
 const useGameDetails = (id: string) => {
-	const [data, setData] = useState<IGameDetails | null>()
+	const [data, setData] = useState<IGameDetails | null>(null)
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
 
