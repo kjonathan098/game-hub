@@ -2,14 +2,15 @@
 import { IUser } from '../interfaces/games.interface'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
-import { collection, getDocs, where, query, doc, setDoc } from 'firebase/firestore'
+import { collection, getDocs, where, query, doc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 
 interface IAPIHandler {
-	googleAuth: () => Promise<IUser | null>
+	googleAuth: () => Promise<void>
 	getUser: (id: string) => Promise<IUser | null>
-	addUser: (user: IUser) => Promise<boolean>
+	addUser: (user: IUser) => Promise<IUser | false>
 	signOut: () => Promise<void>
+	addToWishList: (userDocId: string, gameId: string) => Promise<void>
 }
 
 // Your web app's Firebase configuration
@@ -33,34 +34,52 @@ export const ApiHander: IAPIHandler = {
 		const auth = getAuth()
 		auth.useDeviceLanguage()
 
+		// auth obeserver will be listening for changes and get res.. no need to return anything. (Maybe handle error)
 		try {
-			const res = await signInWithPopup(auth, provider)
-			const user: IUser = { displayName: res.user.displayName!, photoURL: res.user.photoURL!, uid: res.user.uid }
-			return user
+			await signInWithPopup(auth, provider)
+			console.log('google auth success ')
 		} catch (error) {
-			return null
+			console.log('error')
 		}
 	},
+
 	signOut: async () => {
 		const auth = getAuth()
 		signOut(auth)
 	},
+
 	getUser: async (id) => {
 		const q = query(userCollection, where('uid', '==', id))
 		const querySnapshot = await getDocs(q)
-		const user = querySnapshot.docs.map((doc) => doc.data())
 
+		const user = querySnapshot.docs.map((doc) => doc.data())
 		if (!user.length) return null
 
-		return { ...user[0] } as IUser
+		return { ...user[0], wishList: user[0].wishList, cart: user[0].cart, docId: querySnapshot.docs[0].id } as IUser
 	},
 	addUser: async (user) => {
 		try {
-			await setDoc(doc(userCollection), user)
-			return true
+			const userDocRef = doc(userCollection) // Create a new document reference
+			await setDoc(userDocRef, user) // Set the document data
+
+			const newDocId = userDocRef.id // Get the newly
+			console.log(newDocId, 'newDocId')
+
+			return { ...user, docId: newDocId } as IUser
 		} catch (error) {
 			console.log('error adding user to DB')
 			return false
 		}
 	},
+	addToWishList: async (userDocId, gameId) => {
+		const userDocRef = doc(db, 'users', userDocId)
+
+		try {
+			await updateDoc(userDocRef, { wishList: arrayUnion(gameId) })
+			console.log('success')
+		} catch (error) {
+			console.log('error')
+		}
+	},
 }
+// 7zcexiuqzZGgSfYsm7Be

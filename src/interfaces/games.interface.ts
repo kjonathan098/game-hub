@@ -50,9 +50,10 @@ export interface IGameScreenshots {
 }
 
 export interface IUser {
+	docId?: string
 	displayName: string
 	uid: string
 	photoURL: string
-	wishList?: string[]
-	cart?: string[]
+	wishList: string[]
+	cart: string[]
 }

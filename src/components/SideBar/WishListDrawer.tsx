@@ -10,36 +10,39 @@ interface Props {
 }
 
 const WishListDrawer = ({ isOpen, onClose }: Props) => {
-	const { user } = useContext(authContext)
+	const { user, wishList } = useContext(authContext)
 
 	const btnRef = useRef<HTMLButtonElement>(null)
-	const [wishList, setWishList] = useState<IGameDetails[] | null>(null)
+
 	const [loading, setLoading] = useState(false)
 
 	const fetchGameList = async () => {
-		if (!user) return
-		setLoading(true)
-		const res = await fetchList(user)
-
-		if (!res) {
-			setLoading(false)
-			return console.log('eroror')
-		}
-		console.log(res)
-		setWishList(res)
-		setLoading(false)
+		// if (!user) return
+		// setLoading(true)
+		// const res = await fetchList(user)
+		// if (!res) {
+		// 	setLoading(false)
+		// 	return console.log('eroror')
+		// }
+		// setWishList(res)
+		// setLoading(false)
 	}
 
 	useEffect(() => {
 		fetchGameList()
 	}, [])
 
+	useEffect(() => {
+		if (!user) return
+		// setWishList([...(user.wishList || [])])
+	}, [user])
+
 	return (
 		<>
 			<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef} size={'lg'}>
 				<DrawerOverlay />
 				<DrawerContent width={'50%'}>
-					<DrawerCloseButton />
+					<DrawerCloseButton size={'xl'} />
 					<DrawerHeader>Wish List</DrawerHeader>
 
 					<DrawerBody>
@@ -47,14 +50,19 @@ const WishListDrawer = ({ isOpen, onClose }: Props) => {
 							<>Loading</>
 						) : (
 							<>
-								{wishList?.map((item) => {
-									return (
-										<HStack>
-											<Image src={item.background_image} width={'50%'} />
-											<Text>{item.name}</Text>
-										</HStack>
-									)
-								})}
+								{!wishList.length && <Text>Nothing to see here wtf</Text>}
+								{wishList.length && (
+									<>
+										{wishList.map((item, index) => {
+											return (
+												<HStack spacing={2} mb={2} key={index}>
+													<Image src={item.background_image} width={'50%'} />
+													<Text>{item.name} hello</Text>
+												</HStack>
+											)
+										})}
+									</>
+								)}
 							</>
 						)}
 					</DrawerBody>
