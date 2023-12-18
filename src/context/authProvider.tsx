@@ -8,7 +8,9 @@ interface IAuthContext {
 	test: string
 	user: IUser | null
 	addToWishList: (gameId: IGameDetails) => void
+	removeFromWishList: (gameId: IGameDetails) => void
 	wishList: IGameDetails[]
+	loadingUser: boolean
 }
 
 export const authContext = createContext<IAuthContext>({} as IAuthContext)
@@ -20,13 +22,19 @@ const AuthProvider = ({ children }: IProps) => {
 	const [test, settest] = useState('hello')
 	const [user, setUser] = useState<IUser | null>(null)
 	const [wishList, setWishList] = useState<IGameDetails[]>([])
-	const [loading, setLoading] = useState(false)
+	const [loadingUser, setLoadingUser] = useState(false)
+
+	const removeFromWishList = async (gameDetails: IGameDetails) => {
+		if (!user) return
+		const newWishList = wishList.filter((item) => {
+			return item.id !== gameDetails.id
+		})
+		setWishList(newWishList)
+	}
 
 	const addToWishList = async (gameDetails: IGameDetails) => {
 		if (!user) return
-
 		ApiHander.addToWishList(user.docId!, gameDetails.id.toString())
-		// const newWishList = [...user?.wishList!, gameIDString]
 		setWishList([gameDetails, ...wishList])
 	}
 
@@ -35,11 +43,11 @@ const AuthProvider = ({ children }: IProps) => {
 		if (!user.wishList.length) return
 		const res = await fetchList(user)
 		if (!res) {
-			setLoading(false)
+			setLoadingUser(false)
 			return console.log('eroror')
 		}
 		setWishList(res)
-		setLoading(false)
+		setLoadingUser(false)
 	}
 
 	// add user to DB
@@ -49,7 +57,7 @@ const AuthProvider = ({ children }: IProps) => {
 
 		if (!res) return console.log('fire error toast')
 		setUser(res)
-		setLoading(false)
+		setLoadingUser(false)
 	}
 
 	// check if user exist in DB
@@ -65,7 +73,7 @@ const AuthProvider = ({ children }: IProps) => {
 	}
 
 	useEffect(() => {
-		setLoading(true)
+		setLoadingUser(true)
 		const auth = getAuth()
 		const unsubscribe = onAuthStateChanged(auth, (res) => {
 			if (res) {
@@ -76,7 +84,7 @@ const AuthProvider = ({ children }: IProps) => {
 			} else {
 				setUser(null)
 				setWishList([])
-				setLoading(false)
+				setLoadingUser(false)
 			}
 		})
 
@@ -84,7 +92,7 @@ const AuthProvider = ({ children }: IProps) => {
 		return () => unsubscribe()
 	}, [])
 
-	return <authContext.Provider value={{ test, user, addToWishList, wishList }}>{children}</authContext.Provider>
+	return <authContext.Provider value={{ test, user, addToWishList, wishList, loadingUser, removeFromWishList }}>{children}</authContext.Provider>
 }
 
 export default AuthProvider
