@@ -2,7 +2,7 @@
 import { IUser } from '../interfaces/games.interface'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
-import { collection, getDocs, where, query, doc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore'
+import { collection, getDocs, where, query, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 
 interface IAPIHandler {
@@ -11,6 +11,7 @@ interface IAPIHandler {
 	addUser: (user: IUser) => Promise<IUser | false>
 	signOut: () => Promise<void>
 	addToWishList: (userDocId: string, gameId: string) => Promise<void>
+	removeFromWishList: (userDocId: string, gameId: string) => Promise<void>
 }
 
 // Your web app's Firebase configuration
@@ -73,9 +74,17 @@ export const ApiHander: IAPIHandler = {
 	},
 	addToWishList: async (userDocId, gameId) => {
 		const userDocRef = doc(db, 'users', userDocId)
-
 		try {
 			await updateDoc(userDocRef, { wishList: arrayUnion(gameId) })
+			console.log('success')
+		} catch (error) {
+			console.log('error')
+		}
+	},
+	removeFromWishList: async (userDocId, gameId) => {
+		const userDocRef = doc(db, 'users', userDocId)
+		try {
+			await updateDoc(userDocRef, { wishList: arrayRemove(gameId) })
 			console.log('success')
 		} catch (error) {
 			console.log('error')

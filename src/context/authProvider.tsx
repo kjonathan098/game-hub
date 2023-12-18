@@ -30,12 +30,13 @@ const AuthProvider = ({ children }: IProps) => {
 			return item.id !== gameDetails.id
 		})
 		setWishList(newWishList)
+		ApiHander.removeFromWishList(user.docId!, gameDetails.id.toString())
 	}
 
 	const addToWishList = async (gameDetails: IGameDetails) => {
 		if (!user) return
-		ApiHander.addToWishList(user.docId!, gameDetails.id.toString())
 		setWishList([gameDetails, ...wishList])
+		ApiHander.addToWishList(user.docId!, gameDetails.id.toString())
 	}
 
 	// fetch details of games id's[]
