@@ -29,8 +29,7 @@ const GameCard = ({ game }: GameCardProps) => {
 		if (itOnWishList) {
 			removeFromWishList(game)
 		} else {
-			console.log('add to wish list')
-			// addToWishList(game)
+			addToWishList(game)
 		}
 	}
 
