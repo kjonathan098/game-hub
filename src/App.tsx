@@ -32,12 +32,12 @@ function App() {
 
 					<QueryProvider>
 						<div>hello</div>
-						{/* <GridItem area="main">
+						<GridItem area="main">
 							<Routes>
 								<Route path="/" element={<HomePage />} />
 								<Route path="/game/:id" element={<GamePage />} />
 							</Routes>
-						</GridItem> */}
+						</GridItem>
 					</QueryProvider>
 				</Grid>
 			</BrowserRouter>

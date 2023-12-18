@@ -7,7 +7,7 @@ import fetchList from '../services/fetch-game-list'
 interface IAuthContext {
 	test: string
 	user: IUser | null
-	addToWishList: (gameId: number) => void
+	addToWishList: (gameId: IGameDetails) => void
 	wishList: IGameDetails[]
 }
 
@@ -22,12 +22,12 @@ const AuthProvider = ({ children }: IProps) => {
 	const [wishList, setWishList] = useState<IGameDetails[]>([])
 	const [loading, setLoading] = useState(false)
 
-	const addToWishList = async (gameId: number) => {
-		// if (!user) return
-		// const gameIDString = gameId.toString()
-		// ApiHander.addToWishList(user.docId!, gameIDString)
+	const addToWishList = async (gameDetails: IGameDetails) => {
+		if (!user) return
+
+		ApiHander.addToWishList(user.docId!, gameDetails.id.toString())
 		// const newWishList = [...user?.wishList!, gameIDString]
-		// setUser({ ...user, wishList: newWishList })
+		setWishList([gameDetails, ...wishList])
 	}
 
 	// fetch details of games id's[]
@@ -70,6 +70,7 @@ const AuthProvider = ({ children }: IProps) => {
 		const unsubscribe = onAuthStateChanged(auth, (res) => {
 			if (res) {
 				const user: IUser = { displayName: res.displayName!, photoURL: res.photoURL!, uid: res.uid, wishList: [], cart: [] }
+
 				setUser(user)
 				getUsers(user)
 			} else {
