@@ -1,24 +1,30 @@
-import { Card, CardBody, HStack, Heading, Image, VStack } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, HStack, Heading, Image, VStack } from '@chakra-ui/react'
 import { IGame } from '../../interfaces/games.interface'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'
 import cropImage from '../../services/img-crop'
 import { useNavigate } from 'react-router-dom'
+import { CiCirclePlus } from 'react-icons/ci'
+import { ApiHander } from '../../fireBase/fireBase.config'
+import { useContext } from 'react'
+import { authContext } from '../../context/authProvider'
 
 interface GameCardProps {
 	game: IGame
 }
 
 const GameCard = ({ game }: GameCardProps) => {
+	const { user, addToWishList } = useContext(authContext)
 	const navigate = useNavigate()
-
 	const navigateGamePage = () => {
 		navigate(`/game/${game.id}`, { state: { id: game.id } })
 	}
 
 	return (
-		<Card onClick={navigateGamePage}>
-			<Image src={cropImage(game.background_image)} />
+		<Card _hover={{ scale: '10x' }}>
+			<Box position="relative" onClick={navigateGamePage} _hover={{ cursor: 'pointer' }}>
+				<Image src={cropImage(game.background_image)} />
+			</Box>
 			<CardBody>
 				<VStack alignItems={'start'} spacing={3}>
 					<HStack justifyContent={'space-between'}>
@@ -26,6 +32,22 @@ const GameCard = ({ game }: GameCardProps) => {
 						<Score score={game.metacritic} />
 					</HStack>
 					<Heading fontSize={'2xlg'}>{game.name}</Heading>
+					<HStack>
+						<Button
+							size={'xs'}
+							variant="outline"
+							colorScheme="whatsapp"
+							onClick={() => {
+								if (!user) return
+								addToWishList(game.id)
+							}}
+						>
+							Add to wish list
+						</Button>
+						<Button size={'xs'} colorScheme="teal" variant="outline" onClick={() => {}}>
+							Add to Cart
+						</Button>
+					</HStack>
 				</VStack>
 			</CardBody>
 		</Card>

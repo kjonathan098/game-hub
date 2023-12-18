@@ -32,9 +32,7 @@ const UserOptions = () => {
 					colorScheme="whatsapp"
 					onClick={() => {
 						onOpen()
-						fetchGameList()
 					}}
-					isLoading={loading}
 				>
 					Wish List
 				</Button>
