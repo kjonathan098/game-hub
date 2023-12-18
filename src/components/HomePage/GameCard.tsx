@@ -1,5 +1,5 @@
 import { Box, Button, Card, CardBody, HStack, Heading, Image, VStack } from '@chakra-ui/react'
-import { IGame } from '../../interfaces/games.interface'
+import { IGame, IGameDetails } from '../../interfaces/games.interface'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'
 import cropImage from '../../services/img-crop'
@@ -10,7 +10,7 @@ import { useContext } from 'react'
 import { authContext } from '../../context/authProvider'
 
 interface GameCardProps {
-	game: IGame
+	game: IGameDetails
 }
 
 const GameCard = ({ game }: GameCardProps) => {
@@ -39,7 +39,7 @@ const GameCard = ({ game }: GameCardProps) => {
 							colorScheme="whatsapp"
 							onClick={() => {
 								if (!user) return
-								addToWishList(game.id)
+								addToWishList(game)
 							}}
 						>
 							Add to wish list
