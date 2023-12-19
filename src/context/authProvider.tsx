@@ -1,14 +1,14 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { ApiHander } from '../fireBase/fireBase.config'
-import { IGameDetails, IUser } from '../interfaces/games.interface'
+import { IGameDetails, IUser, TUserField } from '../interfaces/games.interface'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import fetchList from '../services/fetch-game-list'
 
 interface IAuthContext {
 	test: string
 	user: IUser | null
-	addToWishList: (gameId: IGameDetails) => void
-	removeFromWishList: (gameId: IGameDetails) => void
+	addToList: (gameId: IGameDetails, field: TUserField) => void
+	removeFromList: (gameId: IGameDetails, field: TUserField) => void
 	wishList: IGameDetails[]
 	cartList: IGameDetails[]
 	loadingUser: boolean
@@ -26,19 +26,30 @@ const AuthProvider = ({ children }: IProps) => {
 	const [cartList, setCartList] = useState<IGameDetails[]>([])
 	const [loadingUser, setLoadingUser] = useState(false)
 
-	const removeFromWishList = async (gameDetails: IGameDetails) => {
+	const removeFromList = async (gameDetails: IGameDetails, field: TUserField) => {
 		if (!user) return
-		const newWishList = wishList.filter((item) => {
-			return item.id !== gameDetails.id
-		})
-		setWishList(newWishList)
-		ApiHander.removeFromWishList(user.docId!, gameDetails.id.toString())
+		if (field === 'wishList') {
+			const newWishList = wishList.filter((item) => {
+				return item.id !== gameDetails.id
+			})
+			setWishList(newWishList)
+		} else {
+			const newCartList = cartList.filter((item) => {
+				return item.id !== gameDetails.id
+			})
+			setCartList(newCartList)
+		}
+		ApiHander.removeFromList(user.docId!, gameDetails.id.toString(), field)
 	}
 
-	const addToWishList = async (gameDetails: IGameDetails) => {
+	const addToList = async (gameDetails: IGameDetails, field: TUserField) => {
 		if (!user) return
-		setWishList([gameDetails, ...wishList])
-		ApiHander.addToWishList(user.docId!, gameDetails.id.toString())
+		if (field === 'wishList') {
+			setWishList([gameDetails, ...wishList])
+		} else {
+			setCartList([gameDetails, ...cartList])
+		}
+		ApiHander.addToList(user.docId!, gameDetails.id.toString(), field)
 	}
 
 	// fetch details of games id's[]
@@ -56,10 +67,9 @@ const AuthProvider = ({ children }: IProps) => {
 
 	// Fetch details of cart id's []
 	const fetchCartList = async (user: IUser) => {
-		if (!user.cart.length) return
-		console.log(user.cart)
+		if (!user.cartList.length) return
 
-		const res = await fetchList(user.cart)
+		const res = await fetchList(user.cartList)
 		console.log(res, 'res')
 		if (!res) {
 			setLoadingUser(false)
@@ -94,7 +104,7 @@ const AuthProvider = ({ children }: IProps) => {
 		const auth = getAuth()
 		const unsubscribe = onAuthStateChanged(auth, (res) => {
 			if (res) {
-				const user: IUser = { displayName: res.displayName!, photoURL: res.photoURL!, uid: res.uid, wishList: [], cart: [] }
+				const user: IUser = { displayName: res.displayName!, photoURL: res.photoURL!, uid: res.uid, wishList: [], cartList: [] }
 
 				setUser(user)
 				getUsers(user)
@@ -110,7 +120,7 @@ const AuthProvider = ({ children }: IProps) => {
 		return () => unsubscribe()
 	}, [])
 
-	return <authContext.Provider value={{ test, user, addToWishList, wishList, cartList, loadingUser, removeFromWishList }}>{children}</authContext.Provider>
+	return <authContext.Provider value={{ test, user, addToList, wishList, cartList, loadingUser, removeFromList }}>{children}</authContext.Provider>
 }
 
 export default AuthProvider

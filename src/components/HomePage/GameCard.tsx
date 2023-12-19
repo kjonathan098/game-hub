@@ -16,7 +16,7 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
 	const navigate = useNavigate()
-	const { user, addToWishList, removeFromWishList, wishList, cartList } = useContext(authContext)
+	const { user, addToList, removeFromList, wishList, cartList } = useContext(authContext)
 	const { showToast, errorToast } = useToastMessage()
 	const [itOnWishList, setItOnWishList] = useState(false)
 	const [itsOnCart, setItsOnCart] = useState(false)
@@ -28,20 +28,32 @@ const GameCard = ({ game }: GameCardProps) => {
 	function handleWishList() {
 		if (!user) return errorToast('please sign in!')
 		if (itOnWishList) {
-			removeFromWishList(game)
+			removeFromList(game, 'wishList')
 		} else {
-			addToWishList(game)
+			addToList(game, 'wishList')
+		}
+	}
+
+	function handleCartList() {
+		if (!user) return errorToast('please sign in!')
+		if (itsOnCart) {
+			removeFromList(game, 'cartList')
+		} else {
+			addToList(game, 'cartList')
 		}
 	}
 
 	useEffect(() => {
+		if (!user) return
 		if (!wishList.length) return setItOnWishList(false)
+
 		const includes = wishList.some((item) => item.id === game.id)
 		setItOnWishList(includes)
 	}, [wishList, user])
 
 	useEffect(() => {
-		if (!cartList.length) return setItOnWishList(false)
+		if (!user) return
+		if (!cartList.length) return setItsOnCart(false)
 
 		const includes = cartList.some((item) => item.id === game.id)
 		setItsOnCart(includes)
@@ -63,7 +75,7 @@ const GameCard = ({ game }: GameCardProps) => {
 						<Button size={'xs'} variant={itOnWishList ? 'solid' : `outline`} colorScheme="whatsapp" onClick={handleWishList}>
 							{itOnWishList ? `remove from wish list` : `Add to wish list`}
 						</Button>
-						<Button size={'xs'} colorScheme="teal" variant={itsOnCart ? 'solid' : `outline`} onClick={() => {}}>
+						<Button size={'xs'} colorScheme="teal" variant={itsOnCart ? 'solid' : `outline`} onClick={handleCartList}>
 							{itsOnCart ? `remove from cart ` : `Add to cart `}
 						</Button>
 					</HStack>

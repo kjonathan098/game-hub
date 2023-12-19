@@ -1,17 +1,19 @@
 // Import the functions you need from the SDKs you need
-import { IUser } from '../interfaces/games.interface'
+import { IUser, TUserField } from '../interfaces/games.interface'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { collection, getDocs, where, query, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
+import { useToast } from '@chakra-ui/react'
+import useToastMessage from '../hooks/useToast'
 
 interface IAPIHandler {
 	googleAuth: () => Promise<void>
 	getUser: (id: string) => Promise<IUser | null>
 	addUser: (user: IUser) => Promise<IUser | false>
 	signOut: () => Promise<void>
-	addToWishList: (userDocId: string, gameId: string) => Promise<void>
-	removeFromWishList: (userDocId: string, gameId: string) => Promise<void>
+	addToList: (userDocId: string, gameId: string, field: TUserField) => Promise<void>
+	removeFromList: (userDocId: string, gameId: string, field: TUserField) => Promise<void>
 }
 
 // Your web app's Firebase configuration
@@ -43,20 +45,19 @@ export const ApiHander: IAPIHandler = {
 			console.log('error')
 		}
 	},
-
 	signOut: async () => {
 		const auth = getAuth()
 		signOut(auth)
 	},
-
 	getUser: async (id) => {
 		const q = query(userCollection, where('uid', '==', id))
 		const querySnapshot = await getDocs(q)
 
-		const user = querySnapshot.docs.map((doc) => doc.data())
+		let user = querySnapshot.docs.map((doc) => doc.data())
 		if (!user.length) return null
+		console.log(user[0].cartList, 'user[0].cartList')
 
-		return { ...user[0], wishList: user[0].wishList, cart: user[0].cart, docId: querySnapshot.docs[0].id } as IUser
+		return { ...user[0], wishList: user[0].wishList, cartList: user[0].cartList, docId: querySnapshot.docs[0].id } as IUser
 	},
 	addUser: async (user) => {
 		try {
@@ -72,23 +73,24 @@ export const ApiHander: IAPIHandler = {
 			return false
 		}
 	},
-	addToWishList: async (userDocId, gameId) => {
+	addToList: async (userDocId, gameId, field) => {
 		const userDocRef = doc(db, 'users', userDocId)
 		try {
-			await updateDoc(userDocRef, { wishList: arrayUnion(gameId) })
+			await updateDoc(userDocRef, { [field]: arrayUnion(gameId) })
 			console.log('success')
 		} catch (error) {
 			console.log('error')
+			const { errorToast } = useToastMessage()
+			errorToast('failed ')
 		}
 	},
-	removeFromWishList: async (userDocId, gameId) => {
+	removeFromList: async (userDocId, gameId, field) => {
 		const userDocRef = doc(db, 'users', userDocId)
 		try {
-			await updateDoc(userDocRef, { wishList: arrayRemove(gameId) })
+			await updateDoc(userDocRef, { [field]: arrayRemove(gameId) })
 			console.log('success')
 		} catch (error) {
 			console.log('error')
 		}
 	},
 }
-// 7zcexiuqzZGgSfYsm7Be
