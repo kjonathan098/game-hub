@@ -11,10 +11,9 @@ const fetchGameDetails = (id: string): Promise<IGameDetails> => {
 		})
 }
 
-export const fetchList = async (user: IUser) => {
-	if (!user?.wishList) return null
+export const fetchList = async (userList: string[]) => {
 	try {
-		const promises = user.wishList.map((gameId) => fetchGameDetails(gameId))
+		const promises = userList.map((gameId) => fetchGameDetails(gameId))
 		const gamesDetails = await Promise.all(promises)
 		return gamesDetails
 	} catch (error) {

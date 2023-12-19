@@ -8,10 +8,12 @@ import { IGameDetails, IUser } from '../../interfaces/games.interface'
 import apiClient from '../../services/api-client'
 import fetchList from '../../services/fetch-game-list'
 import WishListDrawer from './WishListDrawer'
+import CartDrawer from './CartDrawer'
 
 const UserOptions = () => {
 	const { user } = useContext(authContext)
-	const { isOpen, onOpen, onClose } = useDisclosure()
+	const { isOpen: isWishListOpen, onOpen: onWishListOpen, onClose: onWishListClose } = useDisclosure()
+	const { isOpen: isCartOpen, onOpen: onCartOpen, onClose: onCartClose } = useDisclosure()
 
 	if (!user) return
 	return (
@@ -31,7 +33,7 @@ const UserOptions = () => {
 					width={'100%'}
 					colorScheme="whatsapp"
 					onClick={() => {
-						onOpen()
+						onWishListOpen()
 					}}
 				>
 					Wish List
@@ -39,7 +41,13 @@ const UserOptions = () => {
 			</HStack>
 			<HStack>
 				<FiShoppingCart style={{ fontSize: '25px' }} />
-				<Button width={'100%'} colorScheme="teal">
+				<Button
+					width={'100%'}
+					colorScheme="teal"
+					onClick={() => {
+						onCartOpen()
+					}}
+				>
 					Cart
 				</Button>
 			</HStack>
@@ -49,7 +57,8 @@ const UserOptions = () => {
 					Logout
 				</Button>
 			</HStack>
-			<WishListDrawer isOpen={isOpen} onClose={onClose} />
+			<WishListDrawer isWishListOpen={isWishListOpen} onWishListClose={onWishListClose} />
+			<CartDrawer isCartOpen={isCartOpen} onCartClose={onCartClose} />
 		</Stack>
 	)
 }

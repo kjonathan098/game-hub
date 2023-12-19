@@ -16,9 +16,10 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
 	const navigate = useNavigate()
-	const { user, addToWishList, removeFromWishList, wishList } = useContext(authContext)
+	const { user, addToWishList, removeFromWishList, wishList, cartList } = useContext(authContext)
 	const { showToast, errorToast } = useToastMessage()
 	const [itOnWishList, setItOnWishList] = useState(false)
+	const [itsOnCart, setItsOnCart] = useState(false)
 
 	const navigateGamePage = () => {
 		navigate(`/game/${game.id}`, { state: { id: game.id } })
@@ -39,6 +40,13 @@ const GameCard = ({ game }: GameCardProps) => {
 		setItOnWishList(includes)
 	}, [wishList, user])
 
+	useEffect(() => {
+		if (!cartList.length) return setItOnWishList(false)
+
+		const includes = cartList.some((item) => item.id === game.id)
+		setItsOnCart(includes)
+	}, [cartList, user])
+
 	return (
 		<Card _hover={{ scale: '10x' }}>
 			<Box position="relative" onClick={navigateGamePage} _hover={{ cursor: 'pointer' }}>
@@ -53,10 +61,10 @@ const GameCard = ({ game }: GameCardProps) => {
 					<Heading fontSize={'2xlg'}>{game.name}</Heading>
 					<HStack>
 						<Button size={'xs'} variant={itOnWishList ? 'solid' : `outline`} colorScheme="whatsapp" onClick={handleWishList}>
-							{itOnWishList ? `remove from wish list` : `Add to wish list`}{' '}
+							{itOnWishList ? `remove from wish list` : `Add to wish list`}
 						</Button>
-						<Button size={'xs'} colorScheme="teal" variant="outline" onClick={() => {}}>
-							Add to Cart
+						<Button size={'xs'} colorScheme="teal" variant={itsOnCart ? 'solid' : `outline`} onClick={() => {}}>
+							{itsOnCart ? `remove from cart ` : `Add to cart `}
 						</Button>
 					</HStack>
 				</VStack>

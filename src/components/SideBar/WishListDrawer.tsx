@@ -5,11 +5,11 @@ import fetchList from '../../services/fetch-game-list'
 import { IGameDetails } from '../../interfaces/games.interface'
 
 interface Props {
-	isOpen: boolean
-	onClose: () => void
+	isWishListOpen: boolean
+	onWishListClose: () => void
 }
 
-const WishListDrawer = ({ isOpen, onClose }: Props) => {
+const WishListDrawer = ({ isWishListOpen, onWishListClose }: Props) => {
 	const { user, wishList } = useContext(authContext)
 
 	const btnRef = useRef<HTMLButtonElement>(null)
@@ -39,7 +39,7 @@ const WishListDrawer = ({ isOpen, onClose }: Props) => {
 
 	return (
 		<>
-			<Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef} size={'lg'}>
+			<Drawer isOpen={isWishListOpen} placement="right" onClose={onWishListClose} finalFocusRef={btnRef} size={'lg'}>
 				<DrawerOverlay />
 				<DrawerContent width={'50%'}>
 					<DrawerCloseButton size={'xl'} />
@@ -68,7 +68,7 @@ const WishListDrawer = ({ isOpen, onClose }: Props) => {
 					</DrawerBody>
 
 					<DrawerFooter>
-						<Button variant="outline" mr={3} onClick={onClose}>
+						<Button variant="outline" mr={3} onClick={onWishListClose}>
 							Cancel
 						</Button>
 						<Button colorScheme="blue">Save</Button>
