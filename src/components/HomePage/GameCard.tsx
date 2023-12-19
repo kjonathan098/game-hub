@@ -1,14 +1,15 @@
-import { Box, Button, Card, CardBody, HStack, Heading, Image, VStack, useToast } from '@chakra-ui/react'
-import { IGame, IGameDetails } from '../../interfaces/games.interface'
+import { Box, Button, Card, CardBody, HStack, Heading, Image, VStack } from '@chakra-ui/react'
+import { IGameDetails } from '../../interfaces/games.interface'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'
 import cropImage from '../../services/img-crop'
 import { useNavigate } from 'react-router-dom'
-import { CiCirclePlus } from 'react-icons/ci'
-import { ApiHander } from '../../fireBase/fireBase.config'
+
 import { useContext, useEffect, useState } from 'react'
 import { authContext } from '../../context/authProvider'
 import useToastMessage from '../../hooks/useToast'
+import WishListButton from '../../utils/WishListButton'
+import CartButton from '../../utils/CartButton'
 
 interface GameCardProps {
 	game: IGameDetails
@@ -72,12 +73,8 @@ const GameCard = ({ game }: GameCardProps) => {
 					</HStack>
 					<Heading fontSize={'2xlg'}>{game.name}</Heading>
 					<HStack>
-						<Button size={'xs'} variant={itOnWishList ? 'solid' : `outline`} colorScheme="whatsapp" onClick={handleWishList}>
-							{itOnWishList ? `remove from wish list` : `Add to wish list`}
-						</Button>
-						<Button size={'xs'} colorScheme="teal" variant={itsOnCart ? 'solid' : `outline`} onClick={handleCartList}>
-							{itsOnCart ? `remove from cart ` : `Add to cart `}
-						</Button>
+						<WishListButton game={game} />
+						<CartButton game={game} />
 					</HStack>
 				</VStack>
 			</CardBody>

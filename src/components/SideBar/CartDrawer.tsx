@@ -1,4 +1,4 @@
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Text, Heading, HStack, Image } from '@chakra-ui/react'
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Text, HStack, Image } from '@chakra-ui/react'
 import { useContext, useRef } from 'react'
 import { authContext } from '../../context/authProvider'
 interface Props {
