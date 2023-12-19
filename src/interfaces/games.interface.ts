@@ -55,5 +55,7 @@ export interface IUser {
 	uid: string
 	photoURL: string
 	wishList: string[]
-	cart: string[]
+	cartList: string[]
 }
+
+export type TUserField = 'wishList' | 'cartList'
