@@ -1,8 +1,9 @@
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Text, Heading, HStack, Image } from '@chakra-ui/react'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Text, HStack, Image, Stack, Tag } from '@chakra-ui/react'
+import { useContext, useRef } from 'react'
 import { authContext } from '../../context/authProvider'
-import fetchList from '../../services/fetch-game-list'
-import { IGameDetails } from '../../interfaces/games.interface'
+import GamePlatforms from '../HomePage/GamePlatforms'
+import WishListButton from '../../utils/WishListButton'
+import CartButton from '../../utils/CartButton'
 
 interface Props {
 	isWishListOpen: boolean
@@ -16,7 +17,7 @@ const WishListDrawer = ({ isWishListOpen, onWishListClose }: Props) => {
 
 	return (
 		<>
-			<Drawer isOpen={isWishListOpen} placement="right" onClose={onWishListClose} finalFocusRef={btnRef} size={'lg'}>
+			<Drawer isOpen={isWishListOpen} placement="right" onClose={onWishListClose} finalFocusRef={btnRef} size={'md'}>
 				<DrawerOverlay />
 				<DrawerContent width={'50%'}>
 					<DrawerCloseButton size={'xl'} />
@@ -27,12 +28,27 @@ const WishListDrawer = ({ isWishListOpen, onWishListClose }: Props) => {
 							{!wishList.length && <Text>Nothing to see here wtf</Text>}
 							{wishList.length && (
 								<>
-									{wishList.map((item, index) => {
+									{wishList.map((game, index) => {
 										return (
-											<HStack spacing={2} mb={2} key={index}>
-												<Image src={item.background_image} width={'50%'} />
-												<Text>{item.name} hello</Text>
-											</HStack>
+											<Stack direction="row" spacing={2} mb={2} key={index} bg={'blackAlpha.700'} borderRadius={'lg'} shadow={'base'} alignItems={'stretch'}>
+												<Image src={game.background_image} width={'154px'} height={'159px'} objectFit={'cover'} />
+
+												<Stack>
+													<a>
+														<Text fontWeight={'bold'} fontSize={'lg'} mt={'10px'}>
+															{game.name}
+														</Text>
+													</a>
+													<Tag w={'100px'} justifyContent={'center'}>
+														$ 14.99
+													</Tag>
+													<GamePlatforms platforms={game.parent_platforms.map((p) => p.platform)} />
+													<HStack>
+														<WishListButton game={game} />
+														<CartButton game={game} />
+													</HStack>
+												</Stack>
+											</Stack>
 										)
 									})}
 								</>
