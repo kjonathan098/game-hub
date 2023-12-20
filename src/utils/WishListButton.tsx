@@ -2,10 +2,10 @@ import { Button } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import { authContext } from '../context/authProvider'
 import useToastMessage from '../hooks/useToast'
-import { IGameDetails } from '../interfaces/games.interface'
+import { IGame, IGameDetails } from '../interfaces/games.interface'
 
 interface Params {
-	game: IGameDetails
+	game: IGame
 	size?: string
 }
 
@@ -26,7 +26,12 @@ const WishListButton = ({ game, size }: Params) => {
 	useEffect(() => {
 		if (!user) return
 		if (!wishList.length) return setItOnWishList(false)
+		console.log(wishList, 'wish list')
+		console.log(game.name)
+
 		const includes = wishList.some((item) => item.id === game.id)
+		console.log(includes, 'includes')
+
 		setItOnWishList(includes)
 	}, [user, wishList])
 

@@ -11,11 +11,18 @@ interface Iparams {
 const DrawerGeneric = ({ openDrawer }: Iparams) => {
 	const { wishList, cartList } = useContext(authContext)
 	const [listType, setListType] = useState(wishList)
+	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		if (openDrawer === 'cartList') setListType(cartList)
-	}, [openDrawer])
+		if (openDrawer === 'cartList') {
+			setListType(cartList)
+		} else {
+			setListType(wishList)
+		}
+		setLoading(false)
+	}, [openDrawer, wishList, cartList])
 
+	if (loading) return <>loading...</>
 	return (
 		<DrawerBody>
 			<>

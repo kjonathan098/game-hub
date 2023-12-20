@@ -1,11 +1,11 @@
 import { Button } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
-import { IGameDetails } from '../interfaces/games.interface'
+import { IGame } from '../interfaces/games.interface'
 import { authContext } from '../context/authProvider'
 import useToastMessage from '../hooks/useToast'
 
 interface Params {
-	game: IGameDetails
+	game: IGame
 	size?: string
 }
 const CartButton = ({ game, size }: Params) => {

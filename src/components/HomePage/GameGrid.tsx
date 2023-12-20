@@ -1,17 +1,11 @@
 import { SimpleGrid } from '@chakra-ui/react'
-import useGames from '../../hooks/useGames'
 import GameCard from './GameCard'
 import GameCardSkeletong from './GameCardSkeletong'
 import GameCardContainer from './GameCardContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useContext, useState } from 'react'
-import { IGamesQuery } from '../../interfaces/games.interface'
 import { queryContext } from '../../context/queryProvider'
 
-interface Props {
-	gamesQuery: IGamesQuery
-	onSelect: (pageNum: number) => void
-}
 const GameGrid = () => {
 	const { data, error, loading, nextPage } = useContext(queryContext)
 	const [hasMore, setHasMore] = useState(true)
