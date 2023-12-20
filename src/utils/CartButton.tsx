@@ -29,7 +29,7 @@ const CartButton = ({ game, size }: Params) => {
 
 		const includes = cartList.some((item) => item.id === game.id)
 		setItsOnCart(includes)
-	}, [cartList, user])
+	}, [cartList, user, game])
 
 	return (
 		<Button size={size ? size : 'xs'} colorScheme="teal" variant={itsOnCart ? 'solid' : `outline`} onClick={handleCartList}>
