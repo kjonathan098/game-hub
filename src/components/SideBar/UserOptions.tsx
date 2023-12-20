@@ -4,16 +4,13 @@ import { useContext, useState } from 'react'
 import { CiGift, CiUser } from 'react-icons/ci'
 import { FiShoppingCart } from 'react-icons/fi'
 import { ApiHander } from '../../fireBase/fireBase.config'
-import { IGameDetails, IUser } from '../../interfaces/games.interface'
-import apiClient from '../../services/api-client'
-import fetchList from '../../services/fetch-game-list'
-import WishListDrawer from './WishListDrawer'
-import CartDrawer from './CartDrawer'
+
+import UserGameListDrawer from './UserGameListDrawer'
 
 const UserOptions = () => {
 	const { user } = useContext(authContext)
-	const { isOpen: isWishListOpen, onOpen: onWishListOpen, onClose: onWishListClose } = useDisclosure()
-	const { isOpen: isCartOpen, onOpen: onCartOpen, onClose: onCartClose } = useDisclosure()
+	const { isOpen, onOpen, onClose } = useDisclosure()
+	const [openDrawer, setOpenDrawer] = useState<'wishList' | 'cartList' | null>(null)
 
 	if (!user) return
 	return (
@@ -33,7 +30,8 @@ const UserOptions = () => {
 					width={'100%'}
 					colorScheme="whatsapp"
 					onClick={() => {
-						onWishListOpen()
+						onOpen()
+						setOpenDrawer('wishList')
 					}}
 				>
 					Wish List
@@ -45,7 +43,8 @@ const UserOptions = () => {
 					width={'100%'}
 					colorScheme="teal"
 					onClick={() => {
-						onCartOpen()
+						onOpen()
+						setOpenDrawer('cartList')
 					}}
 				>
 					Cart
@@ -57,8 +56,7 @@ const UserOptions = () => {
 					Logout
 				</Button>
 			</HStack>
-			<WishListDrawer isWishListOpen={isWishListOpen} onWishListClose={onWishListClose} />
-			<CartDrawer isCartOpen={isCartOpen} onCartClose={onCartClose} />
+			<UserGameListDrawer isOpen={isOpen} onClose={onClose} openDrawer={openDrawer} />
 		</Stack>
 	)
 }
