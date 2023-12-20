@@ -1,9 +1,6 @@
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Text, HStack, Image, Stack, Tag } from '@chakra-ui/react'
-import { useContext, useRef } from 'react'
-import { authContext } from '../../context/authProvider'
-import GamePlatforms from '../HomePage/GamePlatforms'
-import WishListButton from '../../utils/WishListButton'
-import CartButton from '../../utils/CartButton'
+import { Drawer, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button } from '@chakra-ui/react'
+import { useRef } from 'react'
+
 import DrawerGeneric from '../../utils/DrawerGeneric'
 
 interface Props {

@@ -1,5 +1,4 @@
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Text, HStack, Image, Stack, Tag } from '@chakra-ui/react'
-import { IGameDetails } from '../interfaces/games.interface'
+import { DrawerBody, Text, HStack, Image, Stack, Tag } from '@chakra-ui/react'
 import GamePlatforms from '../components/HomePage/GamePlatforms'
 import WishListButton from './WishListButton'
 import CartButton from './CartButton'
