@@ -1,6 +1,8 @@
 import { Center, Grid, GridItem, Text } from '@chakra-ui/react'
 import { IGameDetails } from '../../interfaces/games.interface'
 import { CiHeart } from 'react-icons/ci'
+import CartButton from '../../utils/CartButton'
+import WishListButton from '../../utils/WishListButton'
 
 interface Props {
 	data: IGameDetails
@@ -45,14 +47,8 @@ const GameNumbersDetails = ({ data }: Props) => {
 			</GridItem>
 
 			<GridItem colSpan={1} bg="tomato" display={'flex'} justifyContent={'space-between'} alignItems={'center'} p={2}>
-				<Center border={'2px'} p={1} borderRadius={3} gap={3}>
-					<Text>Add to cart</Text>
-					<CiHeart className={{ fontSize: '50px' }} />
-				</Center>
-				<Center border={'2px'} p={1} borderRadius={3} gap={3}>
-					<Text>Add to wish list</Text>
-					<CiHeart className={{ fontSize: '50px' }} />
-				</Center>
+				<CartButton game={data} size={'lg'} />
+				<WishListButton game={data} size={'lg'} />
 			</GridItem>
 		</Grid>
 	)
