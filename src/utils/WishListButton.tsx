@@ -26,14 +26,12 @@ const WishListButton = ({ game, size }: Params) => {
 	useEffect(() => {
 		if (!user) return
 		if (!wishList.length) return setItOnWishList(false)
-		console.log(wishList, 'wish list')
-		console.log(game.name)
 
 		const includes = wishList.some((item) => item.id === game.id)
-		console.log(includes, 'includes')
+		console.log('game ->', game.name, 'its on wish list ->', includes)
 
 		setItOnWishList(includes)
-	}, [user, wishList])
+	}, [user, wishList, game])
 
 	return (
 		<Button size={size ? size : 'xs'} variant={itOnWishList ? 'solid' : `outline`} colorScheme="whatsapp" onClick={handleWishList}>
