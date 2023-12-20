@@ -46,9 +46,9 @@ const GameNumbersDetails = ({ data }: Props) => {
 				</Text>
 			</GridItem>
 
-			<GridItem colSpan={1} bg="tomato" display={'flex'} justifyContent={'space-between'} alignItems={'center'} p={2}>
-				<CartButton game={data} size={'lg'} />
-				<WishListButton game={data} size={'lg'} />
+			<GridItem colSpan={1} bg={gridBg} display={'flex'} justifyContent={'space-between'} alignItems={'center'} p={2}>
+				<WishListButton game={data} size={'md'} />
+				<CartButton game={data} size={'md'} />
 			</GridItem>
 		</Grid>
 	)

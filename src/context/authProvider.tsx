@@ -1,16 +1,16 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { ApiHander } from '../fireBase/fireBase.config'
-import { IGameDetails, IUser, TUserField } from '../interfaces/games.interface'
+import { IGame, IGameDetails, IUser, TUserField } from '../interfaces/games.interface'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import fetchList from '../services/fetch-game-list'
 
 interface IAuthContext {
 	test: string
 	user: IUser | null
-	addToList: (gameId: IGameDetails, field: TUserField) => void
-	removeFromList: (gameId: IGameDetails, field: TUserField) => void
-	wishList: IGameDetails[]
-	cartList: IGameDetails[]
+	addToList: (gameId: IGame, field: TUserField) => void
+	removeFromList: (gameId: IGame, field: TUserField) => void
+	wishList: IGame[]
+	cartList: IGame[]
 	loadingUser: boolean
 }
 
@@ -22,11 +22,11 @@ interface IProps {
 const AuthProvider = ({ children }: IProps) => {
 	const [test, settest] = useState('hello')
 	const [user, setUser] = useState<IUser | null>(null)
-	const [wishList, setWishList] = useState<IGameDetails[]>([])
-	const [cartList, setCartList] = useState<IGameDetails[]>([])
+	const [wishList, setWishList] = useState<IGame[]>([])
+	const [cartList, setCartList] = useState<IGame[]>([])
 	const [loadingUser, setLoadingUser] = useState(false)
 
-	const removeFromList = async (gameDetails: IGameDetails, field: TUserField) => {
+	const removeFromList = async (gameDetails: IGame, field: TUserField) => {
 		if (!user) return
 		if (field === 'wishList') {
 			const newWishList = wishList.filter((item) => {
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }: IProps) => {
 		ApiHander.removeFromList(user.docId!, gameDetails.id.toString(), field)
 	}
 
-	const addToList = async (gameDetails: IGameDetails, field: TUserField) => {
+	const addToList = async (gameDetails: IGame, field: TUserField) => {
 		if (!user) return
 		if (field === 'wishList') {
 			setWishList([gameDetails, ...wishList])
@@ -52,9 +52,10 @@ const AuthProvider = ({ children }: IProps) => {
 		ApiHander.addToList(user.docId!, gameDetails.id.toString(), field)
 	}
 
+	// TODO - MAKE SETLOADING USER = FALSE IN ONE PLACE AFTER ALL IS ENDED NOT IN MULTIPLE PLACES (MAYBE CREATE A NEW PROMISE AND PROMISE ALL)
 	// fetch details of games id's[]
 	const fetchGameList = async (user: IUser) => {
-		if (!user.wishList.length) return
+		if (!user.wishList.length) return setLoadingUser(false)
 		const res = await fetchList(user.wishList)
 		if (!res) {
 			setLoadingUser(false)
@@ -62,12 +63,12 @@ const AuthProvider = ({ children }: IProps) => {
 		}
 
 		setWishList(res)
-		setLoadingUser(false)
+		// setLoadingUser(false)
 	}
 
 	// Fetch details of cart id's []
 	const fetchCartList = async (user: IUser) => {
-		if (!user.cartList.length) return
+		if (!user.cartList.length) return setLoadingUser(false)
 
 		const res = await fetchList(user.cartList)
 		console.log(res, 'res')
