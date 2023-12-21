@@ -5,6 +5,7 @@ export interface IGamesQuery {
 	searchText: string | null
 	page: number | null
 	id: number | null
+	endPoint?: string
 }
 
 export interface IGenre {

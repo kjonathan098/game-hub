@@ -21,6 +21,7 @@ const GameImages = ({ gameDetails }: Props) => {
 	if (error) return <>error....</>
 	if (loading) return <>Loading...</>
 	if (loadingImages) return <>Loading. Image..</>
+	if (!galleryArray.length) return <>no Images</>
 
 	return (
 		<Grid w={'1fr'} h={{ base: 'fit-content', md: '500px' }} templateRows={{ base: 'repeat(5, 1fr)', md: 'repeat(2, 1fr)' }} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={2}>
@@ -40,9 +41,9 @@ const GameImages = ({ gameDetails }: Props) => {
 				<Image src={galleryArray[3].src} objectFit={'cover'} h={'100%'} rounded={4} />
 			</GridItem>
 
-			<GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} justifyContent={'space-between'} alignItems={'center'} overflow={'hidden'}>
+			{/* <GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} justifyContent={'space-between'} alignItems={'center'} overflow={'hidden'}>
 				<Image src={galleryArray[4].src} objectFit={'cover'} h={'100%'} rounded={4} w={'100%'} />
-			</GridItem>
+			</GridItem> */}
 		</Grid>
 	)
 }

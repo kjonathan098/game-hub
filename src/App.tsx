@@ -31,7 +31,6 @@ function App() {
 					</Show>
 
 					<QueryProvider>
-						<div>hello</div>
 						<GridItem area="main">
 							<Routes>
 								<Route path="/" element={<HomePage />} />
