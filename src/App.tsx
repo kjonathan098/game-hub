@@ -25,7 +25,7 @@ function App() {
 					</GridItem>
 
 					<Show above="lg">
-						<GridItem area="aside">
+						<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'}>
 							<SideBar />
 						</GridItem>
 					</Show>
