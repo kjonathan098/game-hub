@@ -16,6 +16,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 	useEffect(
 		() => {
 			const controller = new AbortController()
+			console.log(endpoint)
 
 			setLoading(true)
 			if (!requestConfig?.params.page) {
@@ -31,6 +32,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 					setLoading(false)
 				})
 				.catch((err) => {
+					console.warn(error, 'ERROE!!')
 					if (err instanceof CanceledError) return
 					setError(err.message)
 					setLoading(false)

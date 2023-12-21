@@ -24,7 +24,7 @@ const useGameDetails = (id: string) => {
 				setLoading(false)
 			})
 		return () => controller.abort()
-	}, [])
+	}, [id])
 
 	return { data, error, loading }
 }

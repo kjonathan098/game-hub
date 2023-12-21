@@ -13,6 +13,7 @@ interface QueryContextValue {
 	searchText: (searchText: string) => void
 	selectPlatform: (platform: IPlatform) => void
 	sortBy: (sortBy: ISortOption) => void
+	getSimilarGames: (endPoint: string) => void
 }
 
 export const queryContext = createContext<QueryContextValue>({} as QueryContextValue)
@@ -41,14 +42,17 @@ const QueryProvider: React.FC<IProps> = ({ children }) => {
 
 	const selectPlatform = (platform: IPlatform) => {
 		setGamesQuery({ ...gamesQuery, platform, page: null })
-		console.log('hello')
 	}
 
 	const sortBy = (sortBy: ISortOption) => {
 		setGamesQuery({ ...gamesQuery, sortBy, page: null })
 	}
 
-	return <queryContext.Provider value={{ data, error, loading, gamesQuery, setGamesQuery, searchGenre, nextPage, searchText, selectPlatform, sortBy }}>{children}</queryContext.Provider>
+	const getSimilarGames = (endPoint: string) => {
+		setGamesQuery({ ...gamesQuery, endPoint, page: null })
+	}
+
+	return <queryContext.Provider value={{ data, error, loading, gamesQuery, setGamesQuery, searchGenre, nextPage, searchText, selectPlatform, sortBy, getSimilarGames }}>{children}</queryContext.Provider>
 }
 
 export default QueryProvider

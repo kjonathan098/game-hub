@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Box, Center, Image, Stack } from '@chakra-ui/react'
+import { Box, Center, HStack, Image, Stack } from '@chakra-ui/react'
 
 import useGameDetails from '../../hooks/useGameDetails'
 import { useEffect } from 'react'
@@ -8,10 +8,17 @@ import GameSummary from './GameSummary'
 import GameImages from './GameImages'
 import GameBuyingOptions from './GameBuyingOptions'
 import GameTags from './GameTags'
+import SimilarGames from './SimilarGames'
 
 const GamePage = () => {
 	const { id } = useParams()
 	const { data, loading, error } = useGameDetails(id!)
+
+	useEffect(() => {
+		setTimeout(() => {
+			window.scrollTo({ top: 0, behavior: 'smooth' })
+		}, 400)
+	}, [data])
 
 	if (error) return <>error...</>
 	if (loading || !data) return <>Loading...</>
@@ -38,17 +45,20 @@ const GamePage = () => {
 
 					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
 				</Center>
-				<GameNumbersDetails data={data} />
+				<GameNumbersDetails data={data!} />
 				<Stack direction={{ base: 'column', lg: 'row' }} display={'flex'} mt={4}>
 					<Box width={{ base: '1fr', md: '45%' }}>
-						<GameSummary data={data} />
+						<GameSummary data={data!} />
 					</Box>
 					<Stack h={'fit-content'} justifyContent={'center'} flex={1} gap={9}>
-						<GameImages gameDetails={data} />
-						<GameBuyingOptions data={data} />
-						<GameTags data={data} />
+						<GameImages gameDetails={data!} />
+						<GameBuyingOptions data={data!} />
+						<GameTags data={data!} />
 					</Stack>
 				</Stack>
+				<Box bg={'red'}>
+					<SimilarGames gameId={data!.id} />
+				</Box>
 			</Stack>
 		</Box>
 	)
