@@ -55,7 +55,6 @@ export const ApiHander: IAPIHandler = {
 
 		let user = querySnapshot.docs.map((doc) => doc.data())
 		if (!user.length) return null
-		console.log(user[0].cartList, 'user[0].cartList')
 
 		return { ...user[0], wishList: user[0].wishList, cartList: user[0].cartList, docId: querySnapshot.docs[0].id } as IUser
 	},
@@ -65,7 +64,6 @@ export const ApiHander: IAPIHandler = {
 			await setDoc(userDocRef, user) // Set the document data
 
 			const newDocId = userDocRef.id // Get the newly
-			console.log(newDocId, 'newDocId')
 
 			return { ...user, docId: newDocId } as IUser
 		} catch (error) {
