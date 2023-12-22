@@ -9,7 +9,7 @@ import GameImages from './GameImages'
 import GameBuyingOptions from './GameBuyingOptions'
 import GameTags from './GameTags'
 import SimilarGames from './SimilarGames'
-
+import GamePageTabs from './GamePageTabs/GamePageTabs'
 const GamePage = () => {
 	const { id } = useParams()
 	const { data, loading, error } = useGameDetails(id!)
@@ -25,7 +25,7 @@ const GamePage = () => {
 
 	return (
 		<Box p={2} display={'flex'} justifyContent={'center'}>
-			<Stack>
+			<Stack w={'100%'}>
 				<Center position="relative">
 					<Box
 						style={{
@@ -56,9 +56,8 @@ const GamePage = () => {
 						<GameTags data={data!} />
 					</Stack>
 				</Stack>
-				<Box bg={'red'}>
-					<SimilarGames gameId={data!.id} />
-				</Box>
+
+				<GamePageTabs game={data} />
 			</Stack>
 		</Box>
 	)
