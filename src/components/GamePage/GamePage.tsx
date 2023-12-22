@@ -8,7 +8,7 @@ import GameSummary from './GameSummary'
 import GameImages from './GameImages'
 import GameBuyingOptions from './GameBuyingOptions'
 import GameTags from './GameTags'
-import SimilarGames from './SimilarGames'
+import SimilarGames from './GamePageTabs/SimilarGames'
 import GamePageTabs from './GamePageTabs/GamePageTabs'
 const GamePage = () => {
 	const { id } = useParams()

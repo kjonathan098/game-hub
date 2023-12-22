@@ -1,8 +1,8 @@
 import { HStack, Image, Skeleton, Stack, Text } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
-import useGames from '../../hooks/useGames'
-import { IGame, IGamesQuery } from '../../interfaces/games.interface'
-import { queryContext } from '../../context/queryProvider'
+import useGames from '../../../hooks/useGames'
+import { IGame, IGamesQuery } from '../../../interfaces/games.interface'
+import { queryContext } from '../../../context/queryProvider'
 import { useNavigate } from 'react-router-dom'
 interface IProps {
 	gameId: number
@@ -19,10 +19,6 @@ const SimilarGames = ({ gameId }: IProps) => {
 	useEffect(() => {
 		getSimilarGames(`games/${gameId}/game-series`)
 	}, [])
-
-	useEffect(() => {
-		console.log({ data })
-	}, [data])
 
 	if (loading)
 		return (

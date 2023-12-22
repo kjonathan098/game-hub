@@ -59,4 +59,21 @@ export interface IUser {
 	cartList: string[]
 }
 
+export interface IAchievement {
+	id: number
+	name: string
+	description: string
+	image: string
+	percent: string
+}
+
+export interface IReddit {
+	id: number
+	name: string
+	text: string
+	image: string
+	username: string
+	created: string
+}
+
 export type TUserField = 'wishList' | 'cartList'
