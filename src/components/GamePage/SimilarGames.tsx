@@ -35,7 +35,6 @@ const SimilarGames = ({ gameId }: IProps) => {
 	if (!data || !data.length) return <>Nothing To show</>
 	return (
 		<Stack>
-			<Text>Game Series </Text>
 			<HStack overflow={'scroll'}>
 				{data.map((game, index) => {
 					return (
