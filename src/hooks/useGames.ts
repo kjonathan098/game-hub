@@ -7,6 +7,12 @@ const useGames = (gamesQuery: IGamesQuery) => {
 
 	const { data, error, loading } = useDataFetch<IGame>(endPoint, params, [gamesQuery])
 
+	if (data.length) {
+		data.forEach((game) => {
+			game.price = 30
+		})
+	}
+
 	return { data, error, loading }
 }
 

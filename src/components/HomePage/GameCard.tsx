@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, HStack, Heading, Image, VStack } from '@chakra-ui/react'
+import { Box, Card, CardBody, HStack, Heading, Image, Tag, Text, VStack } from '@chakra-ui/react'
 import { IGame } from '../../interfaces/games.interface'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'
@@ -26,11 +26,18 @@ const GameCard = ({ game }: GameCardProps) => {
 			</Box>
 			<CardBody>
 				<VStack alignItems={'start'} spacing={3}>
-					<HStack justifyContent={'space-between'}>
-						<GamePlatforms platforms={game.parent_platforms.map((p) => p.platform)} />
-						<Score score={game.metacritic} />
+					<HStack justifyContent={'space-between'} width={'100%'}>
+						<HStack width={'fit-content'}>
+							<GamePlatforms platforms={game.parent_platforms.map((p) => p.platform)} />
+							<Score score={game.metacritic} />
+						</HStack>
+						<Tag variant="subtle" colorScheme="cyan" fontWeight={'bold'}>
+							${game.price}
+						</Tag>
 					</HStack>
-					<Heading fontSize={'2xlg'}>{game.name}</Heading>
+					<HStack justifyContent={'space-between'} width={'100%'}>
+						<Heading fontSize={'2xlg'}>{game.name}</Heading>
+					</HStack>
 					<HStack>
 						<WishListButton game={game} />
 						<CartButton game={game} />
