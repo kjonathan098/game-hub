@@ -17,9 +17,6 @@ const GameNumbersDetails = ({ data }: Props) => {
 				<Text fontSize={{ base: '3xl', md: '5xl' }} fontWeight={'extrabold'}>
 					{data.name}
 				</Text>
-				{/* <Text fontSize={{ base: '3xl', md: '7xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
-					RATING
-				</Text> */}
 			</GridItem>
 
 			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={2} justifyContent={'center'} bg={gridBg}>
