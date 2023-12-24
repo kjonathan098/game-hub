@@ -21,7 +21,7 @@ const GamePage = () => {
 		return () => {
 			setGamesQuery({} as IGamesQuery)
 		}
-	}, [data])
+	}, [])
 
 	if (error) return <>error...</>
 	if (loading || !data) return <Skeleton isLoaded={!loading} width={'100%'} h={'100vh'} />
