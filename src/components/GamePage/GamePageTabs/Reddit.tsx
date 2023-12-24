@@ -32,12 +32,12 @@ const Reddit = ({ game }: Props) => {
 
 	if (loading) return <Spinner color={'blue.500'} />
 	return (
-		<Stack spacing={4}>
+		<Stack spacing={4} h={'300px'} overflow={'scroll'}>
 			{data
 				.filter((post) => post.text !== '')
 				.map((post) => {
 					return (
-						<Stack bg={'blackAlpha.700'} rounded={'2xl'} p={4}>
+						<Stack bg={'blackAlpha.700'} rounded={'2xl'} p={4} key={post.id}>
 							<HStack>
 								<Image src={post.image ? post.image : game.background_image} rounded={'full'} width={'100px'} height={'100px'} objectFit={'cover'} />
 								<Stack>

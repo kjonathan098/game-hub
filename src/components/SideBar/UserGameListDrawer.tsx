@@ -17,14 +17,11 @@ const UserGameListDrawer = ({ isOpen, onClose, openDrawer }: Props) => {
 	const btnRef = useRef<HTMLButtonElement>(null)
 
 	useEffect(() => {
-		console.log(openDrawer)
-
 		if (openDrawer === 'cartList') {
 			let total = 0
 			cartList.forEach((game) => {
 				total += game.price!
 			})
-			console.log(total)
 
 			setTotalPrice(total)
 		}

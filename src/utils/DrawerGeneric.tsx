@@ -4,6 +4,7 @@ import WishListButton from './WishListButton'
 import CartButton from './CartButton'
 import { useContext, useEffect, useState } from 'react'
 import { authContext } from '../context/authProvider'
+import gameOver from '../assets/gameOver.jpeg'
 interface Iparams {
 	openDrawer: string | null
 }
@@ -28,10 +29,15 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 	return (
 		<DrawerBody>
 			<>
-				{!listType.length && <Text>Nothing to see here wtf</Text>}
+				{!listType.length && (
+					<>
+						<Text>Nothing here!</Text>
+						<Image src={gameOver} />
+					</>
+				)}
 				{listType.length && (
 					<>
-						{listType.map((game, index) => {
+						{/* {listType.map((game, index) => {
 							return (
 								<Stack direction="row" spacing={2} mb={2} key={index} bg={'blackAlpha.700'} borderRadius={'lg'} shadow={'base'} alignItems={'stretch'}>
 									<Image src={game.background_image} width={'154px'} height={'159px'} objectFit={'cover'} />
@@ -52,7 +58,7 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 									</Stack>
 								</Stack>
 							)
-						})}
+						})} */}
 					</>
 				)}
 			</>
