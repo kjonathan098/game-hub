@@ -41,9 +41,9 @@ const GameImages = ({ gameDetails }: Props) => {
 				<Image src={galleryArray[3].src} objectFit={'cover'} h={'100%'} rounded={4} />
 			</GridItem>
 
-			{/* <GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} justifyContent={'space-between'} alignItems={'center'} overflow={'hidden'}>
+			<GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} justifyContent={'space-between'} alignItems={'center'} overflow={'hidden'}>
 				<Image src={galleryArray[4].src} objectFit={'cover'} h={'100%'} rounded={4} w={'100%'} />
-			</GridItem> */}
+			</GridItem>
 		</Grid>
 	)
 }

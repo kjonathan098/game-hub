@@ -4,7 +4,7 @@ import UserInfo from './UserInfo'
 
 const SideBar = () => {
 	return (
-		<Stack height={'100%'} p={2} spacing={10}>
+		<Stack height={'100vh'} p={2} spacing={10} justifyContent={'space-around'}>
 			<UserInfo />
 			<GenreList />
 		</Stack>
