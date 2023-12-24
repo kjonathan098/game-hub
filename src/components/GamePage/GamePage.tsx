@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { Box, Center, HStack, Image, Skeleton, Stack } from '@chakra-ui/react'
 
 import useGameDetails from '../../hooks/useGameDetails'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import GameNumbersDetails from './GameNumbersDetails'
 import GameSummary from './GameSummary'
 import GameImages from './GameImages'
@@ -10,14 +10,17 @@ import GameBuyingOptions from './GameBuyingOptions'
 import GameTags from './GameTags'
 import SimilarGames from './GamePageTabs/SimilarGames'
 import GamePageTabs from './GamePageTabs/GamePageTabs'
+import { queryContext } from '../../context/queryProvider'
+import { IGamesQuery } from '../../interfaces/games.interface'
 const GamePage = () => {
 	const { id } = useParams()
 	const { data, loading, error } = useGameDetails(id!)
+	const { setGamesQuery } = useContext(queryContext)
 
 	useEffect(() => {
-		// setTimeout(() => {
-		// 	window.scrollTo({ top: 0, behavior: 'smooth' })
-		// }, 400)
+		return () => {
+			setGamesQuery({} as IGamesQuery)
+		}
 	}, [data])
 
 	if (error) return <>error...</>

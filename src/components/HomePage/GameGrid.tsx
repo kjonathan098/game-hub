@@ -3,14 +3,18 @@ import GameCard from './GameCard'
 import GameCardSkeletong from './GameCardSkeletong'
 import GameCardContainer from './GameCardContainer'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { queryContext } from '../../context/queryProvider'
 
 const GameGrid = () => {
-	const { data, error, loading, nextPage } = useContext(queryContext)
+	const { data, error, loading, nextPage, gamesQuery } = useContext(queryContext)
 	const [hasMore, setHasMore] = useState(true)
 
 	const skeleton = [1, 2, 3, 4, 5, 6]
+
+	useEffect(() => {
+		console.log(gamesQuery)
+	}, [])
 
 	function fetchNextPage() {
 		setTimeout(() => {
