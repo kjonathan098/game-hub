@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Box, Center, HStack, Image, Stack } from '@chakra-ui/react'
+import { Box, Center, HStack, Image, Skeleton, Stack } from '@chakra-ui/react'
 
 import useGameDetails from '../../hooks/useGameDetails'
 import { useEffect } from 'react'
@@ -15,13 +15,13 @@ const GamePage = () => {
 	const { data, loading, error } = useGameDetails(id!)
 
 	useEffect(() => {
-		setTimeout(() => {
-			window.scrollTo({ top: 0, behavior: 'smooth' })
-		}, 400)
+		// setTimeout(() => {
+		// 	window.scrollTo({ top: 0, behavior: 'smooth' })
+		// }, 400)
 	}, [data])
 
 	if (error) return <>error...</>
-	if (loading || !data) return <>Loading...</>
+	if (loading || !data) return <Skeleton isLoaded={!loading} width={'100%'} h={'100vh'} />
 
 	return (
 		<Box p={2} display={'flex'} justifyContent={'center'}>
@@ -43,8 +43,9 @@ const GamePage = () => {
 						}}
 					></Box>
 
-					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} />
+					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} loading="lazy" />
 				</Center>
+
 				<GameNumbersDetails data={data!} />
 				<Stack direction={{ base: 'column', lg: 'row' }} display={'flex'} mt={4}>
 					<Box width={{ base: '1fr', md: '45%' }}>
