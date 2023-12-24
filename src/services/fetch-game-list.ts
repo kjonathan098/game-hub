@@ -4,7 +4,10 @@ import apiClient from './api-client'
 const fetchGameDetails = (id: string): Promise<IGameDetails> => {
 	return apiClient
 		.get<IGameDetails>(`/games/${id}`)
-		.then((res) => res.data)
+		.then((res) => {
+			res.data.price = 30
+			return res.data
+		})
 		.catch((err) => {
 			console.error(err)
 			throw err

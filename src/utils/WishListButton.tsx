@@ -28,7 +28,6 @@ const WishListButton = ({ game, size }: Params) => {
 		if (!wishList.length) return setItOnWishList(false)
 
 		const includes = wishList.some((item) => item.id === game.id)
-		console.log('game ->', game.name, 'its on wish list ->', includes)
 
 		setItOnWishList(includes)
 	}, [user, wishList, game])
