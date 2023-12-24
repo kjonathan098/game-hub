@@ -41,8 +41,8 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 												{game.name}
 											</Text>
 										</a>
-										<Tag w={'100px'} justifyContent={'center'}>
-											$ 14.99
+										<Tag w={'100px'} justifyContent={'center'} variant={'subtle'} colorScheme="cyan" fontWeight={'bold'}>
+											${game.price}
 										</Tag>
 										<GamePlatforms platforms={game.parent_platforms.map((p) => p.platform)} />
 										<HStack>
