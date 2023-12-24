@@ -14,7 +14,7 @@ const GameNumbersDetails = ({ data }: Props) => {
 	return (
 		<Grid h={{ base: '300px', md: '200px' }} templateRows={{ base: 'repeat(5, 1fr)', md: 'repeat(2, 1fr)' }} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={4}>
 			<GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'} bg={gridBg}>
-				<Text fontSize={{ base: '3xl', md: '7xl' }} fontWeight={'extrabold'}>
+				<Text fontSize={{ base: '3xl', md: '5xl' }} fontWeight={'extrabold'}>
 					{data.name}
 				</Text>
 				{/* <Text fontSize={{ base: '3xl', md: '7xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
@@ -32,10 +32,10 @@ const GameNumbersDetails = ({ data }: Props) => {
 			</GridItem>
 
 			<GridItem colSpan={1} bg={gridBg} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'}>
-				<Text fontSize={'4xl'} fontWeight={'extrabold'}>
+				<Text fontSize={{ base: '3xl', md: '8xl' }} fontWeight={'extrabold'}>
 					{data.playtime}
 				</Text>
-				<Text fontSize={'2xl'} fontWeight={'extrabold'} fontStyle={'italic'}>
+				<Text fontSize={{ base: '3xl', md: '2xl' }} fontWeight={'extrabold'} fontStyle={'italic'}>
 					PLAYTIME
 				</Text>
 			</GridItem>

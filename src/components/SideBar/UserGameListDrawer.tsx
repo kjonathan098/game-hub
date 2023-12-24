@@ -1,4 +1,4 @@
-import { Drawer, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button } from '@chakra-ui/react'
+import { Drawer, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, Button, Stack, HStack, Text } from '@chakra-ui/react'
 import { useContext, useEffect, useRef, useState } from 'react'
 
 import DrawerGeneric from '../../utils/DrawerGeneric'
@@ -39,12 +39,19 @@ const UserGameListDrawer = ({ isOpen, onClose, openDrawer }: Props) => {
 					<DrawerHeader>Wish List</DrawerHeader>
 					<DrawerGeneric openDrawer={openDrawer} />
 					<DrawerFooter>
-						{openDrawer === 'cartList' && cartList.length && <>Total Price : {totalPrice}</>}
-
-						<Button variant="outline" mr={3} onClick={onClose}>
-							Cancel
-						</Button>
-						<Button colorScheme="blue">Save</Button>
+						<HStack direction={'row'}>
+							{openDrawer === 'cartList' && (
+								<>
+									<Text fontWeight={'bold'} fontSize={'3xl'}>
+										Total : ${totalPrice}
+									</Text>
+									<Button colorScheme="blue">Proceed to Payment</Button>
+								</>
+							)}
+							<Button variant="outline" mr={3} onClick={onClose}>
+								Close
+							</Button>
+						</HStack>
 					</DrawerFooter>
 				</DrawerContent>
 			</Drawer>
