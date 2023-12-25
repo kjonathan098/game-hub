@@ -15,30 +15,26 @@ function App() {
 	return (
 		<AuthProvider>
 			<BrowserRouter>
-				<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
-					<GridItem area="nav">
-						<NavBar
-							onSearch={(searchText: string) => {
-								setGamesQuery({ ...gamesQuery, searchText })
-							}}
-						/>
-					</GridItem>
-
-					<Show above="lg">
-						<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'}>
-							<SideBar />
+				<QueryProvider>
+					<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
+						<GridItem area="nav">
+							<NavBar />
 						</GridItem>
-					</Show>
 
-					<QueryProvider>
+						<Show above="lg">
+							<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'}>
+								<SideBar />
+							</GridItem>
+						</Show>
+
 						<GridItem area="main">
 							<Routes>
 								<Route path="/" element={<HomePage />} />
 								<Route path="/game/:id" element={<GamePage />} />
 							</Routes>
 						</GridItem>
-					</QueryProvider>
-				</Grid>
+					</Grid>
+				</QueryProvider>
 			</BrowserRouter>
 		</AuthProvider>
 	)

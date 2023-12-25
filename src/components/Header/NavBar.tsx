@@ -10,11 +10,9 @@ import LoginOptions from '../SideBar/LoginOptions'
 import { useContext } from 'react'
 import { authContext } from '../../context/authProvider'
 import UserInfo from '../SideBar/UserInfo'
-interface Props {
-	onSearch: (searchText: string) => void
-}
+interface Props {}
 
-const NavBar = ({ onSearch }: Props) => {
+const NavBar = () => {
 	return (
 		<HStack padding={'10px'}>
 			<Image src={logo} boxSize={'60px'} />
@@ -26,7 +24,7 @@ const NavBar = ({ onSearch }: Props) => {
 					</MenuList>
 				</Menu>
 			</Box>
-			<SearchInput onSearch={onSearch} />
+			<SearchInput />
 			<ColorModeSwitch />
 		</HStack>
 	)
