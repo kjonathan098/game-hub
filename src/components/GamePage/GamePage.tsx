@@ -23,6 +23,10 @@ const GamePage = () => {
 		}
 	}, [])
 
+	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}, [id, data])
+
 	if (error) return <>error...</>
 	if (loading || !data) return <Skeleton isLoaded={!loading} width={'100%'} h={'100vh'} />
 

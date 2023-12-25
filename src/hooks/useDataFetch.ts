@@ -16,7 +16,7 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 	useEffect(
 		() => {
 			const controller = new AbortController()
-
+			setError('')
 			setLoading(true)
 			if (!requestConfig?.params.page) {
 				setData([])

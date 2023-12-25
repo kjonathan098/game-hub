@@ -1,25 +1,27 @@
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
-import { useRef } from 'react'
+import { Box, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { useContext, useRef } from 'react'
 import { BsSearch } from 'react-icons/bs'
+import { queryContext } from '../../context/queryProvider'
 
-interface Props {
-	onSearch: (searchText: string) => void
-}
+interface Props {}
 
-const SearchInput = ({ onSearch }: Props) => {
+const SearchInput = ({}: Props) => {
+	const { searchText } = useContext(queryContext)
 	const ref = useRef<HTMLInputElement>(null)
 	return (
 		<form
 			onSubmit={(e) => {
 				e.preventDefault()
-				if (ref.current) {
-					onSearch(ref.current.value)
-				}
+				console.log('hero')
+
+				if (!ref.current?.value) return
+				searchText(ref.current?.value!)
 			}}
+			style={{ width: '100%' }}
 		>
-			<InputGroup borderRadius={3} variant={'filled'}>
+			<InputGroup borderRadius={3} variant={'filled'} position={'relative'}>
 				<InputLeftElement pointerEvents="none" children={<BsSearch />} />
-				<Input placeholder="Search Game" borderRadius={20} variant={'filled'} ref={ref} />
+				<Input placeholder="Search Game" borderRadius={20} variant={'filled'} ref={ref} onChange={() => {}} />
 			</InputGroup>
 		</form>
 	)

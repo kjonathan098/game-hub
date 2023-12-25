@@ -5,9 +5,9 @@ import banner from '../../assets/ps4Banner.webp'
 
 const HeroBanner = () => {
 	return (
-		<Box p={2} display={'flex'} justifyContent={'center'} minH={'300px'}>
-			<Stack w={'90%'} justify="flex-end">
-				<Stack w={'90%'} justify="flex-end" position={'relative'}>
+		<Box p={2} display={'flex'} justifyContent={'center'} minH={{ base: 'fit-content', md: '300px' }}>
+			<Stack w={'100%'} justify="flex-end">
+				<Stack w={'100%'} justify="flex-end" position={'relative'}>
 					{/* <Image src={banner} alt="gamme banner photo" h={'400px'} objectFit={'cover'} position={'absolute'} style={{ filter: 'blur(10px)' }} zIndex={-1} /> */}
 					<Image src={banner} alt="gamme banner photo" h={'300px'} objectFit={'cover'} />
 				</Stack>
