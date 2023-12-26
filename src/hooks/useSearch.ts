@@ -7,9 +7,12 @@ import apiClient from '../services/api-client'
 const useSearch = () => {
 	const [searchQuery, setSearchQuery] = useState('')
 	const [dataResponse, setDataResponse] = useState<IGame[]>([])
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		if (!searchQuery.length) return setDataResponse([])
+		setLoading(true)
+
 		const controller = new AbortController()
 		apiClient
 			.get('/games', { params: { search: searchQuery } })
@@ -20,14 +23,16 @@ const useSearch = () => {
 				if (e instanceof CanceledError) return
 				console.log(e.message, 'errror')
 			})
-			.finally(() => {})
+			.finally(() => {
+				setLoading(false)
+			})
 	}, [searchQuery])
 
 	// useEffect(() => {
 	// 	setDataResponse(dataResponse + 1)
 	// }, [searchQuery])
 
-	return { setSearchQuery, dataResponse }
+	return { setSearchQuery, dataResponse, loading }
 }
 
 export default useSearch

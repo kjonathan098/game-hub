@@ -1,4 +1,4 @@
-import { Box, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { Box, Input, InputGroup, InputLeftElement, Spinner } from '@chakra-ui/react'
 import { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { queryContext } from '../../context/queryProvider'
@@ -9,7 +9,7 @@ import useSearch from '../../hooks/useSearch'
 interface Props {}
 
 const SearchInput = ({}: Props) => {
-	const { setSearchQuery, dataResponse } = useSearch()
+	const { setSearchQuery, dataResponse, loading } = useSearch()
 	const [showResults, setShowResults] = useState(false)
 
 	const ref = useRef<HTMLInputElement>(null)
@@ -25,7 +25,7 @@ const SearchInput = ({}: Props) => {
 	}, [dataResponse])
 
 	return (
-		<Box w={'100%'} position={'relative'} bg={'red'}>
+		<Box w={'100%'} position={'relative'}>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault()
@@ -34,7 +34,7 @@ const SearchInput = ({}: Props) => {
 				style={{ width: '100%' }}
 			>
 				<InputGroup borderRadius={3} variant={'filled'}>
-					<InputLeftElement pointerEvents="none" children={<BsSearch />} />
+					<InputLeftElement pointerEvents="none" children={loading ? <Spinner /> : <BsSearch />} />
 					<Input
 						placeholder="Search Game"
 						borderRadius={20}

@@ -8,6 +8,7 @@ import useSearch from '../../hooks/useSearch'
 interface Props {
 	dataResponse: IGame[]
 	showResults: boolean
+
 	setShowResults: React.Dispatch<React.SetStateAction<boolean>>
 }
 
