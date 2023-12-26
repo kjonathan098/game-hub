@@ -12,10 +12,6 @@ const GameGrid = () => {
 
 	const skeleton = [1, 2, 3, 4, 5, 6]
 
-	useEffect(() => {
-		console.log(gamesQuery)
-	}, [])
-
 	function fetchNextPage() {
 		setTimeout(() => {
 			nextPage()
