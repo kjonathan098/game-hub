@@ -4,10 +4,11 @@ import usePlatforms from '../../hooks/usePlatforms'
 import { IGamesQuery, IPlatform } from '../../interfaces/games.interface'
 import { useContext } from 'react'
 import { queryContext } from '../../context/queryProvider'
+import useGenre from '../../hooks/useGenre'
 
-const PlatformSelector = () => {
-	const { data, error, loading } = usePlatforms()
+const GenreSelector = () => {
 	const { gamesQuery, selectPlatform } = useContext(queryContext)
+	const { data, error, loading } = useGenre()
 
 	if (loading) return <div>Loading...</div>
 	if (error) return null
@@ -15,13 +16,13 @@ const PlatformSelector = () => {
 	return (
 		<Menu>
 			<MenuButton as={Button} rightIcon={<BsChevronDown />}>
-				{gamesQuery.platform ? gamesQuery.platform.name : 'Platform'}
+				{gamesQuery.genre ? gamesQuery.genre.name : 'Genres'}
 			</MenuButton>
 			<MenuList>
-				{data.map((platform) => {
+				{data.map((genre) => {
 					return (
-						<MenuItem key={platform.id} onClick={() => selectPlatform(platform)}>
-							{platform.name}
+						<MenuItem key={genre.id} onClick={() => selectPlatform(genre)}>
+							{genre.name}
 						</MenuItem>
 					)
 				})}
@@ -30,4 +31,4 @@ const PlatformSelector = () => {
 	)
 }
 
-export default PlatformSelector
+export default GenreSelector

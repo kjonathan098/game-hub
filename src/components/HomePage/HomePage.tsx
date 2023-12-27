@@ -1,19 +1,23 @@
 import HeroBanner from './HeroBanner'
 import GameHeading from './GameHeading'
-import { HStack } from '@chakra-ui/react'
-import PlatformSelector from './PlatformSelector'
+import { Box, HStack, Stack } from '@chakra-ui/react'
+import PlatformSelector from '../HomePage/PlatformSelector'
 import SortGames from './SortGames'
 import GameGrid from './GameGrid'
+import GenreSelector from './GenreSelector'
 
 const HomePage = () => {
 	return (
 		<>
 			<HeroBanner />
 			<GameHeading />
-			<HStack spacing={3} padding={3} marginBottom={5}>
-				<PlatformSelector />
+			<Stack spacing={3} padding={3} marginBottom={5} flexDir={{ base: 'column', md: 'row' }}>
+				<Stack display={{ base: 'flex', lg: 'none' }} spacing={3} flexDir={{ base: 'column', md: 'row' }}>
+					<GenreSelector />
+					<PlatformSelector />
+				</Stack>
 				<SortGames />
-			</HStack>
+			</Stack>
 			<GameGrid />
 		</>
 	)
