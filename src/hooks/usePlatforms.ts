@@ -1,3 +1,4 @@
+import { IPlatform } from '../interfaces/games.interface'
 import useDataFetch from './useDataFetch'
 
 export interface Platform {
@@ -7,7 +8,7 @@ export interface Platform {
 }
 
 const usePlatforms = () => {
-	const { data, error, loading } = useDataFetch<Platform>('/platforms/lists/parents')
+	const { data, error, loading } = useDataFetch<IPlatform>('/platforms/lists/parents')
 	return { data, error, loading }
 }
 

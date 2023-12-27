@@ -22,7 +22,7 @@ const GenreList = () => {
 			<Text fontSize={'xl'} fontWeight={'bold'}>
 				Genres
 			</Text>
-			<Collapse startingHeight={300} in={show}>
+			<Collapse startingHeight={200} in={show}>
 				<List>
 					{data.map((genre) => {
 						return (
@@ -46,7 +46,7 @@ const GenreList = () => {
 					})}
 				</List>
 			</Collapse>
-			<Button size="sm" onClick={handleToggle} mt={'-15px'}>
+			<Button size="sm" onClick={handleToggle}>
 				{show ? 'Hide' : 'Show All'}
 			</Button>
 		</Stack>
