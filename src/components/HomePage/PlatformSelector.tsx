@@ -17,7 +17,7 @@ const PlatformSelector = () => {
 			<MenuButton as={Button} rightIcon={<BsChevronDown />}>
 				{gamesQuery.platform ? gamesQuery.platform.name : 'Platform'}
 			</MenuButton>
-			<MenuList>
+			<MenuList h={'400px'} overflow={'scroll'}>
 				{data.map((platform) => {
 					return (
 						<MenuItem key={platform.id} onClick={() => selectPlatform(platform)}>

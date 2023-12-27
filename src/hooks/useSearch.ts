@@ -9,6 +9,7 @@ const useSearch = () => {
 	const [dataResponse, setDataResponse] = useState<IGame[]>([])
 	const [loading, setLoading] = useState(false)
 
+	// Couldnt use useDataFetch bc when !searchQuery.length i would have to add and extra filter to stop the api call and it will become unsustainable
 	useEffect(() => {
 		if (!searchQuery.length) return setDataResponse([])
 		setLoading(true)
@@ -27,10 +28,6 @@ const useSearch = () => {
 				setLoading(false)
 			})
 	}, [searchQuery])
-
-	// useEffect(() => {
-	// 	setDataResponse(dataResponse + 1)
-	// }, [searchQuery])
 
 	return { setSearchQuery, dataResponse, loading }
 }

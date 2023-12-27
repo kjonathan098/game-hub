@@ -77,4 +77,9 @@ export interface IReddit {
 	created: string
 }
 
+export type SearchQuery = {
+	name: string
+	id: number
+}
+
 export type TUserField = 'wishList' | 'cartList'

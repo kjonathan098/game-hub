@@ -9,6 +9,7 @@ const useGameDetails = (id: string) => {
 	const [error, setError] = useState(false)
 	const [loading, setLoading] = useState(false)
 
+	// Couldnt use useDataFetch bc this endpoint  doestn return a results[] like with other endpoints
 	useEffect(() => {
 		const controller = new AbortController()
 		setLoading(true)

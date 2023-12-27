@@ -18,7 +18,7 @@ const GenreSelector = () => {
 			<MenuButton as={Button} rightIcon={<BsChevronDown />}>
 				{gamesQuery.genre ? gamesQuery.genre.name : 'Genres'}
 			</MenuButton>
-			<MenuList>
+			<MenuList h={'400px'} overflow={'scroll'}>
 				{data.map((genre) => {
 					return (
 						<MenuItem key={genre.id} onClick={() => selectPlatform(genre)}>
