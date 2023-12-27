@@ -1,6 +1,6 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { IGamesQuery } from './interfaces/games.interface'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -10,8 +10,6 @@ import SideBar from './components/SideBar/SideBar'
 import AuthProvider from './context/authProvider'
 
 function App() {
-	const [gamesQuery, setGamesQuery] = useState({} as IGamesQuery)
-
 	return (
 		<AuthProvider>
 			<BrowserRouter>
