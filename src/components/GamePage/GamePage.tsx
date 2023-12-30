@@ -1,17 +1,16 @@
 import { useParams } from 'react-router-dom'
-import { Box, Center, HStack, Image, Skeleton, Stack } from '@chakra-ui/react'
-
+import { Box, Center, Image, Skeleton, Stack } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
 import { useContext, useEffect } from 'react'
 import GameNumbersDetails from './GameNumbersDetails'
 import GameSummary from './GameSummary'
-import GameImages from './GameImages'
 import GameBuyingOptions from './GameBuyingOptions'
 import GameTags from './GameTags'
-import SimilarGames from './GamePageTabs/SimilarGames'
 import GamePageTabs from './GamePageTabs/GamePageTabs'
 import { queryContext } from '../../context/queryProvider'
 import { IGamesQuery } from '../../interfaces/games.interface'
+import { GameImages } from './GameImages'
+
 const GamePage = () => {
 	const { id } = useParams()
 	const { data, loading, error } = useGameDetails(id!)
@@ -59,7 +58,9 @@ const GamePage = () => {
 						<GameSummary data={data!} />
 					</Box>
 					<Stack h={'fit-content'} justifyContent={'center'} flex={1} gap={9}>
-						<GameImages gameDetails={data!} />
+						<Box display={'flex'} overflow={'hidden'} height={'fit-content'}>
+							<GameImages gameDetails={data!} />
+						</Box>
 						<GameBuyingOptions data={data!} />
 						<GameTags data={data!} />
 					</Stack>

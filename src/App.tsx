@@ -1,7 +1,5 @@
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
-import { useEffect, useRef, useState } from 'react'
-import { IGamesQuery } from './interfaces/games.interface'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import HomePage from './components/HomePage/HomePage'
