@@ -1,21 +1,42 @@
+import './GameImages.css'
+import { wrap } from 'popmotion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { IGameDetails } from '../../interfaces/games.interface'
 import useGameScreenShots from '../../hooks/useGameScreenShots'
-import { Box, Grid, GridItem, Image, SimpleGrid } from '@chakra-ui/react'
 
 interface Props {
 	gameDetails: IGameDetails
 }
 
-interface GalleryValues {
-	src: string
-	sizes?: string | string[] | undefined
-	width: number
-	height: number
-	alt?: string | undefined
-	key?: string | undefined
+const variants = {
+	enter: (direction: number) => {
+		return {
+			x: direction > 0 ? 1000 : -1000,
+			opacity: 0,
+		}
+	},
+	center: {
+		zIndex: 1,
+		x: 0,
+		opacity: 1,
+	},
+	exit: (direction: number) => {
+		return {
+			zIndex: 0,
+			x: direction < 0 ? 1000 : -1000,
+			opacity: 0,
+		}
+	},
 }
 
-const GameImages = ({ gameDetails }: Props) => {
+const swipeConfidenceThreshold = 10000
+const swipePower = (offset: number, velocity: number) => {
+	return Math.abs(offset) * velocity
+}
+
+export const GameImages = ({ gameDetails }: Props) => {
+	const [[page, direction], setPage] = useState([0, 0])
 	const { galleryArray, error, loading, loadingImages } = useGameScreenShots(gameDetails.id)
 
 	if (error) return <>error....</>
@@ -23,29 +44,47 @@ const GameImages = ({ gameDetails }: Props) => {
 	if (loadingImages) return <>Loading. Image..</>
 	if (!galleryArray.length) return <>no Images</>
 
+	const imageIndex = wrap(0, galleryArray.length, page)
+
+	const paginate = (newDirection: number) => {
+		setPage([page + newDirection, newDirection])
+	}
+
 	return (
-		<Grid w={'1fr'} h={{ base: 'fit-content', md: '500px' }} templateRows={{ base: 'repeat(5, 1fr)', md: 'repeat(2, 1fr)' }} templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' }} gap={2}>
-			<GridItem colSpan={{ base: 1 }} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={1} justifyContent={'center'}>
-				<Image src={galleryArray[0].src} objectFit={'cover'} h={'100%'} rounded={'4'} />
-			</GridItem>
+		<div className="example-container ">
+			<AnimatePresence initial={false} custom={direction}>
+				<motion.img
+					key={page}
+					src={galleryArray[imageIndex].src}
+					custom={direction}
+					variants={variants}
+					initial="enter"
+					animate="center"
+					exit="exit"
+					transition={{
+						x: { type: 'spring', stiffness: 300, damping: 30 },
+						opacity: { duration: 0.2 },
+					}}
+					drag="x"
+					dragConstraints={{ left: 0, right: 0 }}
+					dragElastic={1}
+					onDragEnd={(_e, { offset, velocity }) => {
+						const swipe = swipePower(offset.x, velocity.x)
 
-			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={1} justifyContent={'center'}>
-				<Image src={galleryArray[1].src} objectFit={'cover'} h={'100%'} rounded={4} />
-			</GridItem>
-
-			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={1} justifyContent={'center'}>
-				<Image src={galleryArray[2].src} objectFit={'cover'} h={'100%'} rounded={4} />
-			</GridItem>
-
-			<GridItem colSpan={1} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={1} justifyContent={'center'} bg={'green'}>
-				<Image src={galleryArray[3].src} objectFit={'cover'} h={'100%'} rounded={4} />
-			</GridItem>
-
-			<GridItem colSpan={{ base: 1, md: 2 }} display={'flex'} justifyContent={'space-between'} alignItems={'center'} overflow={'hidden'}>
-				<Image src={galleryArray[4].src} objectFit={'cover'} h={'100%'} rounded={4} w={'100%'} />
-			</GridItem>
-		</Grid>
+						if (swipe < -swipeConfidenceThreshold) {
+							paginate(1)
+						} else if (swipe > swipeConfidenceThreshold) {
+							paginate(-1)
+						}
+					}}
+				/>
+			</AnimatePresence>
+			<div className="next" onClick={() => paginate(1)}>
+				{'‣'}
+			</div>
+			<div className="prev" onClick={() => paginate(-1)}>
+				{'‣'}
+			</div>
+		</div>
 	)
 }
-
-export default GameImages
