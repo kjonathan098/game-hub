@@ -38,12 +38,12 @@ const GameNumbersDetails = ({ data }: Props) => {
 			</GridItem>
 
 			<GridItem colSpan={1} bg={gridBg} display={'flex'} overflow={'hidden'} alignItems={'center'} gap={5} justifyContent={'center'}>
-				<Text fontSize={'4xl'} fontWeight={'extrabold'}>
-					{data.esrb_rating?.name}{' '}
+				<Text fontSize={data.esrb_rating?.name ? '4xl' : '2xl'} fontWeight={'extrabold'}>
+					{data.esrb_rating?.name ? data.esrb_rating?.name : 'No Age Rating Available'}
 				</Text>
 			</GridItem>
 
-			<GridItem colSpan={1} bg={gridBg} display={'flex'} justifyContent={'space-between'} alignItems={'center'} p={2}>
+			<GridItem colSpan={1} display={'flex'} justifyContent={'space-between'} alignItems={'center'} p={2}>
 				<WishListButton game={data} size={'md'} />
 				<CartButton game={data} size={'md'} />
 			</GridItem>

@@ -61,7 +61,7 @@ const GamePage = () => {
 						<Box display={'flex'} overflow={'hidden'} height={'fit-content'}>
 							<GameImages gameDetails={data!} />
 						</Box>
-						<GameBuyingOptions data={data!} />
+						{data.website.length && <GameBuyingOptions data={data!} />}
 						<GameTags data={data!} />
 					</Stack>
 				</Stack>

@@ -33,7 +33,7 @@ const UserGameListDrawer = ({ isOpen, onClose, openDrawer }: Props) => {
 				<DrawerOverlay />
 				<DrawerContent width={'50%'}>
 					<DrawerCloseButton size={'xl'} />
-					<DrawerHeader>Wish List</DrawerHeader>
+					<DrawerHeader>{openDrawer?.toUpperCase()}</DrawerHeader>
 					<DrawerGeneric openDrawer={openDrawer} />
 					<DrawerFooter>
 						<HStack direction={'row'}>
@@ -42,7 +42,9 @@ const UserGameListDrawer = ({ isOpen, onClose, openDrawer }: Props) => {
 									<Text fontWeight={'bold'} fontSize={'3xl'}>
 										Total : ${totalPrice}
 									</Text>
-									<Button colorScheme="blue">Proceed to Payment</Button>
+									<Button colorScheme="blue" isDisabled={!totalPrice}>
+										Proceed to Payment
+									</Button>
 								</>
 							)}
 							<Button variant="outline" mr={3} onClick={onClose}>

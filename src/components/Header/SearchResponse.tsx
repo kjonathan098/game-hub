@@ -1,4 +1,4 @@
-import { Box, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
 import OutsideClickHandler from 'react-outside-click-handler'
 
 import { IGame } from '../../interfaces/games.interface'
@@ -27,7 +27,7 @@ const SearchResponse = ({ dataResponse, showResults, setShowResults }: Props) =>
 						<VStack>
 							{dataResponse.map((game) => {
 								return (
-									<Box
+									<HStack
 										p={2}
 										_hover={{ bg: 'blue.500' }}
 										w={'100%'}
@@ -35,9 +35,13 @@ const SearchResponse = ({ dataResponse, showResults, setShowResults }: Props) =>
 											navigateGamePage(game.id)
 											handleClickOutside()
 										}}
+										key={game.id}
 									>
-										<Text key={game.id}>{game.name}</Text>
-									</Box>
+										<Image src={game.background_image} width={'75px'} height={'100px'} objectFit={'cover'} />
+										<Text fontSize={'xl'} fontWeight={'bold'}>
+											{game.name}
+										</Text>
+									</HStack>
 								)
 							})}
 						</VStack>
