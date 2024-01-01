@@ -9,7 +9,7 @@ import useSearch from '../../hooks/useSearch'
 interface Props {}
 
 const SearchInput = ({}: Props) => {
-	const { setSearchQuery, dataResponse, loading } = useSearch()
+	const { setSearchQuery, dataResponse, loading, searchQuery } = useSearch()
 	const [showResults, setShowResults] = useState(false)
 
 	const ref = useRef<HTMLInputElement>(null)

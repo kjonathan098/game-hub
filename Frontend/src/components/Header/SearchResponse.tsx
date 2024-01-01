@@ -13,10 +13,14 @@ interface Props {
 
 const SearchResponse = ({ dataResponse, showResults, setShowResults }: Props) => {
 	const nav = useNavigate()
+	const { setSearchQuery } = useSearch()
+
 	const handleClickOutside = () => {
+		setSearchQuery('')
 		setShowResults(false)
 	}
 	const navigateGamePage = (gameId: number) => {
+		setSearchQuery('')
 		nav(`/game/${gameId}`, { state: { id: gameId } })
 	}
 	return (
