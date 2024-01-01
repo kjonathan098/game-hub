@@ -1,7 +1,7 @@
 import HeroBanner from './HeroBanner'
 import GameHeading from './GameHeading'
 import { Box, HStack, Stack } from '@chakra-ui/react'
-import PlatformSelector from '../HomePage/PlatformSelector'
+import PlatformSelector from './PlatformSelector'
 import SortGames from './SortGames'
 import GameGrid from './GameGrid'
 import GenreSelector from './GenreSelector'

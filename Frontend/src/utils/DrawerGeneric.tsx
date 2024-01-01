@@ -30,9 +30,9 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 		<DrawerBody>
 			{!listType.length && (
 				<VStack>
-					<Text fontSize={'xl'} fontWeight={'bold'}>
+					{/* <Text fontSize={'xl'} fontWeight={'bold'}>
 						Nothing to see here!
-					</Text>
+					</Text> */}
 					<Image src={gameOver} />
 				</VStack>
 			)}
