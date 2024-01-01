@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import { IGame } from '../interfaces/games.interface'
 import { authContext } from '../context/authProvider'
 import useToastMessage from '../hooks/useToast'
+import axios from 'axios'
 
 interface Params {
 	game: IGame
