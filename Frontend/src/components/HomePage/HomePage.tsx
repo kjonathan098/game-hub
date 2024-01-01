@@ -1,25 +1,23 @@
-import HeroBanner from './HeroBanner'
-import GameHeading from './GameHeading'
-import { Box, HStack, Stack } from '@chakra-ui/react'
-import PlatformSelector from './PlatformSelector'
-import SortGames from './SortGames'
-import GameGrid from './GameGrid'
-import GenreSelector from './GenreSelector'
+import { Box, HStack, Image, Stack } from '@chakra-ui/react'
+import salePromo from '../../assets/couponAdd.avif'
+import featurePromo from '../../assets/feature.avif'
+import rewardsPromo from '../../assets/rewardsAd.avif'
+import BannerPromo from './BannerPromo'
 
 const HomePage = () => {
 	return (
-		<>
-			<HeroBanner />
-			<GameHeading />
-			<Stack spacing={3} padding={3} marginBottom={5} flexDir={{ base: 'column', md: 'row' }}>
-				<Stack display={{ base: 'flex', lg: 'none' }} spacing={3} flexDir={{ base: 'column', md: 'row' }}>
-					<GenreSelector />
-					<PlatformSelector />
-				</Stack>
-				<SortGames />
-			</Stack>
-			<GameGrid />
-		</>
+		<Stack spacing={'50'}>
+			<HStack mt={'30'} justifyContent={'space-around'}>
+				{[salePromo, rewardsPromo, featurePromo].map((img) => {
+					return (
+						<Box>
+							<Image key={img} src={img} width={'350px'} rounded={'3xl'} />
+						</Box>
+					)
+				})}
+			</HStack>
+			<BannerPromo />
+		</Stack>
 	)
 }
 

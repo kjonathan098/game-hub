@@ -1,5 +1,5 @@
 import { DrawerBody, Text, HStack, Image, Stack, Tag, Center, VStack } from '@chakra-ui/react'
-import GamePlatforms from '../components/HomePage/GamePlatforms'
+import GamePlatforms from '../components/GamesDisplay/GamePlatforms'
 import WishListButton from './WishListButton'
 import CartButton from './CartButton'
 import { useContext, useEffect, useState } from 'react'

@@ -2,10 +2,11 @@ import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import HomePage from './components/HomePage/HomePage'
 import GamePage from './components/GamePage/GamePage'
 import SideBar from './components/SideBar/SideBar'
 import AuthProvider from './context/authProvider'
+import GamesDisplay from './components/GamesDisplay/GamesDisplay'
+import HomePage from './components/HomePage/HomePage'
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 						<GridItem area="main">
 							<Routes>
 								<Route path="/" element={<HomePage />} />
+								<Route path="/games" element={<GamesDisplay />} />
 								<Route path="/game/:id" element={<GamePage />} />
 							</Routes>
 						</GridItem>
