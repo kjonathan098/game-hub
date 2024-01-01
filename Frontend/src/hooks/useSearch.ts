@@ -29,7 +29,7 @@ const useSearch = () => {
 			})
 	}, [searchQuery])
 
-	return { setSearchQuery, dataResponse, loading }
+	return { setSearchQuery, dataResponse, loading, searchQuery }
 }
 
 export default useSearch
