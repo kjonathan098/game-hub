@@ -14,7 +14,8 @@ const WishListButton = ({ game, size }: Params) => {
 	const { errorToast } = useToastMessage()
 	const [itOnWishList, setItOnWishList] = useState(false)
 
-	function handleWishList() {
+	function handleWishList(event: React.MouseEvent<HTMLButtonElement>) {
+		event.stopPropagation()
 		if (!user) return errorToast('please sign in!')
 		if (itOnWishList) {
 			removeFromList(game, 'wishList')
