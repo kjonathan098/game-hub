@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Stack, Text, Progress, Fade, Center } from '@chakra-ui/react'
+import { Box, HStack, Image, Stack, Text, Progress, Fade, Center, Tag } from '@chakra-ui/react'
 import fifa from '../../assets/HomePageCarouselPromo/fifa24.avif'
 import alanWake from '../../assets/HomePageCarouselPromo/alanWake.avif'
 import lotr from '../../assets/HomePageCarouselPromo/lotr.avif'
@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { bannerMedia } from './BannerPromoMedia'
 import './BannerPromo.css'
 import WishListButton from '../../utils/WishListButton'
+import CartButton from '../../utils/CartButton'
 
 const BannerPromo = () => {
 	const [currentGame, setCurrentGame] = useState(1)
@@ -53,8 +54,12 @@ const BannerPromo = () => {
 								<Stack position={'absolute'} bottom={'100px'} maxW={'500px'} spacing={'5'} p={4}>
 									<Image src={game.titleLogo} width={'40%'} />
 									<Text fontWeight={'black'}>{game.description}</Text>
+									<Tag colorScheme="teal" w={'fit-content'}>
+										$30
+									</Tag>
 									<HStack zIndex={2}>
 										<WishListButton game={game} size={'md'} />
+										<CartButton game={game} size={'md'} />
 									</HStack>
 								</Stack>
 								<Box as="span" position={'absolute'} bottom={'0px'} width={'100%'} height={'100%'} opacity={'0.6'} bgGradient="linear(to-r, rgba(11, 11, 11, 0) 0%, rgba(11, 11, 11, 0) 50%, #0B0B0B 100%)" />
@@ -83,10 +88,3 @@ const BannerPromo = () => {
 }
 
 export default BannerPromo
-//osition: absolute;
-// top: 0;
-// width: 80%;
-// height: 100%;
-// z-index: 0;
-// opacity: 0.6;
-// background: linear-gradient(270deg, rgba(11, 11, 11, 0) 0%, #0B0B0B 100%, #0B0B0B 100%);

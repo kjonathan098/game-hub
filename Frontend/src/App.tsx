@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Image, Show, Text } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -7,6 +7,10 @@ import SideBar from './components/SideBar/SideBar'
 import AuthProvider from './context/authProvider'
 import GamesDisplay from './components/GamesDisplay/GamesDisplay'
 import HomePage from './components/HomePage/HomePage'
+import { register } from 'swiper/element/bundle'
+import test from './assets/HomePageCarouselPromo/deadIsland.avif'
+
+register()
 
 function App() {
 	return (
@@ -19,7 +23,7 @@ function App() {
 						</GridItem>
 
 						<Show above="lg">
-							<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'}>
+							<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} shadow={'dark-lg'}>
 								<SideBar />
 							</GridItem>
 						</Show>
