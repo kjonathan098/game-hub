@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from 'react'
-import Swiper from 'swiper'
+import React from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-
 import { Box, Center, HStack, Image, Stack, Tag, Text } from '@chakra-ui/react'
 import { holidaySpecialMedia } from './BannerPromoMedia'
 import WishListButton from '../../utils/WishListButton'
-import CartButton from '../../utils/CartButton'
 import { useNavigate } from 'react-router-dom'
 
 const HolidaySpotlight = () => {
@@ -14,6 +11,7 @@ const HolidaySpotlight = () => {
 	const handleGameReDirect = (id: number) => {
 		nav(`/game/${id}`, { state: { id } })
 	}
+
 	return (
 		<Stack>
 			<Box w={'1080px'} boxSizing={'border-box'} overflow={'hidden'}>
