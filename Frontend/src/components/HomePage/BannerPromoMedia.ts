@@ -26,7 +26,29 @@ export const bannerMedia: BannerMedia[] = [
 		description: 'Buy Alan Wake 2 and get Alan Wake Remastered, our gift to you. Offer ends January 10, 2024, see page for details.',
 		price: 30,
 		metacritic: 4.49,
-		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+		],
 	},
 	{
 		name: 'fifa 24',
@@ -34,10 +56,39 @@ export const bannerMedia: BannerMedia[] = [
 		background: fifaBkg,
 		id: 963218,
 		description: 'EA SPORTS FC™ 24 welcomes you to The World’s Game: the most true-to-football experience ever.',
-		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		background_image: 'https://media.rawg.io/media/games/104/10404407d458d90f4559a1f587c2650a.jpg',
 		price: 30,
-		metacritic: 4.49,
-		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
+		metacritic: 3.3,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 7,
+					name: 'Nintendo',
+					slug: 'nintendo',
+				},
+			},
+		],
 	},
 	{
 		name: 'Lotr',
@@ -45,10 +96,18 @@ export const bannerMedia: BannerMedia[] = [
 		background: lotr,
 		id: 865101,
 		description: 'Adventure alone or band together on a quest to reclaim the ancient Kingdom of Moria.',
-		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		background_image: 'https://media.rawg.io/media/screenshots/f0d/f0dd69caad912e5fcc0c29fa953b412e.jpg',
 		price: 30,
-		metacritic: 4.49,
-		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
+		metacritic: 0,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+		],
 	},
 	{
 		name: 'Assasins Creed',
@@ -56,10 +115,39 @@ export const bannerMedia: BannerMedia[] = [
 		background: assasins,
 		id: 845261,
 		description: 'Experience the story of Basim, a cunning thief seeking answers and justice as he navigates the streets of ninth-century Baghdad.',
-		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		background_image: 'https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg',
 		price: 30,
-		metacritic: 4.49,
-		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 4,
+					name: 'iOS',
+					slug: 'ios',
+				},
+			},
+		],
 	},
 	{
 		name: 'Dead Island',
@@ -67,23 +155,38 @@ export const bannerMedia: BannerMedia[] = [
 		background: deadIsland,
 		id: 845261,
 		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
-		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		background_image: 'https://media.rawg.io/media/games/fbd/fbd0128013b7965904be571e75fb30c0.jpg',
 		price: 30,
-		metacritic: 4.49,
-		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 4,
+					name: 'iOS',
+					slug: 'ios',
+				},
+			},
+		],
 	},
 ]
-
-// export const bannerMedia: BannerMedia[] = [
-// 	{
-// 		name: 'Alan Wake 2',
-// 		titleLogo: alanWakeTitle,
-// 		background: alanWake,
-// 		id: 580972,
-// 		description: 'Buy Alan Wake 2 and get Alan Wake Remastered, our gift to you. Offer ends January 10, 2024, see page for details.',
-// 		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
-// 		price: 30,
-// 		metacritic: 4.49,
-// 		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
-// 	},
-// ]
