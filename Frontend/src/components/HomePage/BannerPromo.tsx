@@ -10,10 +10,16 @@ import { bannerMedia } from './BannerPromoMedia'
 import './BannerPromo.css'
 import WishListButton from '../../utils/WishListButton'
 import CartButton from '../../utils/CartButton'
+import { useNavigate } from 'react-router-dom'
 
 const BannerPromo = () => {
 	const [currentGame, setCurrentGame] = useState(1)
 	const [progress, setProgress] = useState(0)
+	const nav = useNavigate()
+
+	const handleReDirect = (id: number) => {
+		nav(`/game/${id}`, { state: { id } })
+	}
 
 	const selectGame = (num: number) => {
 		setCurrentGame(num + 1)
@@ -49,7 +55,7 @@ const BannerPromo = () => {
 				{bannerMedia.map((game, index) => {
 					return (
 						<Fade in={currentGame === index + 1}>
-							<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} h={'100%'}>
+							<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} h={'100%'} onClick={() => handleReDirect(game.id)}>
 								<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} />
 								<Stack position={'absolute'} bottom={'100px'} maxW={'500px'} spacing={'5'} p={4}>
 									<Image src={game.titleLogo} width={'40%'} />

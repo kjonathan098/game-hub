@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Image, Show, Text } from '@chakra-ui/react'
+import { Box, Center, Grid, GridItem, Image, Show, Text } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -17,25 +17,25 @@ function App() {
 		<AuthProvider>
 			<BrowserRouter>
 				<QueryProvider>
-					<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
-						<GridItem area="nav">
-							<NavBar />
-						</GridItem>
-
-						<Show above="lg">
-							<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} shadow={'dark-lg'}>
-								<SideBar />
+					<Center>
+						<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
+							<GridItem area="nav">
+								<NavBar />
 							</GridItem>
-						</Show>
-
-						<GridItem area="main" pl={'5'}>
-							<Routes>
-								<Route path="/" element={<HomePage />} />
-								<Route path="/games" element={<GamesDisplay />} />
-								<Route path="/game/:id" element={<GamePage />} />
-							</Routes>
-						</GridItem>
-					</Grid>
+							<Show above="lg">
+								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} shadow={'dark-lg'}>
+									<SideBar />
+								</GridItem>
+							</Show>
+							<GridItem area="main" pl={'5'}>
+								<Routes>
+									<Route path="/" element={<HomePage />} />
+									<Route path="/games" element={<GamesDisplay />} />
+									<Route path="/game/:id" element={<GamePage />} />
+								</Routes>
+							</GridItem>
+						</Grid>
+					</Center>
 				</QueryProvider>
 			</BrowserRouter>
 		</AuthProvider>

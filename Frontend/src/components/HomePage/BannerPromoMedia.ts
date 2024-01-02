@@ -11,9 +11,17 @@ import assasinTittle from '../../assets/HomePageCarouselPromo/assasin_creed_titl
 import harryPotter from '../../assets/HomePageHolidaySpecial/hogwarts_legacy.avif'
 import cyberPunk from '../../assets/HomePageHolidaySpecial/cyber_punk.avif'
 import gtaV from '../../assets/HomePageHolidaySpecial/gta_v.avif'
-import kingdomHears from '../../assets/HomePageHolidaySpecial/kingdom_hearts.avif'
 import lordsFallen from '../../assets/HomePageHolidaySpecial/lords_fallen.avif'
-import starwars from '../../assets/HomePageHolidaySpecial/starwars.avif'
+import starWars from '../../assets/HomePageHolidaySpecial/starwars.avif'
+import deadSpace from '../../assets/HomePageHolidaySpecial/deadspace.avif'
+import madden from '../../assets/HomePageHolidaySpecial/madden24.avif'
+import mortalKombat from '../../assets/HomePageHolidaySpecial/mortal_kombat.avif'
+import ratchetClank from '../../assets/HomePageHolidaySpecial/ratchet_clank.avif'
+import roboCop from '../../assets/HomePageHolidaySpecial/robocop.avif'
+import spiderman from '../../assets/HomePageHolidaySpecial/spiderman.avif'
+import spidermanMorales from '../../assets/HomePageHolidaySpecial/spiderman_morales.avif'
+import lastOfUs from '../../assets/HomePageHolidaySpecial/the_last_of_us.avif'
+import witchFire from '../../assets/HomePageHolidaySpecial/witchfire.avif'
 import { IGame } from '../../interfaces/games.interface'
 
 interface BannerMedia extends IGame {
@@ -163,7 +171,7 @@ export const holidaySpecialMedia: BannerMedia[] = [
 	{
 		name: 'Star Wars Jedi: Survivor',
 		titleLogo: deadIslanTittle,
-		background: starwars,
+		background: starWars,
 		id: 793647,
 		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
 		background_image: 'https://media.rawg.io/media/games/3e4/3e43e29ae126ef951842393f5ff7f33a.jpg',
@@ -193,7 +201,244 @@ export const holidaySpecialMedia: BannerMedia[] = [
 			},
 		],
 	},
+	{
+		name: 'Dead Space',
+		titleLogo: deadIslanTittle,
+		background: deadSpace,
+		id: 638654,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/ea6/ea6a1382b15d749e15fdfbf0aece7689.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+		],
+	},
+	{
+		name: 'Madden NFL 24',
+		titleLogo: deadIslanTittle,
+		background: madden,
+		id: 962679,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/5ec/5ecee9f44d6736412b15f0b01b0619a9.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+		],
+	},
+	{
+		name: 'Mortal Kombat 1',
+		titleLogo: deadIslanTittle,
+		background: mortalKombat,
+		id: 793647,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/155/155087d7b9c1225cda0ab9e586b6374d.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 7,
+					name: 'Nintendo',
+					slug: 'nintendo',
+				},
+			},
+		],
+	},
+	{
+		name: 'Ratchet & Clank: Rift Apart',
+		titleLogo: deadIslanTittle,
+		background: ratchetClank,
+		id: 727315,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/ccf/ccfd3fd488a8ed61145a3da96c080131.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+		],
+	},
+	{
+		name: 'RoboCop: Rogue City',
+		titleLogo: deadIslanTittle,
+		background: roboCop,
+		id: 631942,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/2ae/2ae4150474a27f90595c9092917ab2d3.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+		],
+	},
+	{
+		name: "Marvel's Spider-Man",
+		titleLogo: deadIslanTittle,
+		background: spiderman,
+		id: 58134,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/9aa/9aa42d16d425fa6f179fc9dc2f763647.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+		],
+	},
+	{
+		name: 'The Last of Us Part I',
+		titleLogo: deadIslanTittle,
+		background: lastOfUs,
+		id: 799265,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/71d/71df9e759b2246f9769126c98ac997fc.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+		],
+	},
+	{
+		name: 'Witchfire',
+		titleLogo: deadIslanTittle,
+		background: witchFire,
+		id: 50739,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/bd0/bd0e96314c71b5b0d192f23c8e8ab07e.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+		],
+	},
 ]
+
 export const bannerMedia: BannerMedia[] = [
 	{
 		name: 'Alan Wake 2',

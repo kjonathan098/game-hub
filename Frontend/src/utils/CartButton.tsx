@@ -15,7 +15,8 @@ const CartButton = ({ game, size }: Params) => {
 
 	const [itsOnCart, setItsOnCart] = useState(false)
 
-	function handleCartList() {
+	function handleCartList(event: React.MouseEvent<HTMLButtonElement>) {
+		event.stopPropagation()
 		if (!user) return errorToast('please sign in!')
 		if (itsOnCart) {
 			removeFromList(game, 'cartList')
