@@ -3,6 +3,7 @@ import salePromo from '../../assets/couponAdd.avif'
 import featurePromo from '../../assets/feature.avif'
 import rewardsPromo from '../../assets/rewardsAd.avif'
 import BannerPromo from './BannerPromo'
+import HolidaySpotlight from './HolidaySpotlight'
 
 const HomePage = () => {
 	return (
@@ -17,6 +18,7 @@ const HomePage = () => {
 				})}
 			</HStack>
 			<BannerPromo />
+			<HolidaySpotlight />
 		</Stack>
 	)
 }
