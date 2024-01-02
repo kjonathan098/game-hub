@@ -24,6 +24,8 @@ const WishListButton = ({ game, size }: Params) => {
 	}
 
 	useEffect(() => {
+		console.log(game, 'whishlist')
+
 		if (!user) return
 		if (!wishList.length) return setItOnWishList(false)
 

@@ -8,41 +8,82 @@ import alanWakeTitle from '../../assets/HomePageCarouselPromo/ala_wake_title.png
 import deadIslanTittle from '../../assets/HomePageCarouselPromo/dead_island_title.png'
 import lotrTittle from '../../assets/HomePageCarouselPromo/lotr_title.png'
 import assasinTittle from '../../assets/HomePageCarouselPromo/assasin_creed_title.png'
+import { IGame } from '../../interfaces/games.interface'
 
-export const bannerMedia = [
+interface BannerMedia extends IGame {
+	titleLogo: string
+	background: string
+	description: string
+}
+
+export const bannerMedia: BannerMedia[] = [
 	{
 		name: 'Alan Wake 2',
 		titleLogo: alanWakeTitle,
 		background: alanWake,
-		rawgId: 580972,
+		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		id: 580972,
 		description: 'Buy Alan Wake 2 and get Alan Wake Remastered, our gift to you. Offer ends January 10, 2024, see page for details.',
+		price: 30,
+		metacritic: 4.49,
+		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
 	},
 	{
 		name: 'fifa 24',
 		titleLogo: fifaTittle,
 		background: fifaBkg,
-		rawgId: 963218,
+		id: 963218,
 		description: 'EA SPORTS FC™ 24 welcomes you to The World’s Game: the most true-to-football experience ever.',
+		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		price: 30,
+		metacritic: 4.49,
+		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
 	},
 	{
 		name: 'Lotr',
 		titleLogo: lotrTittle,
 		background: lotr,
-		rawgId: 865101,
+		id: 865101,
 		description: 'Adventure alone or band together on a quest to reclaim the ancient Kingdom of Moria.',
+		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		price: 30,
+		metacritic: 4.49,
+		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
 	},
 	{
 		name: 'Assasins Creed',
 		titleLogo: assasinTittle,
 		background: assasins,
-		rawgId: 845261,
+		id: 845261,
 		description: 'Experience the story of Basim, a cunning thief seeking answers and justice as he navigates the streets of ninth-century Baghdad.',
+		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		price: 30,
+		metacritic: 4.49,
+		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
 	},
 	{
 		name: 'Dead Island',
 		titleLogo: deadIslanTittle,
 		background: deadIsland,
-		rawgId: 845261,
+		id: 845261,
 		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+		price: 30,
+		metacritic: 4.49,
+		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
 	},
-] as const
+]
+
+// export const bannerMedia: BannerMedia[] = [
+// 	{
+// 		name: 'Alan Wake 2',
+// 		titleLogo: alanWakeTitle,
+// 		background: alanWake,
+// 		id: 580972,
+// 		description: 'Buy Alan Wake 2 and get Alan Wake Remastered, our gift to you. Offer ends January 10, 2024, see page for details.',
+// 		background_image: 'https://media.rawg.io/media/games/5b9/5b963d7633cd640fa2dbc4069d1c6377.jpg',
+// 		price: 30,
+// 		metacritic: 4.49,
+// 		parent_platforms: [{ platform: { id: 1, name: 'sony', slug: 'sony' } }],
+// 	},
+// ]

@@ -24,7 +24,7 @@ function App() {
 							</GridItem>
 						</Show>
 
-						<GridItem area="main">
+						<GridItem area="main" pl={'5'}>
 							<Routes>
 								<Route path="/" element={<HomePage />} />
 								<Route path="/games" element={<GamesDisplay />} />
