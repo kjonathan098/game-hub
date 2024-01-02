@@ -4,8 +4,11 @@ import alanWake from '../../assets/HomePageCarouselPromo/alanWake.avif'
 import lotr from '../../assets/HomePageCarouselPromo/lotr.avif'
 import mirage from '../../assets/HomePageCarouselPromo/mirage.avif'
 import deadIsland from '../../assets/HomePageCarouselPromo/deadIsland.avif'
+import fifaTittle from '../../assets/HomePageCarouselPromo/fifa_title.png'
 import { useEffect, useState } from 'react'
+import { bannerMedia } from './BannerPromoMedia'
 import './BannerPromo.css'
+import WishListButton from '../../utils/WishListButton'
 
 const BannerPromo = () => {
 	const [currentGame, setCurrentGame] = useState(1)
@@ -42,22 +45,30 @@ const BannerPromo = () => {
 	return (
 		<Stack direction={'row'}>
 			<Box w={'75%'}>
-				{[alanWake, fifa, lotr, mirage, deadIsland].map((img, index) => {
+				{bannerMedia.map((game, index) => {
 					return (
 						<Fade in={currentGame === index + 1}>
-							<Image src={img} objectFit={'cover'} rounded={'lg'} key={index} display={currentGame === index + 1 ? 'block' : 'none'} />
+							<Box as="span" position={'relative'}>
+								<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} display={currentGame === index + 1 ? 'block' : 'none'} />
+								<Stack position={'absolute'} bottom={'100px'} maxW={'500px'} spacing={'5'} p={4}>
+									<Image src={game.titleLogo} width={'40%'} />
+									<Text fontWeight={'black'}>{game.description}</Text>
+									<HStack>{/* <WishListButton /> */}</HStack>
+								</Stack>
+								<Box as="span" position={'absolute'} bottom={'0px'} width={'100%'} height={'100%'} opacity={'0.6'} bgGradient="linear(to-r, rgba(11, 11, 11, 0) 0%, rgba(11, 11, 11, 0) 50%, #0B0B0B 100%)" />
+							</Box>
 						</Fade>
 					)
 				})}
 			</Box>
 			<Box width={'25%'}>
 				<Stack p={4} display={'flex'} justifyContent={'space-between'} height={'100%'}>
-					{[alanWake, fifa, lotr, mirage, deadIsland].map((img, index) => {
+					{bannerMedia.map((game, index) => {
 						return (
 							<HStack key={index} onClick={() => selectGame(index)} position="relative" className="game-item" rounded={'lg'} bg={currentGame === index + 1 ? 'blackAlpha.400' : ''}>
-								<Image src={img} objectFit={'cover'} h={'100%'} w={'100%'} rounded={'lg'} height={'100px'} width={'80px'} />
+								<Image src={game.background} objectFit={'cover'} h={'100%'} w={'100%'} rounded={'lg'} height={'100px'} width={'80px'} />
 								<Text fontSize={'xl'} fontWeight={'bold'}>
-									Fifa 24
+									{game.name}
 								</Text>
 								{currentGame === index + 1 && <Box className="progress-bar" style={{ width: `${progress}%` }}></Box>}
 							</HStack>
@@ -70,3 +81,10 @@ const BannerPromo = () => {
 }
 
 export default BannerPromo
+//osition: absolute;
+// top: 0;
+// width: 80%;
+// height: 100%;
+// z-index: 0;
+// opacity: 0.6;
+// background: linear-gradient(270deg, rgba(11, 11, 11, 0) 0%, #0B0B0B 100%, #0B0B0B 100%);
