@@ -4,6 +4,7 @@ import { Box, Center, HStack, Image, Stack, Tag, Text } from '@chakra-ui/react'
 import { holidaySpecialMedia } from './BannerPromoMedia'
 import WishListButton from '../../utils/WishListButton'
 import { useNavigate } from 'react-router-dom'
+import CartButton from '../../utils/CartButton'
 
 const HolidaySpotlight = () => {
 	const nav = useNavigate()
@@ -54,7 +55,7 @@ const HolidaySpotlight = () => {
 											</Text>
 											<Text colorScheme={'teal'}>$30</Text>
 										</HStack>
-										<WishListButton game={game} />
+										<CartButton game={game} />
 									</Stack>
 								</swiper-slide>
 							</React.Fragment>
