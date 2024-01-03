@@ -54,23 +54,21 @@ const BannerPromo = () => {
 			<Center w={'75%'}>
 				{bannerMedia.map((game, index) => {
 					return (
-						<Fade in={currentGame === index + 1}>
-							<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} h={'100%'} onClick={() => handleReDirect(game.id)}>
-								<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} />
-								<Stack position={'absolute'} bottom={'100px'} maxW={'500px'} spacing={'5'} p={4}>
-									<Image src={game.titleLogo} width={'40%'} />
-									<Text fontWeight={'black'}>{game.description}</Text>
-									<Tag colorScheme="teal" w={'fit-content'}>
-										$30
-									</Tag>
-									<HStack zIndex={2}>
-										<WishListButton game={game} size={'md'} />
-										<CartButton game={game} size={'md'} />
-									</HStack>
-								</Stack>
-								<Box as="span" position={'absolute'} bottom={'0px'} width={'100%'} height={'100%'} opacity={'0.6'} bgGradient="linear(to-r, rgba(11, 11, 11, 0) 0%, rgba(11, 11, 11, 0) 50%, #0B0B0B 100%)" />
-							</Box>
-						</Fade>
+						<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} onClick={() => handleReDirect(game.id)} height={'500px'}>
+							<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} loading="lazy" />
+							<Stack position={'absolute'} bottom={'100px'} maxW={'500px'} spacing={'5'} p={4}>
+								<Image src={game.titleLogo} width={'40%'} />
+								<Text fontWeight={'black'}>{game.description}</Text>
+								<Tag colorScheme="teal" w={'fit-content'}>
+									$30
+								</Tag>
+								<HStack zIndex={2}>
+									<WishListButton game={game} size={'md'} />
+									<CartButton game={game} size={'md'} />
+								</HStack>
+							</Stack>
+							<Box as="span" position={'absolute'} bottom={'0px'} width={'100%'} height={'100%'} opacity={'0.6'} bgGradient="linear(to-r, rgba(11, 11, 11, 0) 0%, rgba(11, 11, 11, 0) 50%, #0B0B0B 100%)" />
+						</Box>
 					)
 				})}
 			</Center>
@@ -80,9 +78,7 @@ const BannerPromo = () => {
 						return (
 							<HStack key={index} onClick={() => selectGame(index)} position="relative" className="game-item" rounded={'lg'} bg={currentGame === index + 1 ? 'blackAlpha.400' : ''} _hover={{ cursor: 'pointer', bg: 'blackAlpha.300' }}>
 								<Image src={game.background} objectFit={'cover'} h={'100%'} w={'100%'} rounded={'lg'} height={'100px'} width={'80px'} />
-								<Text fontSize={'xl'} fontWeight={'bold'}>
-									{game.name}
-								</Text>
+								<Text fontSize={'md'}>{game.name}</Text>
 								{currentGame === index + 1 && <Box className="progress-bar" style={{ width: `${progress}%` }}></Box>}
 							</HStack>
 						)

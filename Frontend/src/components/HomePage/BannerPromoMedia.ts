@@ -1,3 +1,4 @@
+import { IGame } from '../../interfaces/games.interface'
 import fifaBkg from '../../assets/HomePageCarouselPromo/fifa24.avif'
 import alanWake from '../../assets/HomePageCarouselPromo/alanWake.avif'
 import lotr from '../../assets/HomePageCarouselPromo/lotr.avif'
@@ -20,15 +21,320 @@ import ratchetClank from '../../assets/HomePageHolidaySpecial/ratchet_clank.avif
 import roboCop from '../../assets/HomePageHolidaySpecial/robocop.avif'
 import spiderman from '../../assets/HomePageHolidaySpecial/spiderman.avif'
 import spidermanMorales from '../../assets/HomePageHolidaySpecial/spiderman_morales.avif'
-import lastOfUs from '../../assets/HomePageHolidaySpecial/the_last_of_us.avif'
 import witchFire from '../../assets/HomePageHolidaySpecial/witchfire.avif'
-import { IGame } from '../../interfaces/games.interface'
+import lastOfUs from '../../assets/HomePageHolidaySpecial/the_last_of_us.avif'
+import fortNight from '../../assets/TopSeller/Fortnight.avif'
+import rocketLeague from '../../assets/TopSeller/rocketLeague.avif'
+import saintRow from '../../assets/TopSeller/saintsRow.avif'
+import valorant from '../../assets/TopSeller/valorant.avif'
+import fortNightLogo from '../../assets/TopSeller/logos/fortnight.webp'
+import rocketLogo from '../../assets/TopSeller/logos/rocketLeagueLogo.png'
+import saintRowLogo from '../../assets/TopSeller/logos/saintRowlogo.avif'
+import valorantLogo from '../../assets/TopSeller/logos/valorantLogo.avif'
+import spidermanMoralesLogo from '../../assets/TopSeller/logos/marvelLogo.webp'
 
-interface BannerMedia extends IGame {
+export interface BannerMedia extends IGame {
 	titleLogo: string
 	background: string
 	description?: string
+	ratings?: { id: number; title: string; count: number; percent: number }[]
+	youtubeId?: string
 }
+
+export const topSellers: BannerMedia[] = [
+	{
+		name: 'Fortnite Battle Royale',
+		titleLogo: fortNightLogo,
+		background: fortNight,
+		id: 47137,
+		description: `Create, play, and battle with friends for free in Fortnite. Be the last player standing in Battle Royale and Zero Build, experience a concert or live event, or discover over a million creator made games`,
+		background_image: 'https://media.rawg.io/media/games/dcb/dcbb67f371a9a28ea38ffd73ee0f53f3.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 4,
+					name: 'iOS',
+					slug: 'ios',
+				},
+			},
+			{
+				platform: {
+					id: 8,
+					name: 'Android',
+					slug: 'android',
+				},
+			},
+			{
+				platform: {
+					id: 5,
+					name: 'Apple Macintosh',
+					slug: 'mac',
+				},
+			},
+			{
+				platform: {
+					id: 7,
+					name: 'Nintendo',
+					slug: 'nintendo',
+				},
+			},
+		],
+		youtubeId: 'GNC-8lQsvrY',
+	},
+	{
+		name: 'Rocket League',
+		titleLogo: rocketLogo,
+		background: rocketLeague,
+		id: 3272,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg',
+		price: 30,
+		metacritic: 3.37,
+		ratings: [
+			{
+				id: 4,
+				title: 'recommended',
+				count: 1515,
+				percent: 54.75,
+			},
+			{
+				id: 5,
+				title: 'exceptional',
+				count: 690,
+				percent: 24.94,
+			},
+			{
+				id: 3,
+				title: 'meh',
+				count: 419,
+				percent: 15.14,
+			},
+			{
+				id: 1,
+				title: 'skip',
+				count: 143,
+				percent: 5.17,
+			},
+		],
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 5,
+					name: 'Apple Macintosh',
+					slug: 'mac',
+				},
+			},
+			{
+				platform: {
+					id: 6,
+					name: 'Linux',
+					slug: 'linux',
+				},
+			},
+			{
+				platform: {
+					id: 7,
+					name: 'Nintendo',
+					slug: 'nintendo',
+				},
+			},
+		],
+		youtubeId: 'HX1u73kJVyE',
+	},
+	{
+		name: 'Saints Row: The Third',
+		titleLogo: saintRowLogo,
+		background: saintRow,
+		id: 4386,
+		description: `Welcome to Santo Ileso, a vibrant fictional city in the American Southwest. In a world rife with crime, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.`,
+		background_image: 'https://media.rawg.io/media/games/d69/d69810315bd7e226ea2d21f9156af629.jpg',
+		price: 30,
+		metacritic: 3.37,
+		ratings: [
+			{
+				id: 4,
+				title: 'recommended',
+				count: 1103,
+				percent: 55.99,
+			},
+			{
+				id: 5,
+				title: 'exceptional',
+				count: 473,
+				percent: 24.01,
+			},
+			{
+				id: 3,
+				title: 'meh',
+				count: 303,
+				percent: 15.38,
+			},
+			{
+				id: 1,
+				title: 'skip',
+				count: 91,
+				percent: 4.62,
+			},
+		],
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 6,
+					name: 'Linux',
+					slug: 'linux',
+				},
+			},
+		],
+		youtubeId: 'LUH8VHDikyg',
+	},
+	{
+		name: 'Valorant',
+		titleLogo: valorantLogo,
+		background: valorant,
+		id: 415171,
+		description: `VALORANT is a character-based 5v5 tactical shooter set on the global stage. Outwit, outplay, and outshine your competition with tactical abilities, precise gunplay, and adaptive teamwork.`,
+		background_image: 'https://media.rawg.io/media/games/71d/71df9e759b2246f9769126c98ac997fc.jpg',
+		price: 30,
+		metacritic: 3.37,
+		ratings: [
+			{
+				id: 4,
+				title: 'recommended',
+				count: 204,
+				percent: 47.33,
+			},
+			{
+				id: 3,
+				title: 'meh',
+				count: 126,
+				percent: 29.23,
+			},
+			{
+				id: 5,
+				title: 'exceptional',
+				count: 53,
+				percent: 12.3,
+			},
+			{
+				id: 1,
+				title: 'skip',
+				count: 48,
+				percent: 11.14,
+			},
+		],
+
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+		],
+		youtubeId: 'e_E9W2vsRbQ',
+	},
+	{
+		name: "Marvel's Spider-Man: Miles Morales",
+		titleLogo: spidermanMoralesLogo,
+		background: spidermanMorales,
+		id: 452634,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/048/048b46cdc66cbc7e235e1f359c2a77ec.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+		],
+		youtubeId: 'NTunTURbyUU',
+	},
+]
+
 export const holidaySpecialMedia: BannerMedia[] = [
 	{
 		name: 'Hogwarts Legacy',
@@ -474,7 +780,7 @@ export const bannerMedia: BannerMedia[] = [
 		],
 	},
 	{
-		name: 'fifa 24',
+		name: 'EA SPORTS FC 24',
 		titleLogo: fifaTittle,
 		background: fifaBkg,
 		id: 963218,
@@ -514,7 +820,7 @@ export const bannerMedia: BannerMedia[] = [
 		],
 	},
 	{
-		name: 'Lotr',
+		name: 'The Lord of the Rings: Return to Moria',
 		titleLogo: lotrTittle,
 		background: lotr,
 		id: 865101,
