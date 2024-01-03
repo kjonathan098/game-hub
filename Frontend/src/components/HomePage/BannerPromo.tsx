@@ -50,19 +50,21 @@ const BannerPromo = () => {
 	}, [currentGame])
 
 	return (
-		<Stack direction={'row'}>
-			<Center w={'75%'}>
+		<Stack direction={{ base: 'column', lg: 'row' }}>
+			<Center w={{ base: '100%', lg: '75%' }} h={'fit-content'}>
 				{bannerMedia.map((game, index) => {
 					return (
-						<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} onClick={() => handleReDirect(game.id)} height={'500px'}>
+						<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} onClick={() => handleReDirect(game.id)} height={{ base: 'fit-content', lg: '500px' }}>
 							<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} loading="lazy" />
-							<Stack position={'absolute'} bottom={'100px'} maxW={'500px'} spacing={'5'} p={4}>
+							<Stack position={'absolute'} bottom={{ base: '50px', md: '100px' }} maxW={'500px'} spacing={'5'} p={4}>
 								<Image src={game.titleLogo} width={'40%'} />
-								<Text fontWeight={'black'}>{game.description}</Text>
-								<Tag colorScheme="teal" w={'fit-content'}>
+								<Text fontWeight={'black'} display={{ base: 'none', md: 'block' }}>
+									{game.description}
+								</Text>
+								<Tag colorScheme="teal" w={'fit-content'} display={{ base: 'none', md: 'block' }}>
 									$30
 								</Tag>
-								<HStack zIndex={2}>
+								<HStack zIndex={2} display={{ base: 'none', md: 'block' }}>
 									<WishListButton game={game} size={'md'} />
 									<CartButton game={game} size={'md'} />
 								</HStack>
@@ -72,15 +74,17 @@ const BannerPromo = () => {
 					)
 				})}
 			</Center>
-			<Box width={'25%'}>
-				<Stack p={4} display={'flex'} justifyContent={'space-between'} height={'100%'}>
+			<Box width={{ base: '100%', lg: '25%' }}>
+				<Stack p={4} display={'flex'} justifyContent={{ base: 'space-evenly', lg: 'space-between' }} height={'100%'} direction={{ base: 'row', lg: 'column' }}>
 					{bannerMedia.map((game, index) => {
 						return (
-							<HStack key={index} onClick={() => selectGame(index)} position="relative" className="game-item" rounded={'lg'} bg={currentGame === index + 1 ? 'blackAlpha.400' : ''} _hover={{ cursor: 'pointer', bg: 'blackAlpha.300' }}>
+							<Stack key={index} onClick={() => selectGame(index)} position="relative" className="game-item" rounded={'lg'} bg={currentGame === index + 1 ? 'blackAlpha.400' : ''} _hover={{ cursor: 'pointer', bg: 'blackAlpha.300' }} direction={{ base: 'column', lg: 'row' }}>
 								<Image src={game.background} objectFit={'cover'} h={'100%'} w={'100%'} rounded={'lg'} height={'100px'} width={'80px'} />
-								<Text fontSize={'md'}>{game.name}</Text>
+								<Text fontSize={'md'} display={{ base: 'none', lg: 'block' }}>
+									{game.name}
+								</Text>
 								{currentGame === index + 1 && <Box className="progress-bar" style={{ width: `${progress}%` }}></Box>}
-							</HStack>
+							</Stack>
 						)
 					})}
 				</Stack>
