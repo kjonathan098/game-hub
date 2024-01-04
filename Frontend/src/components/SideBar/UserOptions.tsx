@@ -24,38 +24,31 @@ const UserOptions = () => {
 					{user.displayName}
 				</Text>
 			</HStack>
-			<HStack>
-				<CiGift style={{ fontSize: '25px' }} />
-				<Button
-					width={'100%'}
-					colorScheme="whatsapp"
-					onClick={() => {
-						onOpen()
-						setOpenDrawer('wishList')
-					}}
-				>
-					Wish List
-				</Button>
-			</HStack>
-			<HStack>
-				<FiShoppingCart style={{ fontSize: '25px' }} />
-				<Button
-					width={'100%'}
-					colorScheme="teal"
-					onClick={() => {
-						onOpen()
-						setOpenDrawer('cartList')
-					}}
-				>
-					Cart
-				</Button>
-			</HStack>
-			<HStack>
-				<CiUser style={{ fontSize: '25px' }} />
-				<Button width={'100%'} colorScheme="cyan" onClick={() => ApiHander.signOut()}>
-					Logout
-				</Button>
-			</HStack>
+			<Button
+				width={'100%'}
+				colorScheme="whatsapp"
+				onClick={() => {
+					onOpen()
+					setOpenDrawer('wishList')
+				}}
+				leftIcon={<CiGift style={{ fontSize: '25px' }} />}
+			>
+				Wish List
+			</Button>
+			<Button
+				width={'100%'}
+				colorScheme="teal"
+				onClick={() => {
+					onOpen()
+					setOpenDrawer('cartList')
+				}}
+				leftIcon={<FiShoppingCart style={{ fontSize: '25px' }} />}
+			>
+				Cart
+			</Button>
+			<Button width={'100%'} colorScheme="cyan" onClick={() => ApiHander.signOut()} leftIcon={<CiUser style={{ fontSize: '25px' }} />}>
+				Logout
+			</Button>
 			<UserGameListDrawer isOpen={isOpen} onClose={onClose} openDrawer={openDrawer} />
 		</Stack>
 	)

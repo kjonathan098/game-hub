@@ -18,16 +18,15 @@ function App() {
 			<BrowserRouter>
 				<QueryProvider>
 					<Center>
-						<Grid templateAreas={{ base: `"nav " " main"`, lg: `"nav nav" "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
-							<GridItem area="nav">
-								<NavBar />
-							</GridItem>
+						<Grid templateAreas={{ lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
 							<Show above="lg">
 								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} shadow={'dark-lg'}>
 									<SideBar />
 								</GridItem>
 							</Show>
+
 							<GridItem area="main" pl={{ base: '', lg: '5' }}>
+								<NavBar />
 								<Routes>
 									<Route path="/" element={<HomePage />} />
 									<Route path="/games" element={<GamesDisplay />} />

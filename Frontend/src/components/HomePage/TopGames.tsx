@@ -1,18 +1,24 @@
-import { Box, HStack, Image, Stack, Text, VStack, Center } from '@chakra-ui/react'
+import { Box, HStack, Image, Stack, Text, VStack, Center, Button } from '@chakra-ui/react'
 import { BannerMedia, bannerMedia, topSellers } from './BannerPromoMedia'
 import { useState } from 'react'
 
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import TopGamesDetails from './TopGamesDetails'
+import { useNavigate } from 'react-router-dom'
 
 const TopGames = () => {
 	const [gameSelected, setGameSelected] = useState(1)
+	const nav = useNavigate()
+
+	const handleReDirect = (id: number) => {
+		nav(`/game/${id}`)
+	}
 
 	const swiperSlide = (array: BannerMedia[], categoryName: string, startingIndex: number) => {
 		return (
 			<swiper-slide>
 				<Text mb={{ md: '10px' }}>{categoryName}</Text>
-				<Stack spacing={'2'} pr={{ md: '10px' }} direction={{ base: 'row', md: 'column' }} justifyContent={'space-around'} bg={'red.400'}>
+				<Stack spacing={'2'} pr={{ md: '10px' }} direction={{ base: 'row', md: 'column' }} justifyContent={'space-around'}>
 					{array.map((game, index) => {
 						return (
 							<HStack
@@ -24,8 +30,29 @@ const TopGames = () => {
 									setGameSelected(index + 1 + startingIndex)
 								}}
 							>
-								<Image src={game.background} alt="game image" w={'55px'} h={'75px'} objectFit={'cover'} />
-								<Text display={{ base: 'none', md: 'block' }}>{game.name}</Text>
+								<Image src={game.background} alt="game image" w={'55px'} h={'75px'} objectFit={'cover'} opacity={gameSelected === index + 1 + startingIndex ? '1' : '0.5'} />
+								{/* {gameSelected !== index + 1 + startingIndex && (
+									<Text display={{ base: 'none', md: 'block' }} overflow={'scroll'}>
+										{game.name}
+									</Text>
+								)} */}
+
+								<Stack display={{ base: 'none', md: 'flex' }}>
+									<Text overflow={'scroll'}>{game.name}</Text>
+									{gameSelected === index + 1 + startingIndex && (
+										<Stack>
+											<Button
+												colorScheme="teal"
+												onClick={() => {
+													handleReDirect(game.id)
+												}}
+												size={{ base: 'sm' }}
+											>
+												Visit
+											</Button>
+										</Stack>
+									)}
+								</Stack>
 							</HStack>
 						)
 					})}
@@ -35,21 +62,27 @@ const TopGames = () => {
 	}
 
 	return (
-		<Stack width={{ base: '320px', lg: '1220px' }} bg={'green.800'} spacing={{ base: 2, md: 0 }}>
-			<HStack>
-				<Center className="swiper-button-prev" bg={'green.300'} rounded={'full'} h={'20px'} w={'20px'}>
-					<IoIosArrowBack fontSize={'15px'} />
-				</Center>
-				<Center rounded={'full'} bg={'green.300'} className="swiper-button-next-top-sellers" h={'20px'} w={'20px'}>
-					<IoIosArrowForward fontSize={'15px'} />
-				</Center>
-			</HStack>
-			<Stack direction={{ base: 'column', md: 'row' }} w={'100%'}>
-				<Box w={{ base: '100%', md: '25%' }} bg={'green.500'}>
+		<Stack width={{ base: '100vw', lg: '1220px' }} spacing={{ base: 2, md: 0 }}>
+			<Stack direction={{ base: 'column', md: 'row' }} w={'100%'} spacing={3}>
+				<Box w={{ base: '100%', md: '25%' }} position={'relative'}>
+					<HStack position={'absolute'} top={0} right={0} zIndex={2}>
+						<Center className="swiper-button-prev" rounded={'full'} h={'20px'} w={'20px'} bg={'green.300'}>
+							<IoIosArrowBack fontSize={'15px'} />
+						</Center>
+						<Center rounded={'full'} className="swiper-button-next-top-sellers" h={'20px'} w={'20px'} bg={'green.300'}>
+							<IoIosArrowForward fontSize={'15px'} />
+						</Center>
+					</HStack>
 					<swiper-container slides-per-view="1" space-between="20px" navigation-next-el=".swiper-button-next-top-sellers" navigation-prev-el=".swiper-button-prev">
 						{swiperSlide(topSellers.slice(0, 5), 'Top Sellers', 0)}
 						{swiperSlide(topSellers.slice(5, 10), 'Top Wishlisted', 5)}
 					</swiper-container>
+
+					<Center mt={1} display={{ base: 'block', md: 'none' }}>
+						<Button size={'sm'} width={'100%'}>
+							Visit Current Game Page
+						</Button>
+					</Center>
 				</Box>
 				<Box w={{ base: '100%', md: '75%' }}>
 					<TopGamesDetails gameSelected={gameSelected} />

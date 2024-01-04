@@ -10,7 +10,7 @@ type Props = {
 	gameSelected: number
 }
 const TopGamesDetails = ({ gameSelected }: Props) => {
-	const height = useBreakpointValue({ base: '200', md: '455' })
+	const height = useBreakpointValue({ base: '200', md: '440', lg: '455' })
 	const [videoId, setVideoId] = useState<string>(topSellers[gameSelected - 1].youtubeId!)
 	const [opts, setOpts] = useState<YouTubeProps['opts']>({
 		height: height,
@@ -40,7 +40,7 @@ const TopGamesDetails = ({ gameSelected }: Props) => {
 	}, [height])
 
 	return (
-		<Box height={'100%'} width={'100%'} bg={'green.400'} position={'relative'}>
+		<Box height={'100%'} width={'100%'} position={'relative'}>
 			<YouTube key={`${videoId}-${height}`} videoId={videoId} opts={opts} />
 		</Box>
 	)

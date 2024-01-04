@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { Box, Center, HStack, Image, Stack, Tag, Text } from '@chakra-ui/react'
+import { Box, Center, HStack, Image, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
 import { holidaySpecialMedia } from './BannerPromoMedia'
 import WishListButton from '../../utils/WishListButton'
 import { useNavigate } from 'react-router-dom'
 import CartButton from '../../utils/CartButton'
 
 const HolidaySpotlight = () => {
+	const slideViews = useBreakpointValue({ base: 1.5, md: 3.5, lg: 4.5 })
+	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
 
 	const handleGameReDirect = (id: number) => {
 		nav(`/game/${id}`, { state: { id } })
 	}
 
+	useEffect(() => {
+		setlidesPerView(slideViews)
+	}, [slideViews])
+
 	return (
 		<Stack>
-			<Box w={'1080px'} boxSizing={'border-box'} overflow={'hidden'}>
+			<Box w={{ base: '100vw', lg: '1200px' }} pl={{ base: 2 }}>
 				<HStack justifyContent={'space-between'} mb={'4'}>
 					<Text fontSize={'lg'} fontStyle={'inherit'}>
 						Holiday Sale Spotlight
@@ -30,15 +36,16 @@ const HolidaySpotlight = () => {
 					</HStack>
 				</HStack>
 
-				<swiper-container slides-per-view="4" slides-per-group="4" space-between="20px" navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
+				<swiper-container slides-per-view={slideViews} navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
 					{holidaySpecialMedia.map((game) => {
 						return (
 							<React.Fragment key={game.id}>
 								<swiper-slide>
-									<Stack width={'230px'}>
+									<Stack width={{ base: '173px', lg: '230px' }}>
 										<Image
 											src={game.background_image}
-											height={'300px'}
+											height={{ base: '230px', lg: '300px' }}
+											width={{ base: '173px', lg: 'auto' }}
 											objectFit={'cover'}
 											rounded={'md'}
 											opacity={'.8'}
