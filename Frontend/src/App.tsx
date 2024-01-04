@@ -2,7 +2,7 @@ import { Box, Center, Grid, GridItem, Image, Show, Text } from '@chakra-ui/react
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import GamePage from './components/GamePageCopy/GamePage'
+import GamePage from './components/GamePage copy/GamePage'
 import SideBar from './components/SideBar/SideBar'
 import AuthProvider from './context/authProvider'
 import GamesDisplay from './components/GamesDisplay/GamesDisplay'
