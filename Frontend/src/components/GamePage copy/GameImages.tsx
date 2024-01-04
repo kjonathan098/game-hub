@@ -1,4 +1,3 @@
-import './GameImages.css'
 import { wrap } from 'popmotion'
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -9,10 +8,11 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 
 interface Props {
 	gameDetails: IGameDetails
-	setSelectedImage: (value: string | undefined) => void
+	setSelectedImage: (value: string) => void
+	selectedImage: string
 }
 
-export const GameImages = ({ gameDetails, setSelectedImage }: Props) => {
+export const GameImages = ({ gameDetails, setSelectedImage, selectedImage }: Props) => {
 	const { galleryArray, error, loading, loadingImages } = useGameScreenShots(gameDetails.id)
 
 	useEffect(() => {
@@ -47,6 +47,7 @@ export const GameImages = ({ gameDetails, setSelectedImage }: Props) => {
 										setSelectedImage(image.src)
 									}}
 									_hover={{ cursor: 'pointer' }}
+									opacity={selectedImage === image.src ? 1 : 0.5}
 								/>
 							</swiper-slide>
 						</React.Fragment>
