@@ -44,18 +44,19 @@ const BannerPromo = () => {
 					return prev
 				}
 			})
-		}, 70) // This will fill the bar in 5 seconds
+		}, 70) // This will fill the bar in X seconds
 
 		return () => clearInterval(progressInterval)
 	}, [currentGame])
 
 	return (
 		<Stack direction={{ base: 'column', lg: 'row' }}>
-			<Center w={{ base: '100%', lg: '75%' }} h={'fit-content'}>
+			<Center w={{ base: '100%', lg: '75%' }}>
 				{bannerMedia.map((game, index) => {
 					return (
 						<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} onClick={() => handleReDirect(game.id)} height={{ base: 'fit-content', lg: '500px' }}>
 							<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} loading="lazy" />
+
 							<Stack position={'absolute'} bottom={{ base: '50px', md: '100px' }} maxW={'500px'} spacing={'5'} p={4}>
 								<Image src={game.titleLogo} width={'40%'} />
 								<Text fontWeight={'black'} display={{ base: 'none', md: 'block' }}>
@@ -80,9 +81,11 @@ const BannerPromo = () => {
 						return (
 							<Stack key={index} onClick={() => selectGame(index)} position="relative" className="game-item" rounded={'lg'} bg={currentGame === index + 1 ? 'blackAlpha.400' : ''} _hover={{ cursor: 'pointer', bg: 'blackAlpha.300' }} direction={{ base: 'column', lg: 'row' }}>
 								<Image src={game.background} objectFit={'cover'} h={'100%'} w={'100%'} rounded={'lg'} height={'100px'} width={'80px'} />
-								<Text fontSize={'md'} display={{ base: 'none', lg: 'block' }}>
-									{game.name}
-								</Text>
+								<Center>
+									<Text fontSize={'md'} display={{ base: 'none', lg: 'block' }}>
+										{game.name}
+									</Text>
+								</Center>
 								{currentGame === index + 1 && <Box className="progress-bar" style={{ width: `${progress}%` }}></Box>}
 							</Stack>
 						)
