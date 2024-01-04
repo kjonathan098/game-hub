@@ -19,7 +19,7 @@ const HomePage = () => {
 				})}
 			</HStack>
 			<BannerPromo />
-			<HolidaySpotlight />
+			{/* <HolidaySpotlight /> */}
 			<TopGames />
 		</Stack>
 	)
