@@ -74,7 +74,6 @@ const AuthProvider = ({ children }: IProps) => {
 		if (!user.cartList.length) return setLoadingUser(false)
 
 		const res = await fetchList(user.cartList)
-		console.log(res, 'res')
 		if (!res) {
 			setLoadingUser(false)
 			return console.log('eroror')
