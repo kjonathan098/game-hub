@@ -5,8 +5,7 @@ import useData from './useDataFetch'
 interface GalleryValues {
 	src: string
 	sizes?: string | string[] | undefined
-	width: number
-	height: number
+
 	alt?: string | undefined
 	key?: string | undefined
 }
@@ -26,7 +25,7 @@ function useGameScreenShots(id: number) {
 
 		const gallArr: GalleryValues[] = []
 		data.map((item) => {
-			const test: GalleryValues = { src: item.image, width: Math.floor(Math.random() * 2) + 1, height: Math.floor(Math.random() * 1) + 1 }
+			const test: GalleryValues = { src: item.image }
 			gallArr.push(test)
 		})
 		setGalleryArray([...gallArr])
