@@ -31,7 +31,12 @@ import fortNightLogo from '../../assets/TopSeller/logos/fortnight.webp'
 import rocketLogo from '../../assets/TopSeller/logos/rocketLeagueLogo.png'
 import saintRowLogo from '../../assets/TopSeller/logos/saintRowlogo.avif'
 import valorantLogo from '../../assets/TopSeller/logos/valorantLogo.avif'
-import spidermanMoralesLogo from '../../assets/TopSeller/logos/marvelLogo.webp'
+import spidermanMoralesLogo from '../../assets/TopSeller/logos/spidermanLogo.avif'
+import motorFest from '../../assets/TopRated/motorFest.avif'
+import horizonChase from '../../assets/TopRated/horizonChase.avif'
+import tetris from '../../assets/TopRated/tetris.avif'
+import theWolfAmongUs from '../../assets/TopRated/theWolfAmongUs.avif'
+import tyranny from '../../assets/TopRated/tyranny.avif'
 
 export interface BannerMedia extends IGame {
 	titleLogo: string
@@ -332,6 +337,281 @@ export const topSellers: BannerMedia[] = [
 			},
 		],
 		youtubeId: 'NTunTURbyUU',
+	},
+	{
+		name: 'The Wolf Among Us',
+		titleLogo: fortNightLogo,
+		background: theWolfAmongUs,
+		id: 1682,
+		description: `Create, play, and battle with friends for free in Fortnite. Be the last player standing in Battle Royale and Zero Build, experience a concert or live event, or discover over a million creator made games`,
+		background_image: 'https://media.rawg.io/media/games/be0/be084b850302abe81675bc4ffc08a0d0.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 4,
+					name: 'iOS',
+					slug: 'ios',
+				},
+			},
+			{
+				platform: {
+					id: 8,
+					name: 'Android',
+					slug: 'android',
+				},
+			},
+			{
+				platform: {
+					id: 5,
+					name: 'Apple Macintosh',
+					slug: 'mac',
+				},
+			},
+		],
+
+		youtubeId: '7a_St9DTuO0',
+	},
+	{
+		name: 'Horizon Chase 2',
+		titleLogo: rocketLogo,
+		background: horizonChase,
+		id: 966587,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/screenshots/8c9/8c91cf47ef100df4cb3e02f217060ead.jpg',
+		price: 30,
+		metacritic: 3.37,
+		ratings: [
+			{
+				id: 4,
+				title: 'recommended',
+				count: 1515,
+				percent: 54.75,
+			},
+			{
+				id: 5,
+				title: 'exceptional',
+				count: 690,
+				percent: 24.94,
+			},
+			{
+				id: 3,
+				title: 'meh',
+				count: 419,
+				percent: 15.14,
+			},
+			{
+				id: 1,
+				title: 'skip',
+				count: 143,
+				percent: 5.17,
+			},
+		],
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 4,
+					name: 'iOS',
+					slug: 'ios',
+				},
+			},
+			{
+				platform: {
+					id: 7,
+					name: 'Nintendo',
+					slug: 'nintendo',
+				},
+			},
+		],
+
+		youtubeId: 'BB6KkyjDgkI',
+	},
+	{
+		name: 'Tetris Effect: Connected',
+		titleLogo: saintRowLogo,
+		background: tetris,
+		id: 471027,
+		description: `Welcome to Santo Ileso, a vibrant fictional city in the American Southwest. In a world rife with crime, a group of young friends embark on their own criminal venture, as they rise to the top in their bid to become Self Made.`,
+		background_image: 'https://media.rawg.io/media/games/377/3770f2c7020bcb6cc2072f073f27fb4c.jpg',
+		price: 30,
+		metacritic: 3.37,
+		ratings: [
+			{
+				id: 4,
+				title: 'recommended',
+				count: 1103,
+				percent: 55.99,
+			},
+			{
+				id: 5,
+				title: 'exceptional',
+				count: 473,
+				percent: 24.01,
+			},
+			{
+				id: 3,
+				title: 'meh',
+				count: 303,
+				percent: 15.38,
+			},
+			{
+				id: 1,
+				title: 'skip',
+				count: 91,
+				percent: 4.62,
+			},
+		],
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+			{
+				platform: {
+					id: 7,
+					name: 'Nintendo',
+					slug: 'nintendo',
+				},
+			},
+		],
+
+		youtubeId: 'DVN1fBewyL8',
+	},
+	{
+		name: 'Tyranny - Gold Edition',
+		titleLogo: valorantLogo,
+		background: tyranny,
+		id: 542576,
+		description: `VALORANT is a character-based 5v5 tactical shooter set on the global stage. Outwit, outplay, and outshine your competition with tactical abilities, precise gunplay, and adaptive teamwork.`,
+		background_image: 'https://media.rawg.io/media/screenshots/1d3/1d352dfc1b56774d01768dd28395a226.jpg',
+		price: 30,
+		metacritic: 3.37,
+		ratings: [
+			{
+				id: 4,
+				title: 'recommended',
+				count: 204,
+				percent: 47.33,
+			},
+			{
+				id: 3,
+				title: 'meh',
+				count: 126,
+				percent: 29.23,
+			},
+			{
+				id: 5,
+				title: 'exceptional',
+				count: 53,
+				percent: 12.3,
+			},
+			{
+				id: 1,
+				title: 'skip',
+				count: 48,
+				percent: 11.14,
+			},
+		],
+
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 5,
+					name: 'Apple Macintosh',
+					slug: 'mac',
+				},
+			},
+		],
+
+		youtubeId: 'pM-o8QTVynw',
+	},
+	{
+		name: 'The Crew: Motorfest',
+		titleLogo: spidermanMoralesLogo,
+		background: motorFest,
+		id: 917742,
+		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
+		background_image: 'https://media.rawg.io/media/games/01c/01c5ea9e52ba297b28f11938e5005758.jpg',
+		price: 30,
+		metacritic: 3.37,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+		],
+
+		youtubeId: 'QuvaE7VhhjY',
 	},
 ]
 

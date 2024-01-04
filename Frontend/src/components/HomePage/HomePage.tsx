@@ -9,7 +9,7 @@ import TopGames from './TopGames'
 const HomePage = () => {
 	return (
 		<Stack spacing={'50'}>
-			{/* <HStack mt={'30'} justifyContent={'space-around'}>
+			<HStack mt={'30'} justifyContent={'space-around'}>
 				{[salePromo, rewardsPromo, featurePromo].map((img) => {
 					return (
 						<Box>
@@ -17,10 +17,10 @@ const HomePage = () => {
 						</Box>
 					)
 				})}
-			</HStack> */}
+			</HStack>
 			<BannerPromo />
-			{/* <HolidaySpotlight />
-			<TopGames /> */}
+			<HolidaySpotlight />
+			<TopGames />
 		</Stack>
 	)
 }

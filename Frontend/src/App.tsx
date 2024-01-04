@@ -27,7 +27,7 @@ function App() {
 									<SideBar />
 								</GridItem>
 							</Show>
-							<GridItem area="main" pl={'5'}>
+							<GridItem area="main" pl={{ base: '', lg: '5' }}>
 								<Routes>
 									<Route path="/" element={<HomePage />} />
 									<Route path="/games" element={<GamesDisplay />} />
