@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack, Text } from '@chakra-ui/react'
+import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack, Tag, Text } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
 import { CSSProperties, useContext, useEffect, useState } from 'react'
 import GameNumbersDetails from './GameNumbersDetails'
@@ -11,6 +11,9 @@ import { IGamesQuery } from '../../interfaces/games.interface'
 import { GameImages } from './GameImages'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import GameMainImage from './GameImages/GameImagesIndex'
+import WishListButton from '../../utils/WishListButton'
+import CartButton from '../../utils/CartButton'
+import GamePageAside from './GamePageAside/GamePageAside'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -28,20 +31,16 @@ const GamePage = () => {
 	}, [id, gameDetails])
 
 	if (error) return <>error...</>
-	if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'100%'} h={'100vh'} />
+	if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'1200px'} h={'100vh'} />
 
 	return (
 		<Grid templateColumns="2fr 1fr" gap={2} w={'1200px'}>
-			<GridItem h="10" bg="blue.500">
+			<GridItem minW={'900px'}>
 				<GameMainImage gameDetails={gameDetails} />
 			</GridItem>
 
-			<GridItem h="10" bg="blackAlpha.500">
-				<Stack>
-					<Text fontSize={'3xl'} fontWeight={'extrabold'}>
-						{gameDetails.name}
-					</Text>
-				</Stack>
+			<GridItem bg="blackAlpha.400" p={1}>
+				<GamePageAside gameDetails={gameDetails} />
 			</GridItem>
 		</Grid>
 	)

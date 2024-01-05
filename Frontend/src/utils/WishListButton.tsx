@@ -35,7 +35,7 @@ const WishListButton = ({ game, size }: Params) => {
 
 	return (
 		<Button size={size ? size : 'xs'} variant={itOnWishList ? 'solid' : `outline`} colorScheme="whatsapp" onClick={handleWishList}>
-			{itOnWishList ? `remove from wish list` : `Add to wish list`}
+			{itOnWishList ? `Remove from Wish list` : `Add to Wish List`}
 		</Button>
 	)
 }

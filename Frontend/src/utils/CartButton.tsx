@@ -35,7 +35,7 @@ const CartButton = ({ game, size }: Params) => {
 
 	return (
 		<Button size={size ? size : 'xs'} colorScheme="teal" variant={itsOnCart ? 'solid' : `outline`} onClick={handleCartList}>
-			{itsOnCart ? `remove from cart ` : `Add to cart `}
+			{itsOnCart ? `Remove from Cart ` : `Add to Cart `}
 		</Button>
 	)
 }
