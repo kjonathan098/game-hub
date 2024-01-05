@@ -34,15 +34,23 @@ const GamePage = () => {
 	if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'1200px'} h={'100vh'} />
 
 	return (
-		<Grid templateColumns="2fr 1fr" gap={2} w={'1200px'}>
-			<GridItem minW={'900px'}>
-				<GameMainImage gameDetails={gameDetails} />
-			</GridItem>
+		<>
+			<Grid templateColumns="2fr 1fr" gap={2} w={'1200px'}>
+				<GridItem minW={'900px'}>
+					<Stack spacing={4}>
+						<GameMainImage gameDetails={gameDetails} />
+						<GameSummary gameDetails={gameDetails} />
+					</Stack>
+				</GridItem>
 
-			<GridItem bg="blackAlpha.400" p={1}>
-				<GamePageAside gameDetails={gameDetails} />
-			</GridItem>
-		</Grid>
+				<GridItem bg="blackAlpha.400" p={2} height={'fit-content'}>
+					<GamePageAside gameDetails={gameDetails} />
+				</GridItem>
+			</Grid>
+			<Box bg={'green.300'} width={'100%'}>
+				Hello
+			</Box>
+		</>
 	)
 }
 
