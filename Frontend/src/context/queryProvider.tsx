@@ -53,6 +53,8 @@ const QueryProvider: React.FC<IProps> = ({ children }) => {
 	}
 
 	const getSimilarGames = (endPoint: string) => {
+		console.log(endPoint)
+
 		setGamesQuery({ ...gamesQuery, endPoint, page: null })
 	}
 
