@@ -50,14 +50,14 @@ const GamePage = () => {
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			{/* <Box width={{ base: '100vw', lg: '1200px' }} bg={'red.300'} h={'100px'}>
+			<Box width={{ base: '100vw', lg: '1200px' }} h={'100px'}>
 				<GameRatingsPercentages ratings={gameDetails.ratings} />
 				<GameReviews gameId={gameDetails.id} />
 				{
 					// ISSUE I was pulling genre from game tags but 1 - theyre not the same 2- some games dont have tags
 				}
-				<SimilarGames genre={gameDetails.tags[0]?.name} />
-			</Box> */}
+				{/* <SimilarGames genre={gameDetails.tags[0]?.name} /> */}
+			</Box>
 		</>
 	)
 }
