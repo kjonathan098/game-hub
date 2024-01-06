@@ -16,7 +16,7 @@ const useGameDetails = (id: string) => {
 		apiClient
 			.get<IGameDetails>(`/games/${id}`)
 			.then((res) => {
-				setData({ ...res.data })
+				setData({ ...res.data, price: 30 })
 			})
 			.catch((err) => {
 				if (err instanceof CanceledError) return

@@ -10,29 +10,30 @@ const GameReviews = ({ gameId }: { gameId: number }) => {
 
 	if (loadingReviews) return <>Loading...</>
 
+	if (!gameRevies.length) return
+
+	// ISSUE :  Need to fix default for when username || user.full_name doesnt exist
 	return (
-		<>
-			<Box width={'100%'}>
-				<Stack>
-					<HStack maxW={'1200px'} overflow={'scroll'} minH={'200px'} alignItems="stretch">
-						{gameRevies?.slice(0, 10).map((review, index) => {
-							return (
-								<Stack key={index} p={2} border={'1px'} rounded={'md'} borderColor={'gray.600'} bg="blackAlpha.700">
-									<HStack>
-										<Image src={avatarGamer} width={'30px'} height={'30px'} rounded={'full'} />
-										<Text>{review.user.full_name?.length ? review.user.full_name : review.user.username}</Text>
-									</HStack>
-									<Rating initialValue={review.rating} SVGstyle={{ display: 'inline-block' }} readonly size={20} allowFraction fillColor={'#68D391'} />
-									<Text fontSize={'sm'} color={'gray.500'} width={'300px'}>
-										{getFirstThreeSentences(review.text)}
-									</Text>
-								</Stack>
-							)
-						})}
-					</HStack>
-				</Stack>
-			</Box>
-		</>
+		<Box width={'100%'}>
+			<Stack>
+				<HStack maxW={'1200px'} overflow={'scroll'} minH={'200px'} alignItems="stretch">
+					{gameRevies?.slice(0, 10).map((review, index) => {
+						return (
+							<Stack key={index} p={2} border={'1px'} rounded={'md'} borderColor={'gray.600'} bg="blackAlpha.700">
+								<HStack>
+									<Image src={avatarGamer} width={'30px'} height={'30px'} rounded={'full'} />
+									<Text>{review?.user?.username ? review.user.full_name : 'Gamer'}</Text>
+								</HStack>
+								<Rating initialValue={review.rating} SVGstyle={{ display: 'inline-block' }} readonly size={20} allowFraction fillColor={'#68D391'} />
+								<Text fontSize={'sm'} color={'gray.500'} width={'300px'}>
+									{getFirstThreeSentences(review.text)}
+								</Text>
+							</Stack>
+						)
+					})}
+				</HStack>
+			</Stack>
+		</Box>
 	)
 }
 

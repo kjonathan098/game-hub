@@ -18,7 +18,7 @@ const GamePageAside = ({ gameDetails }: Props) => {
 					</Text>
 				</Center>
 				<Tag colorScheme="teal" w={'fit-content'} fontSize={'2xl'}>
-					$30
+					${gameDetails.price}
 				</Tag>
 				<WishListButton size="lg" game={gameDetails} />
 				<CartButton size="lg" game={gameDetails} />
