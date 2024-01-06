@@ -50,7 +50,7 @@ const GamePage = () => {
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			<Box width={{ base: '100vw', lg: '1200px' }} h={'100px'}>
+			<Box width={{ base: '100vw', lg: '1200px' }} m={4}>
 				<GameRatingsPercentages ratings={gameDetails.ratings} />
 				<GameReviews gameId={gameDetails.id} />
 				{
