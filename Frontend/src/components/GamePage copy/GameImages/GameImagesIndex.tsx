@@ -19,14 +19,14 @@ const GameMainImage = ({ gameDetails }: Props) => {
 			</Center>
 
 			<Center mt={4}>
-				<HStack width={'500px'}>
-					<Center className="swiper-button-prev" bg={'green.300'} rounded={'full'} h={'25px'} w={'25px'}>
+				<HStack width={{ base: '100%', lg: '500px' }} justifyContent={'center'}>
+					<Center className="swiper-button-prev" bg={'green.300'} rounded={'full'} h={'25px'} w={'25px'} display={{ base: 'none', md: 'flex' }}>
 						<IoIosArrowBack />
 					</Center>{' '}
-					<Box width={'400px'}>
+					<Box width={{ base: '100%', lg: '400px' }}>
 						<GameImages gameDetails={gameDetails} setSelectedImage={setSelectedImage} selectedImage={selectedImage} />
 					</Box>
-					<Center rounded={'full'} bg={'green.300'} className="swiper-button-next" w={'25px'} height={'25px'}>
+					<Center rounded={'full'} bg={'green.300'} className="swiper-button-next" w={'25px'} height={'25px'} display={{ base: 'none', md: 'flex' }}>
 						<IoIosArrowForward />
 					</Center>
 				</HStack>
