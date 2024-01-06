@@ -1,7 +1,7 @@
 import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack } from '@chakra-ui/react'
 import { CSSProperties, useEffect, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { GameImages } from '../GameImages'
+import { GameImages } from './GameImagesSwiper'
 import { IGameDetails } from '../../../interfaces/games.interface'
 
 interface Props {
@@ -12,7 +12,7 @@ const GameMainImage = ({ gameDetails }: Props) => {
 	const [selectedImage, setSelectedImage] = useState<string>(gameDetails.background_image)
 
 	return (
-		<>
+		<Box as="span" rounded={'md'}>
 			<Center position="relative">
 				<Box style={photoBgStyle(selectedImage) as CSSProperties} />
 				<Image src={selectedImage} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} loading="lazy" />
@@ -31,7 +31,7 @@ const GameMainImage = ({ gameDetails }: Props) => {
 					</Center>
 				</HStack>
 			</Center>
-		</>
+		</Box>
 	)
 }
 
@@ -46,7 +46,7 @@ function photoBgStyle(selectedImage?: string) {
 		left: 0,
 		backgroundImage: `url(${selectedImage})`,
 		backgroundSize: 'cover',
-		filter: 'blur(100px)',
+		filter: 'blur(25px)',
 		zIndex: -1, // Place the overlay behind other content
 		width: 'auto',
 		height: '93%',

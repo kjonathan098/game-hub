@@ -1,8 +1,8 @@
 import { wrap } from 'popmotion'
 import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { IGameDetails } from '../../interfaces/games.interface'
-import useGameScreenShots from '../../hooks/useGameScreenShots'
+import { IGameDetails } from '../../../interfaces/games.interface'
+import useGameScreenShots from '../../../hooks/useGameScreenShots'
 import { Center, HStack, Image, Skeleton } from '@chakra-ui/react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 

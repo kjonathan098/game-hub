@@ -18,7 +18,7 @@ const GameSummary = ({ gameDetails }: Props) => {
 	}
 
 	return (
-		<Box p={4} background={'blackAlpha.300'}>
+		<Box p={4}>
 			<Collapse startingHeight={100} in={show}>
 				{/* <Text fontSize={'lg'} fontWeight={'bold'}>
 					{ReactHtmlParser(getEnglishText(gameDetails?.description))}
