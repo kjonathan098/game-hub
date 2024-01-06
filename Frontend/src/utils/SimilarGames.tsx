@@ -3,15 +3,18 @@ import useGames from '../hooks/useGames'
 import useData from '../hooks/useDataFetch'
 import { queryContext } from '../context/queryProvider'
 import { IGame, IGenre } from '../interfaces/games.interface'
-import HolidaySpotlight from './GamesSwiper'
 import { Tag } from '@chakra-ui/react'
-const SimilarGames = ({ genre }: { genre: string }) => {
-	const { data: similarGames, loading } = useData<IGame>(`/games?genre=${genre}`)
+import GamesSwiper from './GamesSwiper'
 
-	useEffect(() => {}, [similarGames])
+// ISSUE I was pulling genre from game tags but 1 - theyre not the same 2- some games dont have tags
+const SimilarGames = ({ genre }: { genre?: string | undefined }) => {
+	// const { data: similarGames, loading } = useData<IGame>(`/games?genre=${genre}`)
+	const { data: similarGames, loading } = useData<IGame>(`/games?genre=4`)
+
+	console.log(genre)
 
 	if (loading) return <>Loading...</>
-	return <HolidaySpotlight title={'Similar Games'} games={similarGames} />
+	return <GamesSwiper title={'People Also Viewed'} games={similarGames} />
 }
 
 export default SimilarGames

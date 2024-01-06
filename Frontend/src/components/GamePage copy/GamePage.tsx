@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack, Tag, Text } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
-import { CSSProperties, useContext, useEffect, useState } from 'react'
+import React, { CSSProperties, useContext, useEffect, useState } from 'react'
 import GameSummary from './GameSummary'
 import GameBuyingOptions from './GamePageAside/GameBuyingOptions'
 import GameTags from './GamePageAside/GameTags'
@@ -15,6 +15,7 @@ import GamePageAside from './GamePageAside/GamePageAside'
 import useData from '../../hooks/useDataFetch'
 import GameReviews from './Reviews/Reviews.index'
 import SimilarGames from '../../utils/SimilarGames'
+import GameRatingsPercentages from './GameRatingsPercentages/GameRatingsPercentages'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -37,8 +38,8 @@ const GamePage = () => {
 
 	return (
 		<>
-			<Grid templateColumns="2fr 1fr" gap={2} w={'1200px'}>
-				<GridItem minW={'900px'}>
+			<Grid templateColumns={{ base: '1fr,', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
+				<GridItem minW={{ lg: '900px' }}>
 					<Stack spacing={4}>
 						<GameMainImage gameDetails={gameDetails} />
 						<GameSummary gameDetails={gameDetails} />
@@ -49,9 +50,13 @@ const GamePage = () => {
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			<Box width={'100%'}>
+			<Box width={{ base: '100vw', lg: '1200px' }}>
+				<GameRatingsPercentages ratings={gameDetails.ratings} />
 				<GameReviews gameId={gameDetails.id} />
-				<SimilarGames genre={gameDetails.tags[0].name} />
+				{
+					// ISSUE I was pulling genre from game tags but 1 - theyre not the same 2- some games dont have tags
+				}
+				<SimilarGames genre={gameDetails.tags[0]?.name} />
 			</Box>
 		</>
 	)

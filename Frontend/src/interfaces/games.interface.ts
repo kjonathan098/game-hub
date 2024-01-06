@@ -44,6 +44,12 @@ export interface IGameDetails extends IGame {
 	esrb_rating: { name: string }
 	stores: { id: number; store: { name: string; domain: string; image_background: string } }[]
 	tags: { name: string }[]
+	ratings: IGameRatings[]
+}
+
+export interface IGameRatings {
+	title: string
+	percent: number
 }
 
 export interface IGameScreenshots {

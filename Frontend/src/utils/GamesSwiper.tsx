@@ -13,7 +13,7 @@ interface Props {
 	children?: React.ReactNode
 }
 
-const HolidaySpotlight = ({ title, games, children }: Props) => {
+const GamesSwiper = ({ title, games, children }: Props) => {
 	const slideViews = useBreakpointValue({ base: 1.5, md: 3.5, lg: 4.5 })
 	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
@@ -82,4 +82,4 @@ const HolidaySpotlight = ({ title, games, children }: Props) => {
 	)
 }
 
-export default HolidaySpotlight
+export default GamesSwiper
