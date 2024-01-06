@@ -10,7 +10,7 @@ interface Props {
 const GameRatingsPercentages = ({ ratings }: Props) => {
 	const sortedRatings = sortRatings(ratings)
 	return (
-		<Box mb={'4'} w={'100%'} bg={'green.500'}>
+		<Stack mb={'4'} w={'100%'}>
 			<Stack w={'100%'} spacing={0} direction={'row'} h={'50px'}>
 				{sortedRatings?.map((rating, index) => {
 					return (
@@ -18,7 +18,7 @@ const GameRatingsPercentages = ({ ratings }: Props) => {
 							<Box w={`${rating.percent}%`} h={'100%'} bg={rating.color} borderLeftRadius={index === 0 ? 'full' : ''} borderRightRadius={index === 3 ? 'full' : ''} position={'relative'}>
 								<Center h={'100%'} overflow={'hidden'}>
 									{/* <Text zIndex={2}>{rating.title.toUpperCase()}</Text> */}
-									<Text fontSize={'30px'} zIndex={'1'}>
+									<Text fontSize={{ bae: '15px', md: '30px' }} zIndex={'1'}>
 										{rating.emoji}
 									</Text>
 								</Center>
@@ -27,19 +27,19 @@ const GameRatingsPercentages = ({ ratings }: Props) => {
 					)
 				})}
 			</Stack>
-			<HStack spacing={4}>
+			<HStack spacing={{ base: 2, md: 4 }}>
 				<Center w={'100%'}>
 					{sortedRatings.map((rating) => {
 						return (
-							<HStack mr={3}>
+							<HStack mr={{ base: 1, md: 3 }}>
 								<Box bg={rating.color} w={'15px'} h={'15px'} border={'1px'} rounded={'full'} />
-								<Text>{rating.title}</Text>
+								<Text fontSize={{ base: '10px', md: '15px' }}>{rating.title}</Text>
 							</HStack>
 						)
 					})}
 				</Center>
 			</HStack>
-		</Box>
+		</Stack>
 	)
 }
 
