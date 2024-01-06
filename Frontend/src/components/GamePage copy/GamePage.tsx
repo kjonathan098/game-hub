@@ -2,22 +2,23 @@ import { useParams } from 'react-router-dom'
 import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack, Tag, Text } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
 import { CSSProperties, useContext, useEffect, useState } from 'react'
-import GameNumbersDetails from './GameNumbersDetails'
 import GameSummary from './GameSummary'
-import GameBuyingOptions from './GameBuyingOptions'
-import GameTags from './GameTags'
+import GameBuyingOptions from './GamePageAside/GameBuyingOptions'
+import GameTags from './GamePageAside/GameTags'
 import { queryContext } from '../../context/queryProvider'
-import { IGamesQuery } from '../../interfaces/games.interface'
-import { GameImages } from './GameImages'
+import { IGamesQuery, IgameReviews } from '../../interfaces/games.interface'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import GameMainImage from './GameImages/GameImagesIndex'
 import WishListButton from '../../utils/WishListButton'
 import CartButton from '../../utils/CartButton'
 import GamePageAside from './GamePageAside/GamePageAside'
+import useData from '../../hooks/useDataFetch'
+import GameReviews from './Reviews/Reviews.index'
 
 const GamePage = () => {
 	const { id } = useParams()
 	const { data: gameDetails, loading, error } = useGameDetails(id!)
+	// const { data, loading: loadingReviews } = useData<IgameReviews>('/games/906547/reviews?key=4f125506b6604b8a83e4deeb10165775')
 	const { setGamesQuery } = useContext(queryContext)
 
 	useEffect(() => {
@@ -43,12 +44,12 @@ const GamePage = () => {
 					</Stack>
 				</GridItem>
 
-				<GridItem bg="blackAlpha.400" p={2} height={'fit-content'}>
+				<GridItem p={2} height={'fit-content'}>
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			<Box bg={'green.300'} width={'100%'}>
-				Hello
+			<Box width={'100%'}>
+				<GameReviews gameId={gameDetails.id} />
 			</Box>
 		</>
 	)
@@ -56,58 +57,10 @@ const GamePage = () => {
 
 export default GamePage
 
-function photoBgStyle(selectedImage?: string) {
-	return {
-		position: 'absolute',
-		top: 0,
-		right: 0,
-		bottom: 0,
-		left: 0,
-		backgroundImage: `url(${selectedImage})`,
-		backgroundSize: 'cover',
-		filter: 'blur(100px)',
-		zIndex: -1, // Place the overlay behind other content
-		width: 'auto',
-		height: '93%',
+function getFirstThreeSentences(text: string): string {
+	const sentences = text.match(/(.*?[.!?])\s/g)
+	if (!sentences) {
+		return text
 	}
+	return sentences.slice(0, 3).join(' ').trim()
 }
-
-// <Box p={2} display={'flex'} justifyContent={'center'}>
-// 	<Stack w={'100%'}>
-// 		<Center position="relative">
-// 			<Box
-// 				style={{
-// 					position: 'absolute',
-// 					top: 0,
-// 					right: 0,
-// 					bottom: 0,
-// 					left: 0,
-// 					backgroundImage: `url(${data?.background_image})`,
-// 					backgroundSize: 'cover',
-// 					filter: 'blur(100px)',
-// 					zIndex: -1, // Place the overlay behind other content
-// 					width: 'auto',
-// 					height: '93%',
-// 				}}
-// 			></Box>
-
-// 			<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} loading="lazy" />
-// 		</Center>
-
-// 		<GameNumbersDetails data={data!} />
-// 		<Stack direction={{ base: 'column', lg: 'row' }} display={'flex'} mt={4}>
-// 			<Box width={{ base: '1fr', md: '45%' }}>
-// 				<GameSummary data={data!} />
-// 			</Box>
-// 			<Stack h={'fit-content'} justifyContent={'center'} flex={1} gap={9}>
-// 				<Box display={'flex'} overflow={'hidden'} height={'fit-content'}>
-// 					<GameImages gameDetails={data!} />
-// 				</Box>
-// 				{data.website.length && <GameBuyingOptions data={data!} />}
-// 				<GameTags data={data!} />
-// 			</Stack>
-// 		</Stack>
-
-// 		<GamePageTabs game={data} />
-// 	</Stack>
-// </Box>

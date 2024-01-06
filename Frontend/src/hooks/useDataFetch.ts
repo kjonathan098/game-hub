@@ -9,6 +9,11 @@ interface FetchResponse<T> {
 // T will get replaced by the type youre passing (interface ex {name: string, age: number})
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
 	// saying that data should be an array of T ([{name: string, age: number}])
+	// export type IgameReviews = {
+	// 	count: number
+	// 	next: string
+	// 	results: IGameReviewResults[]
+	// }
 	const [data, setData] = useState<T[]>([])
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
@@ -31,9 +36,6 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
 					setLoading(false)
 				})
 				.catch((err) => {
-					console.warn(error, 'error in fetch!!')
-					console.log(err.message, endpoint)
-
 					if (err instanceof CanceledError) return
 					setError(err.message)
 					setLoading(false)

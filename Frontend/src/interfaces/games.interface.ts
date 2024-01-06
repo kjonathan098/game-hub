@@ -82,4 +82,22 @@ export type SearchQuery = {
 	id: number
 }
 
+export type IgameReviews = {
+	// count: number
+	// // next: string
+	results: IGameReviewResults
+}
+
+export type IGameReviewResults = {
+	id: number
+	text: string
+	rating: number
+	user: {
+		id: number
+		username: string
+		avatar: string | null
+		full_name: string
+	}
+}
+
 export type TUserField = 'wishList' | 'cartList'

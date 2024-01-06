@@ -1,5 +1,5 @@
 import { Box, Button, HStack, Image, Stack, Text } from '@chakra-ui/react'
-import { IGameDetails } from '../../interfaces/games.interface'
+import { IGameDetails } from '../../../interfaces/games.interface'
 
 interface Props {
 	gameDetails: IGameDetails
