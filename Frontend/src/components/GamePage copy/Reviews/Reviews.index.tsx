@@ -19,7 +19,7 @@ const GameReviews = ({ gameId }: { gameId: number }) => {
 							return (
 								<Stack key={index} p={2} border={'1px'} rounded={'md'} borderColor={'gray.600'} bg="blackAlpha.700">
 									<HStack>
-										<Image src={review.user.avatar || avatarGamer} width={'30px'} height={'30px'} rounded={'full'} />
+										<Image src={avatarGamer} width={'30px'} height={'30px'} rounded={'full'} />
 										<Text>{review.user.full_name?.length ? review.user.full_name : review.user.username}</Text>
 									</HStack>
 									<Rating initialValue={review.rating} SVGstyle={{ display: 'inline-block' }} readonly size={20} allowFraction fillColor={'#68D391'} />

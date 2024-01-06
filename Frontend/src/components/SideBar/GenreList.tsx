@@ -12,7 +12,9 @@ const GenreList = () => {
 
 	const handleToggle = () => setShow(!show)
 
-	useEffect(() => {}, [])
+	useEffect(() => {
+		console.log(data[0])
+	}, [])
 
 	if (loading) return <Spinner />
 	if (error) return null

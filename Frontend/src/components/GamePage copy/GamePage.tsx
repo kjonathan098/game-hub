@@ -14,6 +14,7 @@ import CartButton from '../../utils/CartButton'
 import GamePageAside from './GamePageAside/GamePageAside'
 import useData from '../../hooks/useDataFetch'
 import GameReviews from './Reviews/Reviews.index'
+import SimilarGames from '../../utils/SimilarGames'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -50,17 +51,10 @@ const GamePage = () => {
 			</Grid>
 			<Box width={'100%'}>
 				<GameReviews gameId={gameDetails.id} />
+				<SimilarGames genre={gameDetails.tags[0].name} />
 			</Box>
 		</>
 	)
 }
 
 export default GamePage
-
-function getFirstThreeSentences(text: string): string {
-	const sentences = text.match(/(.*?[.!?])\s/g)
-	if (!sentences) {
-		return text
-	}
-	return sentences.slice(0, 3).join(' ').trim()
-}
