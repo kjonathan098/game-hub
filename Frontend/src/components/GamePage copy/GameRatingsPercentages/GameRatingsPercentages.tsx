@@ -10,7 +10,7 @@ interface Props {
 const GameRatingsPercentages = ({ ratings }: Props) => {
 	const sortedRatings = sortRatings(ratings)
 	return (
-		<Box mb={'4'}>
+		<Box mb={'4'} w={'100%'} bg={'green.500'}>
 			<Stack w={'100%'} spacing={0} direction={'row'} h={'50px'}>
 				{sortedRatings?.map((rating, index) => {
 					return (
