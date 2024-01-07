@@ -14,7 +14,9 @@ const useOpenStripe = () => {
 		setLoading(true)
 		const stripeBody = createBodyForStripe(cartList)
 
-		const res = await axios.post('http://localhost:4000/checkout', stripeBody)
+		const url = import.meta.env.VITE_API_URL
+
+		const res = await axios.post(url, stripeBody)
 		const stripe = await loadStripe('pk_test_51OTPRyF7WQZ6UPH8WBvZ6HC6KAwtK7h9sxf42iXjtipmfEH5Zkq9Q6AVWXRPnasGMl5EzqwdJrYGUnSvHZz36NLF00FnK7QeWX')
 		const { id } = res.data
 		if (!stripe) return errorToast('Error loading Stripe')
