@@ -16,6 +16,7 @@ import useData from '../../hooks/useDataFetch'
 import GameReviews from './Reviews/Reviews.index'
 import SimilarGames from '../../utils/SimilarGames'
 import GameRatingsPercentages from './GameRatingsPercentages/GameRatingsPercentages'
+import { GamePageSkeleton } from '../../utils/Skeletons'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -34,11 +35,12 @@ const GamePage = () => {
 	}, [id, gameDetails])
 
 	if (error) return <>error...</>
-	if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'1200px'} h={'100vh'} />
+	// if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'1200px'} h={'100vh'} />
+	if (loading || !gameDetails) return <GamePageSkeleton />
 
 	return (
 		<>
-			{/* <Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
+			<Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
 				<GridItem minW={{ base: '100%', lg: '900px' }}>
 					<Stack spacing={4}>
 						<GameMainImage gameDetails={gameDetails} />
@@ -49,10 +51,10 @@ const GamePage = () => {
 				<GridItem p={2} height={'fit-content'}>
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
-			</Grid> */}
+			</Grid>
 			<Box width={{ base: '100vw', lg: '1200px' }} m={4}>
-				{/* <GameRatingsPercentages ratings={gameDetails.ratings} />
-				<GameReviews gameId={gameDetails.id} /> */}
+				<GameRatingsPercentages ratings={gameDetails.ratings} />
+				<GameReviews gameId={gameDetails.id} />
 
 				<SimilarGames />
 			</Box>

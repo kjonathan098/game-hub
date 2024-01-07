@@ -22,7 +22,7 @@ const SkeletonCard = () => (
 	</Stack>
 )
 
-const GamesSwiper = ({ title, games, children, loading }: Props) => {
+const GamesSwiper = ({ title, games, children }: Props) => {
 	const slideViews = useBreakpointValue({ base: 1.5, md: 3.5, lg: 4.5 })
 	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
@@ -34,22 +34,6 @@ const GamesSwiper = ({ title, games, children, loading }: Props) => {
 	useEffect(() => {
 		setlidesPerView(slideViews)
 	}, [slideViews])
-
-	if (loading) {
-		return (
-			<Stack mt={3}>
-				<Box w={{ base: '100vw', lg: '1200px' }} pl={{ base: 2 }}>
-					<swiper-container slides-per-view={slideViews} navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
-						{Array(5)
-							.fill(0)
-							.map((_, i) => (
-								<SkeletonCard key={i} />
-							))}
-					</swiper-container>
-				</Box>
-			</Stack>
-		)
-	}
 
 	return (
 		<Stack mt={3}>
