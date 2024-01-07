@@ -16,6 +16,7 @@ import useData from '../../hooks/useDataFetch'
 import GameReviews from './Reviews/Reviews.index'
 import SimilarGames from '../../utils/SimilarGames'
 import GameRatingsPercentages from './GameRatingsPercentages/GameRatingsPercentages'
+import { GamePageSkeleton } from '../../utils/Skeletons'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -34,7 +35,8 @@ const GamePage = () => {
 	}, [id, gameDetails])
 
 	if (error) return <>error...</>
-	if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'1200px'} h={'100vh'} />
+	// if (loading || !gameDetails) return <Skeleton isLoaded={!loading} width={'1200px'} h={'100vh'} />
+	if (loading || !gameDetails) return <GamePageSkeleton />
 
 	return (
 		<>
@@ -53,10 +55,8 @@ const GamePage = () => {
 			<Box width={{ base: '100vw', lg: '1200px' }} m={4}>
 				<GameRatingsPercentages ratings={gameDetails.ratings} />
 				<GameReviews gameId={gameDetails.id} />
-				{
-					// ISSUE I was pulling genre from game tags but 1 - theyre not the same 2- some games dont have tags
-				}
-				{/* <SimilarGames genre={gameDetails.tags[0]?.name} /> */}
+
+				<SimilarGames />
 			</Box>
 		</>
 	)
