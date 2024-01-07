@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { Box, Center, HStack, Image, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Center, HStack, Image, Skeleton, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
 import { holidaySpecialMedia } from '../components/HomePage/BannerPromoMedia'
 import WishListButton from './/WishListButton'
 import { useNavigate } from 'react-router-dom'
@@ -11,9 +11,18 @@ interface Props {
 	title: string
 	games: IGame[]
 	children?: React.ReactNode
+	loading?: boolean
 }
 
-const GamesSwiper = ({ title, games, children }: Props) => {
+const SkeletonCard = () => (
+	<Stack width={{ base: '173px', lg: '230px' }} spacing={3}>
+		<Skeleton height={{ base: '230px', lg: '300px' }} width={{ base: '173px', lg: 'auto' }} rounded={'md'} mr={3} />
+		<Skeleton height="20px" width="80%" />
+		<Skeleton height="20px" width="60%" />
+	</Stack>
+)
+
+const GamesSwiper = ({ title, games, children, loading }: Props) => {
 	const slideViews = useBreakpointValue({ base: 1.5, md: 3.5, lg: 4.5 })
 	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
@@ -25,6 +34,22 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 	useEffect(() => {
 		setlidesPerView(slideViews)
 	}, [slideViews])
+
+	if (loading) {
+		return (
+			<Stack mt={3}>
+				<Box w={{ base: '100vw', lg: '1200px' }} pl={{ base: 2 }}>
+					<swiper-container slides-per-view={slideViews} navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
+						{Array(5)
+							.fill(0)
+							.map((_, i) => (
+								<SkeletonCard key={i} />
+							))}
+					</swiper-container>
+				</Box>
+			</Stack>
+		)
+	}
 
 	return (
 		<Stack mt={3}>

@@ -5,16 +5,15 @@ import { queryContext } from '../context/queryProvider'
 import { IGame, IGenre } from '../interfaces/games.interface'
 import { Tag } from '@chakra-ui/react'
 import GamesSwiper from './GamesSwiper'
+import { genreList } from '../data/genres'
 
 // ISSUE I was pulling genre from game tags but 1 - theyre not the same 2- some games dont have tags
-const SimilarGames = ({ genre }: { genre?: string | undefined }) => {
-	// const { data: similarGames, loading } = useData<IGame>(`/games?genre=${genre}`)
-	const { data: similarGames, loading } = useData<IGame>(`/games?genre=4`)
+const SimilarGames = () => {
+	const { data: similarGames, loading } = useData<IGame>(`/games?genres=${genreList[Math.floor(Math.random() * 20)]?.id}`)
 
-	console.log(genre)
+	console.log(genreList[Math.floor(Math.random() * 20)]?.id)
 
-	if (loading) return <>Loading...</>
-	return <GamesSwiper title={'People Also Viewed'} games={similarGames} />
+	return <GamesSwiper title={'People Also Viewed'} games={similarGames} loading={loading} />
 }
 
 export default SimilarGames

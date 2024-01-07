@@ -38,7 +38,7 @@ const GamePage = () => {
 
 	return (
 		<>
-			<Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
+			{/* <Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
 				<GridItem minW={{ base: '100%', lg: '900px' }}>
 					<Stack spacing={4}>
 						<GameMainImage gameDetails={gameDetails} />
@@ -49,14 +49,12 @@ const GamePage = () => {
 				<GridItem p={2} height={'fit-content'}>
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
-			</Grid>
+			</Grid> */}
 			<Box width={{ base: '100vw', lg: '1200px' }} m={4}>
-				<GameRatingsPercentages ratings={gameDetails.ratings} />
-				<GameReviews gameId={gameDetails.id} />
-				{
-					// ISSUE I was pulling genre from game tags but 1 - theyre not the same 2- some games dont have tags
-				}
-				{/* <SimilarGames genre={gameDetails.tags[0]?.name} /> */}
+				{/* <GameRatingsPercentages ratings={gameDetails.ratings} />
+				<GameReviews gameId={gameDetails.id} /> */}
+
+				<SimilarGames />
 			</Box>
 		</>
 	)
