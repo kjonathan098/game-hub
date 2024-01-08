@@ -49,7 +49,7 @@ const GamePage = () => {
 						}}
 					></Box>
 
-					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} loading="lazy" />
+					<Image src={data?.background_image} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} loading="lazy" />
 				</Center>
 
 				<GameNumbersDetails data={data!} />

@@ -15,7 +15,7 @@ const GameMainImage = ({ gameDetails }: Props) => {
 		<Box as="span" rounded={'md'}>
 			<Center position="relative">
 				<Box style={photoBgStyle(selectedImage) as CSSProperties} />
-				<Image src={selectedImage} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} border={'1px'} loading="lazy" />
+				<Image src={selectedImage} alt="gamme banner photo" width="auto" height="90%" rounded={'lg'} loading="lazy" />
 			</Center>
 
 			<Center mt={4}>
