@@ -37,7 +37,7 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 
 	return (
 		<Stack mt={3}>
-			<Box w={{ base: '100vw', lg: '1200px' }} pl={{ base: 2 }}>
+			<Box w={{ base: '100vw', lg: '1200px' }} px={{ base: 2 }}>
 				<HStack justifyContent={'space-between'} mb={'4'}>
 					<Text fontSize={'lg'} fontStyle={'inherit'}>
 						{title}
@@ -57,11 +57,10 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 						return (
 							<React.Fragment key={game.id}>
 								<swiper-slide>
-									<Stack width={{ base: '200px', lg: '230px' }}>
+									<Stack width={{ base: '90%', lg: '230px' }}>
 										<Image
 											src={game.background_image}
 											height={{ base: '230px', lg: '300px' }}
-											width={{ base: '200px', lg: 'auto' }}
 											objectFit={'cover'}
 											rounded={'md'}
 											opacity={'.8'}
@@ -70,10 +69,10 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 												handleGameReDirect(game.id)
 											}}
 										/>
-										<Text fontWeight={'bold'} whiteSpace={'nowrap'} overflow={'hidden'} textOverflow="ellipsis">
+										<Text fontWeight={'bold'} whiteSpace={'nowrap'} overflow={'hidden'} textOverflow="ellipsis" alignSelf={'center'}>
 											{game.name}
 										</Text>
-										<HStack spacing={'5'}>
+										<HStack spacing={'5'} justifyContent={'center'}>
 											{children}
 											{!children && <Tag colorScheme={'teal'}>$30</Tag>}
 										</HStack>
