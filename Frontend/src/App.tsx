@@ -10,6 +10,7 @@ import HomePage from './components/HomePage/HomePage'
 import { register } from 'swiper/element/bundle'
 import { CiHeart } from 'react-icons/ci'
 import { FaLinkedin } from 'react-icons/fa'
+import Footer from './components/Footer/Footer'
 
 register()
 
@@ -37,24 +38,7 @@ function App() {
 						</Grid>
 					</Center>
 
-					<footer>
-						<Box bg={'whiteAlpha.800'} _dark={{ bg: 'blackAlpha.900' }} pt={3}>
-							<Center>
-								<Stack>
-									<HStack>
-										<Text> Made with</Text>
-										<CiHeart />
-										<Text>by Jonathan Kelman</Text>
-									</HStack>
-									<a href="https://www.linkedin.com/in/jonathan-kelman-204ba7103/" target="_blank">
-										<Center>
-											<FaLinkedin fontSize={'30px'} />
-										</Center>
-									</a>
-								</Stack>
-							</Center>
-						</Box>
-					</footer>
+					<Footer />
 				</QueryProvider>
 			</BrowserRouter>
 		</AuthProvider>

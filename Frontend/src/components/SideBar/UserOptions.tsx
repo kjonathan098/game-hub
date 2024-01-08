@@ -4,6 +4,7 @@ import { useContext, useState } from 'react'
 import { CiGift, CiUser } from 'react-icons/ci'
 import { FiShoppingCart } from 'react-icons/fi'
 import { ApiHander } from '../../fireBase/fireBase.config'
+import gamerAvatar from '../../assets/gamerAvatar.jpeg'
 
 import UserGameListDrawer from './UserGameListDrawer'
 
@@ -19,7 +20,7 @@ const UserOptions = () => {
 				Welcome Back!
 			</Text>
 			<HStack>
-				<Image src={user.photoURL} alt={'profile pic'} rounded={'full'} width={'25px'} height={'25px'} />
+				<Image src={user.photoURL || gamerAvatar} alt={'profile pic'} rounded={'full'} width={'25px'} height={'25px'} />
 				<Text width={'100%'} textAlign={'center'}>
 					{user.displayName}
 				</Text>

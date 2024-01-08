@@ -3,12 +3,13 @@ import { IUser, TUserField } from '../interfaces/games.interface'
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { collection, getDocs, where, query, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from 'firebase/auth'
 import { useToast } from '@chakra-ui/react'
 import useToastMessage from '../hooks/useToast'
 
 interface IAPIHandler {
 	googleAuth: () => Promise<void>
+	demoSignIn: () => Promise<boolean>
 	getUser: (id: string) => Promise<IUser | null>
 	addUser: (user: IUser) => Promise<IUser | false>
 	signOut: () => Promise<void>
@@ -45,6 +46,18 @@ export const ApiHander: IAPIHandler = {
 			console.log('error')
 		}
 	},
+
+	demoSignIn: async () => {
+		const auth = getAuth()
+		console.log(import.meta.env.VITE_DEMO_EMAIL)
+		try {
+			const res = await signInWithEmailAndPassword(auth, import.meta.env.VITE_DEMO_EMAIL, import.meta.env.VITE_DEMO_PASSWORD)
+			return true
+		} catch (error) {
+			return false
+		}
+	},
+
 	signOut: async () => {
 		const auth = getAuth()
 		signOut(auth)
