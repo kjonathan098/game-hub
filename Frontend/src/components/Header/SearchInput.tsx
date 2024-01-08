@@ -10,6 +10,7 @@ interface Props {}
 
 const SearchInput = ({}: Props) => {
 	const { setSearchQuery, dataResponse, loading, searchQuery } = useSearch()
+	const [inputValue, setInputValue] = useState('')
 	const [showResults, setShowResults] = useState(false)
 
 	const ref = useRef<HTMLInputElement>(null)
@@ -40,14 +41,15 @@ const SearchInput = ({}: Props) => {
 						borderRadius={20}
 						variant={'filled'}
 						ref={ref}
+						value={inputValue}
 						onChange={() => {
-							// setSearchQuery(ref.current?.value!)
+							setInputValue(ref?.current?.value || '')
 							debouncedSearch(ref.current?.value!)
 						}}
 					/>
 				</InputGroup>
 			</form>
-			<SearchResponse dataResponse={dataResponse} showResults={showResults} setShowResults={setShowResults} />
+			<SearchResponse dataResponse={dataResponse} showResults={showResults} setShowResults={setShowResults} setInputValue={setInputValue} />
 		</Box>
 	)
 }

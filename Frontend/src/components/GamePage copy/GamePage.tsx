@@ -57,7 +57,6 @@ const GamePage = () => {
 					<GameRatingsPercentages ratings={gameDetails.ratings} />
 					<GameReviews gameId={gameDetails.id} />
 				</Stack>
-
 				<SimilarGames />
 			</Box>
 		</>

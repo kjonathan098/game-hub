@@ -1,4 +1,4 @@
-import { DrawerBody, Text, HStack, Image, Stack, Tag, Center, VStack } from '@chakra-ui/react'
+import { DrawerBody, Text, HStack, Image, Stack, Tag, Center, VStack, Box } from '@chakra-ui/react'
 import GamePlatforms from '../components/GamesDisplay/GamePlatforms'
 import WishListButton from './WishListButton'
 import CartButton from './CartButton'
@@ -24,13 +24,11 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 	}, [openDrawer, wishList, cartList])
 
 	if (loading) return <>loading...</>
+
 	return (
-		<DrawerBody>
+		<DrawerBody px={{ base: '0', lg: '28px' }}>
 			{!listType.length && (
 				<VStack>
-					{/* <Text fontSize={'xl'} fontWeight={'bold'}>
-						Nothing to see here!
-					</Text> */}
 					<Image src={gameOver} />
 				</VStack>
 			)}
@@ -38,9 +36,11 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 				<>
 					{listType.map((game, index) => {
 						return (
-							<Stack direction="row" spacing={2} mb={2} key={index} bg={'blackAlpha.700'} borderRadius={'lg'} shadow={'base'} alignItems={'stretch'}>
-								<Image src={game.background_image} width={'154px'} height={'159px'} objectFit={'cover'} />
-								<Stack>
+							<Stack direction="row" spacing={2} mb={2} key={index} bg={'blackAlpha.700'} borderRadius={'lg'} shadow={'base'} alignItems={'stretch'} w={'100%'}>
+								<Box>
+									<Image src={game.background_image} width={'154px'} height={{ base: '100%', lg: '159px' }} objectFit={'cover'} rounded={'md'} />
+								</Box>
+								<Stack pb={2}>
 									<a>
 										<Text fontWeight={'bold'} fontSize={'lg'} mt={'10px'}>
 											{game.name}
@@ -50,10 +50,10 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 										${game.price}
 									</Tag>
 									<GamePlatforms platforms={game.parent_platforms.map((p) => p.platform)} />
-									<HStack>
+									<Stack direction={{ base: 'column', lg: 'row' }}>
 										<WishListButton game={game} />
 										<CartButton game={game} />
-									</HStack>
+									</Stack>
 								</Stack>
 							</Stack>
 						)

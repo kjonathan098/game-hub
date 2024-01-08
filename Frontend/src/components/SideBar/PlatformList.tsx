@@ -3,11 +3,14 @@ import { useContext, useState } from 'react'
 import usePlatforms from '../../hooks/usePlatforms'
 import { queryContext } from '../../context/queryProvider'
 import cropImage from '../../services/img-crop'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const PlatformList = () => {
 	const [show, setShow] = useState(false)
 	const { data, error, loading } = usePlatforms()
 	const { gamesQuery, selectPlatform } = useContext(queryContext)
+	const urlLocation = useLocation()
+	const nav = useNavigate()
 
 	const handleToggle = () => setShow(!show)
 
@@ -26,6 +29,9 @@ const PlatformList = () => {
 										variant={'link'}
 										onClick={() => {
 											selectPlatform(platform)
+											if (urlLocation.pathname !== '/games') {
+												nav('/games')
+											}
 										}}
 										fontWeight={gamesQuery?.platform?.id === platform.id ? 'bold' : 'normal'}
 										whiteSpace={'normal'}

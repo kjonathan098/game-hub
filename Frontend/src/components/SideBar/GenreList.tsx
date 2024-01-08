@@ -3,12 +3,14 @@ import useGenre from '../../hooks/useGenre'
 import { Button, HStack, Image, List, ListItem, Spinner, Box, Collapse, Text, Stack } from '@chakra-ui/react'
 import cropImage from '../../services/img-crop'
 import { queryContext } from '../../context/queryProvider'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const GenreList = () => {
 	const [show, setShow] = useState(false)
-
 	const { gamesQuery, searchGenre } = useContext(queryContext)
 	const { data, error, loading } = useGenre()
+	const urlLocation = useLocation()
+	const nav = useNavigate()
 
 	const handleToggle = () => setShow(!show)
 
@@ -31,6 +33,9 @@ const GenreList = () => {
 										variant={'link'}
 										onClick={() => {
 											searchGenre(genre)
+											if (urlLocation.pathname !== '/games') {
+												nav('/games')
+											}
 										}}
 										fontWeight={gamesQuery?.genre?.id === genre.id ? 'bold' : 'normal'}
 										whiteSpace={'normal'}

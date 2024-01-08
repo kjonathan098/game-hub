@@ -1,4 +1,4 @@
-import { Box, Center, Grid, GridItem, Image, Show, Text } from '@chakra-ui/react'
+import { Box, Center, Grid, GridItem, HStack, Image, Show, Stack, Text } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -8,7 +8,8 @@ import AuthProvider from './context/authProvider'
 import GamesDisplay from './components/GamesDisplay/GamesDisplay'
 import HomePage from './components/HomePage/HomePage'
 import { register } from 'swiper/element/bundle'
-import test from './assets/HomePageCarouselPromo/deadIsland.avif'
+import { CiHeart } from 'react-icons/ci'
+import { FaLinkedin } from 'react-icons/fa'
 
 register()
 
@@ -20,7 +21,7 @@ function App() {
 					<Center>
 						<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
 							<Show above="lg">
-								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} shadow={'dark-lg'} bg={'whiteAlpha.200'}>
+								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'}>
 									<SideBar />
 								</GridItem>
 							</Show>
@@ -35,6 +36,25 @@ function App() {
 							</GridItem>
 						</Grid>
 					</Center>
+
+					<footer>
+						<Box bg={'whiteAlpha.800'} _dark={{ bg: 'blackAlpha.900' }} pt={3}>
+							<Center>
+								<Stack>
+									<HStack>
+										<Text> Made with</Text>
+										<CiHeart />
+										<Text>by Jonathan Kelman</Text>
+									</HStack>
+									<a href="https://www.linkedin.com/in/jonathan-kelman-204ba7103/" target="_blank">
+										<Center>
+											<FaLinkedin fontSize={'30px'} />
+										</Center>
+									</a>
+								</Stack>
+							</Center>
+						</Box>
+					</footer>
 				</QueryProvider>
 			</BrowserRouter>
 		</AuthProvider>
