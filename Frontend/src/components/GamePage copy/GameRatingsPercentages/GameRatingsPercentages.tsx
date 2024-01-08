@@ -17,7 +17,6 @@ const GameRatingsPercentages = ({ ratings }: Props) => {
 						<React.Fragment key={index}>
 							<Box w={`${rating.percent}%`} h={'100%'} bg={rating.color} borderLeftRadius={index === 0 ? 'full' : ''} borderRightRadius={index === 3 ? 'full' : ''} position={'relative'}>
 								<Center h={'100%'} overflow={'hidden'}>
-									{/* <Text zIndex={2}>{rating.title.toUpperCase()}</Text> */}
 									<Text fontSize={{ bae: '15px', md: '100px' }} zIndex={'1'}>
 										{rating.emoji}
 									</Text>

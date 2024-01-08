@@ -25,7 +25,7 @@ function App() {
 								</GridItem>
 							</Show>
 
-							<GridItem area="main" pl={{ base: '', lg: '5' }} w={{ base: '100vw', lg: '86vw' }}>
+							<GridItem area="main" pl={{ base: '0', lg: '5' }} w={{ base: '100vw', lg: '86vw' }}>
 								<NavBar />
 								<Routes>
 									<Route path="/" element={<HomePage />} />

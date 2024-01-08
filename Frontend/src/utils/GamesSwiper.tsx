@@ -23,7 +23,7 @@ const SkeletonCard = () => (
 )
 
 const GamesSwiper = ({ title, games, children }: Props) => {
-	const slideViews = useBreakpointValue({ base: 1.5, md: 3.5, lg: 4.5 })
+	const slideViews = useBreakpointValue({ base: 1.2, md: 3.5, lg: 4.5 })
 	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
 
@@ -57,11 +57,11 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 						return (
 							<React.Fragment key={game.id}>
 								<swiper-slide>
-									<Stack width={{ base: '173px', lg: '230px' }}>
+									<Stack width={{ base: '200px', lg: '230px' }}>
 										<Image
 											src={game.background_image}
 											height={{ base: '230px', lg: '300px' }}
-											width={{ base: '173px', lg: 'auto' }}
+											width={{ base: '200px', lg: 'auto' }}
 											objectFit={'cover'}
 											rounded={'md'}
 											opacity={'.8'}
