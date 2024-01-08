@@ -73,9 +73,15 @@ const TopGames = () => {
 						{swiperSlide(topSellers.slice(5, 10), 'Top Wishlisted', 5)}
 					</swiper-container>
 
-					<Center mt={1} display={{ base: 'block', md: 'none' }}>
-						<Button size={'sm'} width={'100%'}>
-							Visit Current Game Page
+					<Center mt={2} display={{ base: 'block', md: 'none' }}>
+						<Button size={'sm'} width={'100%'} onClick={() => handleReDirect(topSellers[gameSelected - 1].id)}>
+							<Text>
+								Visit{' '}
+								<Box as="span" color={'cyan.200'}>
+									{topSellers[gameSelected - 1].name}
+								</Box>{' '}
+								Page
+							</Text>
 						</Button>
 					</Center>
 				</Box>

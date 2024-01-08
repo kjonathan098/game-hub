@@ -10,12 +10,22 @@ import LoginOptions from '../SideBar/LoginOptions'
 import { useContext } from 'react'
 import { authContext } from '../../context/authProvider'
 import UserInfo from '../SideBar/UserInfo'
+import { useNavigate } from 'react-router-dom'
 interface Props {}
 
 const NavBar = () => {
+	const nav = useNavigate()
+
 	return (
 		<HStack padding={'10px'}>
-			<Image src={logo} boxSize={'60px'} />
+			<Image
+				src={logo}
+				boxSize={'60px'}
+				onClick={() => {
+					nav(`/`)
+				}}
+				_hover={{ cursor: 'pointer' }}
+			/>
 			<Box display={{ base: 'block', lg: 'none' }}>
 				<Menu>
 					<MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />

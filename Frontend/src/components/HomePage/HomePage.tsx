@@ -23,12 +23,6 @@ const HomePage = () => {
 			<BannerPromo />
 			<HolidaySpotlight />
 			<TopGames />
-			<Box bg={'whiteAlpha.400'} p={2}>
-				<Stack direction={'row'} alignItems={'center'}>
-					<GiPerspectiveDiceSixFacesRandom fontSize={'50px'} />
-					<Image src={randomImage} objectFit={'cover'} width={'300px'} />
-				</Stack>
-			</Box>
 		</Stack>
 	)
 }
