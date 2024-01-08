@@ -15,8 +15,6 @@ const DrawerGeneric = ({ openDrawer }: Iparams) => {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		console.log(wishList)
-
 		if (openDrawer === 'cartList') {
 			setListType(cartList)
 		} else {

@@ -53,9 +53,9 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 				</HStack>
 
 				<swiper-container slides-per-view={slideViews} navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
-					{games.map((game) => {
+					{games.map((game, index) => {
 						return (
-							<React.Fragment key={game.id}>
+							<React.Fragment key={index}>
 								<swiper-slide>
 									<Stack width={{ base: '90%', lg: '230px' }}>
 										<Image

@@ -54,7 +54,7 @@ const BannerPromo = () => {
 			<Center w={{ base: '100%', lg: '75%' }}>
 				{bannerMedia.map((game, index) => {
 					return (
-						<Box as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} onClick={() => handleReDirect(game.id)} height={{ base: 'fit-content', lg: '500px' }}>
+						<Box key={index} as="span" position={'relative'} display={currentGame === index + 1 ? 'block' : 'none'} onClick={() => handleReDirect(game.id)} height={{ base: 'fit-content', lg: '500px' }}>
 							<Image src={game.background} objectFit={'cover'} rounded={'lg'} key={index} loading="lazy" />
 
 							<Stack position={'absolute'} bottom={{ base: '50px', md: '100px' }} maxW={'500px'} spacing={'5'} p={4}>

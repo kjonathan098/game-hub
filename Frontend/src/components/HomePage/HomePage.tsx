@@ -12,9 +12,9 @@ const HomePage = () => {
 	return (
 		<Stack spacing={'50'}>
 			<HStack mt={'30'} justifyContent={'space-around'}>
-				{[salePromo, rewardsPromo, featurePromo].map((img) => {
+				{[salePromo, rewardsPromo, featurePromo].map((img, index) => {
 					return (
-						<Box>
+						<Box key={index}>
 							<Image key={img} src={img} width={'350px'} rounded={'3xl'} />
 						</Box>
 					)
@@ -23,12 +23,12 @@ const HomePage = () => {
 			<BannerPromo />
 			<HolidaySpotlight />
 			<TopGames />
-			{/* <Box bg={'whiteAlpha.400'} p={2}>
+			<Box bg={'whiteAlpha.400'} p={2}>
 				<Stack direction={'row'} alignItems={'center'}>
 					<GiPerspectiveDiceSixFacesRandom fontSize={'50px'} />
 					<Image src={randomImage} objectFit={'cover'} width={'300px'} />
 				</Stack>
-			</Box> */}
+			</Box>
 		</Stack>
 	)
 }

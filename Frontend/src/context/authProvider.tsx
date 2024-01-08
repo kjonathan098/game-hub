@@ -29,8 +29,6 @@ const AuthProvider = ({ children }: IProps) => {
 	const removeFromList = async (gameDetails: IGame, field: TUserField) => {
 		if (!user) return
 		if (field === 'wishList') {
-			console.log('removing from wish list')
-
 			const newWishList = wishList.filter((item) => {
 				return item.id !== gameDetails.id
 			})

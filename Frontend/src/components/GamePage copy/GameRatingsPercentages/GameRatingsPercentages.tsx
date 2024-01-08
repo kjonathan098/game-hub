@@ -28,9 +28,9 @@ const GameRatingsPercentages = ({ ratings }: Props) => {
 			</Stack>
 			<HStack spacing={{ base: 2, md: 4 }}>
 				<Center w={'100%'}>
-					{sortedRatings.map((rating) => {
+					{sortedRatings.map((rating, index) => {
 						return (
-							<HStack mr={{ base: 1, md: 3 }}>
+							<HStack mr={{ base: 1, md: 3 }} key={index}>
 								<Box bg={rating.color} w={'15px'} h={'15px'} border={'1px'} rounded={'full'} />
 								<Text fontSize={{ base: '10px', md: '15px' }}>{rating.title}</Text>
 							</HStack>
@@ -74,6 +74,5 @@ function sortRatings(ratings: IGameRatings[]) {
 		}
 		return { ...rating, color, emoji }
 	})
-	console.log(sortedRatingsWithColor)
 	return sortedRatingsWithColor
 }

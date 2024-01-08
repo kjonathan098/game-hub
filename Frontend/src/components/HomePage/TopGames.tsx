@@ -31,11 +31,6 @@ const TopGames = () => {
 								}}
 							>
 								<Image src={game.background} alt="game image" w={'55px'} h={'75px'} objectFit={'cover'} opacity={gameSelected === index + 1 + startingIndex ? '1' : '0.5'} />
-								{/* {gameSelected !== index + 1 + startingIndex && (
-									<Text display={{ base: 'none', md: 'block' }} overflow={'scroll'}>
-										{game.name}
-									</Text>
-								)} */}
 
 								<Stack display={{ base: 'none', md: 'flex' }}>
 									<Text overflow={'scroll'}>{game.name}</Text>

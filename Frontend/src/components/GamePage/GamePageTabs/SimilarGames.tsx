@@ -17,8 +17,6 @@ const SimilarGames = ({ gameId }: IProps) => {
 	}
 
 	useEffect(() => {
-		console.log({ data })
-
 		getSimilarGames(`games/${gameId}/game-series`)
 	}, [])
 

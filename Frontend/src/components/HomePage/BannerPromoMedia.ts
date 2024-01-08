@@ -857,7 +857,7 @@ export const holidaySpecialMedia: BannerMedia[] = [
 		name: 'Mortal Kombat 1',
 		titleLogo: deadIslanTittle,
 		background: mortalKombat,
-		id: 793647,
+		id: 960873,
 		description: 'Uncover the truth behind the outbreak and discover who or what you are.',
 		background_image: 'https://media.rawg.io/media/games/155/155087d7b9c1225cda0ab9e586b6374d.jpg',
 		price: 30,
