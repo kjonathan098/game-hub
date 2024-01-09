@@ -22,7 +22,7 @@ function App() {
 					<Center>
 						<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
 							<Show above="lg">
-								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'}>
+								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} bg={'gray.200'} _dark={{ bg: '#272727' }}>
 									<SideBar />
 								</GridItem>
 							</Show>

@@ -23,12 +23,13 @@ const TopGames = () => {
 						return (
 							<HStack
 								key={game.id}
-								bg={gameSelected === index + 1 + startingIndex ? 'gray.700' : ''}
+								bg={gameSelected === index + 1 + startingIndex ? 'gray.200' : ''}
 								_hover={{ background: 'gray.700', cursor: 'pointer' }}
 								rounded={'lg'}
 								onClick={() => {
 									setGameSelected(index + 1 + startingIndex)
 								}}
+								_dark={{ bg: gameSelected === index + 1 + startingIndex ? 'gray.800' : '' }}
 							>
 								<Image src={game.background} alt="game image" w={'55px'} h={'75px'} objectFit={'cover'} opacity={gameSelected === index + 1 + startingIndex ? '1' : '0.5'} />
 

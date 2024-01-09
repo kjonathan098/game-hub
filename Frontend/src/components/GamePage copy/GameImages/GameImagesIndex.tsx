@@ -46,7 +46,7 @@ function photoBgStyle(selectedImage?: string) {
 		left: 0,
 		backgroundImage: `url(${selectedImage})`,
 		backgroundSize: 'cover',
-		filter: 'blur(25px)',
+		filter: 'blur(300	px)',
 		zIndex: -1, // Place the overlay behind other content
 		width: 'auto',
 		height: '93%',

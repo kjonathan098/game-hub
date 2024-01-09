@@ -1,4 +1,4 @@
-import { Box, HStack, IconButton, Image } from '@chakra-ui/react'
+import { Box, Center, HStack, IconButton, Image } from '@chakra-ui/react'
 import logo from '../../assets/logo.webp'
 import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
@@ -11,6 +11,7 @@ import { useContext } from 'react'
 import { authContext } from '../../context/authProvider'
 import UserInfo from '../SideBar/UserInfo'
 import { useNavigate } from 'react-router-dom'
+import Nav from '../Nav/Nav'
 interface Props {}
 
 const NavBar = () => {
@@ -26,16 +27,23 @@ const NavBar = () => {
 				}}
 				_hover={{ cursor: 'pointer' }}
 			/>
+			<SearchInput />
 			<Box display={{ base: 'block', lg: 'none' }}>
 				<Menu>
-					<MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
-					<MenuList p={2}>
-						<UserInfo />
-					</MenuList>
+					{({ onClose }) => (
+						<>
+							<MenuButton as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
+							<MenuList p={2} w={'100vw'} bg={'whiteAlpha.200'} _dark={{ bg: '#272727' }}>
+								<Nav onClose={onClose} />
+								<Center>
+									<UserInfo />
+								</Center>
+							</MenuList>
+						</>
+					)}
 				</Menu>
 			</Box>
-			<SearchInput />
-			<ColorModeSwitch />
+			{/* <ColorModeSwitch /> */}
 		</HStack>
 	)
 }

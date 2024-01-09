@@ -19,13 +19,13 @@ const GameReviews = ({ gameId }: { gameId: number }) => {
 				<HStack maxW={'1200px'} overflow={'scroll'} minH={'200px'} alignItems="stretch">
 					{gameRevies?.slice(0, 10).map((review, index) => {
 						return (
-							<Stack key={index} p={2} border={'1px'} rounded={'md'} borderColor={'gray.600'} bg="blackAlpha.700">
+							<Stack key={index} p={2} border={'1px'} rounded={'md'} borderColor={'gray.600'} bg={'whiteAlpha.800'} _dark={{ bg: 'blackAlpha.700' }}>
 								<HStack>
 									<Image src={avatarGamer} width={'30px'} height={'30px'} rounded={'full'} />
 									<Text>{review?.user?.username ? review.user.full_name : 'Gamer'}</Text>
 								</HStack>
 								<Rating initialValue={review.rating} SVGstyle={{ display: 'inline-block' }} readonly size={20} allowFraction fillColor={'#68D391'} />
-								<Text fontSize={'sm'} color={'gray.500'} width={'300px'}>
+								<Text fontSize={'sm'} width={'300px'} _dark={{ color: 'gray.500' }}>
 									{getFirstThreeSentences(review.text)}
 								</Text>
 							</Stack>
