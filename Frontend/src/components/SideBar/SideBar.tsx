@@ -28,7 +28,6 @@ const SideBar = () => {
 				</Button>
 			</Stack>
 			<UserInfo />
-
 			<GenreList />
 			<PlatformList />
 		</Stack>

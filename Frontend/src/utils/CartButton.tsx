@@ -26,7 +26,7 @@ const CartButton = ({ game, size }: Params) => {
 	}
 
 	useEffect(() => {
-		if (!user) return
+		if (!user) return setItsOnCart(false)
 		if (!cartList.length) return setItsOnCart(false)
 
 		const includes = cartList.some((item) => item.id === game.id)

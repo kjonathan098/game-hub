@@ -60,3 +60,26 @@ export const GamePageSkeleton = () => {
 		</Box>
 	)
 }
+
+export const GameAwardsSkeleton = () => {
+	return (
+		<Box minH={'500px'}>
+			{Array(5)
+				.fill(0)
+				.map((_, index) => {
+					return (
+						<Box width={'850px'} bg={'blackAlpha.300'} key={index} mb={3}>
+							<Stack direction="row" p={3}>
+								<Skeleton bg={'red'} w={'100px'} h={'80px'} />
+								<Stack justifyContent={'space-around'}>
+									<Skeleton w={'100px'} h={'10px'} />
+									<Skeleton w={'200px'} h={'10px'} />
+									<Skeleton w={'50px'} h={'10px'} />
+								</Stack>
+							</Stack>
+						</Box>
+					)
+				})}
+		</Box>
+	)
+}

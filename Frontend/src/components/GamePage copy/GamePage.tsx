@@ -12,6 +12,8 @@ import SimilarGames from '../../utils/SimilarGames'
 import GameRatingsPercentages from './GameRatingsPercentages/GameRatingsPercentages'
 import { GamePageSkeleton } from '../../utils/Skeletons'
 import { GiGameConsole } from 'react-icons/gi'
+import GameAwards from './RedditPosts'
+import GameTabs from './GameTabs'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -63,6 +65,7 @@ const GamePage = () => {
 					<GameReviews gameId={gameDetails.id} />
 				</Stack>
 				<SimilarGames />
+				<GameTabs gameDetails={gameDetails} />
 			</Box>
 		</>
 	)

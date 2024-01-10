@@ -43,7 +43,7 @@ const NavBar = () => {
 					)}
 				</Menu>
 			</Box>
-			{/* <ColorModeSwitch /> */}
+			<ColorModeSwitch />
 		</HStack>
 	)
 }

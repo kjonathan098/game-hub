@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Stack, Text, VStack, Center, Button } from '@chakra-ui/react'
+import { Box, HStack, Image, Stack, Text, VStack, Center, Button, useColorModeValue } from '@chakra-ui/react'
 import { BannerMedia, bannerMedia, topSellers } from './BannerPromoMedia'
 import { useState } from 'react'
 
@@ -24,7 +24,7 @@ const TopGames = () => {
 							<HStack
 								key={game.id}
 								bg={gameSelected === index + 1 + startingIndex ? 'gray.200' : ''}
-								_hover={{ background: 'gray.700', cursor: 'pointer' }}
+								_hover={{ bg: useColorModeValue('gray.200', 'gray.900'), cursor: 'pointer' }}
 								rounded={'lg'}
 								onClick={() => {
 									setGameSelected(index + 1 + startingIndex)

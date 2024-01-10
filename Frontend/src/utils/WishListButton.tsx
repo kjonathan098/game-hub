@@ -25,7 +25,7 @@ const WishListButton = ({ game, size }: Params) => {
 	}
 
 	useEffect(() => {
-		if (!user) return
+		if (!user) return setItOnWishList(false)
 		if (!wishList.length) return setItOnWishList(false)
 
 		const includes = wishList.some((item) => item.id === game.id)

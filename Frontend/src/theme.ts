@@ -17,7 +17,7 @@ const theme = extendTheme({
 			},
 			// rest of the global styles
 			body: {
-				bg: props.colorMode === 'dark' ? 'blackAlpha.100' : 'white0', // Dark mode background
+				bg: props.colorMode === 'dark' ? 'blackAlpha.100' : 'white', // Dark mode background
 				color: props.colorMode === 'dark' ? '#cfcfd9' : 'black', // Dark mode text
 			},
 		}),
