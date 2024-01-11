@@ -11,7 +11,6 @@ type AchievementsResponse<T> = {
 
 const useGameAchievements = <T>(firstFetch: string, nextUrl?: string) => {
 	const [url, setUrl] = useState<string>(nextUrl || firstFetch)
-	console.log(url)
 
 	const { data: achievements, error, loading } = useDataFetchTest<AchievementsResponse<T>>(url, {}, [url])
 

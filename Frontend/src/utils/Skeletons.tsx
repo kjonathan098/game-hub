@@ -68,7 +68,7 @@ export const GameAwardsSkeleton = () => {
 				.fill(0)
 				.map((_, index) => {
 					return (
-						<Box width={'850px'} bg={'blackAlpha.300'} key={index} mb={3}>
+						<Box width={'500px'} bg={'blackAlpha.300'} key={index} mb={3}>
 							<Stack direction="row" p={3}>
 								<Skeleton bg={'red'} w={'100px'} h={'80px'} />
 								<Stack justifyContent={'space-around'}>
@@ -76,6 +76,30 @@ export const GameAwardsSkeleton = () => {
 									<Skeleton w={'200px'} h={'10px'} />
 									<Skeleton w={'50px'} h={'10px'} />
 								</Stack>
+							</Stack>
+						</Box>
+					)
+				})}
+		</Box>
+	)
+}
+
+export const RedditPostsSkeleton = () => {
+	return (
+		<Box minH={'500px'}>
+			{Array(5)
+				.fill(0)
+				.map((_, index) => {
+					return (
+						<Box width={'500px'} bg={'blackAlpha.300'} key={index} mb={3}>
+							<HStack mb={3}>
+								<Skeleton w={'50px'} h={'50px'} rounded={'full'} />
+								<Skeleton w={'100px'} h={'20px'} />
+							</HStack>
+							<Stack justifyContent={'space-around'}>
+								<Skeleton w={'100%'} h={'25px'} />
+								<Skeleton w={'200px'} h={'10px'} />
+								<Skeleton w={'50px'} h={'10px'} />
 							</Stack>
 						</Box>
 					)

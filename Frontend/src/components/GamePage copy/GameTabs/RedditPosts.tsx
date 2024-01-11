@@ -4,6 +4,8 @@ import useGameAchievements from '../../../hooks/useGameAchievements'
 import React from 'react'
 import avatar from '../../../assets/gamerAvatar.jpeg'
 import BlendedImage from '../../../utils/BlendedImage'
+import GameTabGeneric from '../../../utils/GameTabGeneric'
+import { RedditPostsSkeleton } from '../../../utils/Skeletons'
 
 interface Props {
 	gameDetails: IGameDetails
@@ -22,40 +24,32 @@ export interface Result {
 const RedditPosts = ({ gameDetails }: Props) => {
 	const { achievements, setUrl, loading } = useGameAchievements<Result>(`/games/${gameDetails.id}/reddit`)
 
-	console.log(achievements)
-
 	return (
-		<Box position={'relative'}>
-			<BlendedImage img={gameDetails.background_image_additional} />
-
-			<Box position={'relative'} dir="column" minH={'500px'}>
-				<Center>
-					<Stack spacing={'4'} h={'500px'} overflow={'scroll'} direction={'row'}>
-						{achievements?.results.map((post, index) => {
-							return (
-								<React.Fragment key={index}>
-									<Stack border={'1px'} rounded={'md'} bg={'blackAlpha.700'} minW={'500px'} p={2} maxH={'300px'}>
-										<Stack direction="row">
-											<Center>
-												<Image src={post.image || avatar} width={'50px'} height={'50px'} rounded={'full'} objectFit={'cover'} objectPosition={'center'} />
-												<Text>{post.username}</Text>
-											</Center>
-										</Stack>
-										<Text fontWeight={'extrabold'}>{post.name}</Text>
-										<Text fontSize={'sm'} color={'gray.600'} mt={-11}>
-											{new Date(post.created).toLocaleDateString()}
-										</Text>
-										<Text maxW={''} overflow={'scroll'}>
-											{post.text}
-										</Text>
-									</Stack>
-								</React.Fragment>
-							)
-						})}
-					</Stack>
-				</Center>
-			</Box>
-		</Box>
+		<GameTabGeneric gameDetails={gameDetails} nextLink={achievements?.next} prevLink={achievements?.previous} setUrl={setUrl}>
+			{loading && <RedditPostsSkeleton />}
+			{!loading &&
+				achievements?.results.map((post, index) => {
+					return (
+						<React.Fragment key={index}>
+							<Stack rounded={'md'} bg={'blackAlpha.700'} maxW={'500px'} p={2} maxH={'300px'}>
+								<Stack direction="row">
+									<Center>
+										<Image src={post.image || avatar} width={'50px'} height={'50px'} rounded={'full'} objectFit={'cover'} objectPosition={'center'} />
+										<Text>{post.username}</Text>
+									</Center>
+								</Stack>
+								<Text fontWeight={'extrabold'}>{post.name}</Text>
+								<Text fontSize={'sm'} color={'gray.600'} mt={-11}>
+									{new Date(post.created).toLocaleDateString()}
+								</Text>
+								<Text maxW={''} overflow={'scroll'}>
+									{post.text}
+								</Text>
+							</Stack>
+						</React.Fragment>
+					)
+				})}
+		</GameTabGeneric>
 	)
 }
 

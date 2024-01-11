@@ -1,4 +1,4 @@
-import { Box, Button, Center, Image, Spinner, Stack, Tag, Text } from '@chakra-ui/react'
+import { Box, Button, Center, Image, Spinner, Stack, TabIndicator, Tag, Text } from '@chakra-ui/react'
 import { IGameDetails } from '../../../interfaces/games.interface'
 import useGameAchievements from '../../../hooks/useGameAchievements'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
@@ -16,8 +16,9 @@ const GameTabs = ({ gameDetails }: Props) => {
 	return (
 		<Tabs>
 			<TabList>
-				<Tab>Achievements</Tab>
-				<Tab>Reddit Post</Tab>
+				<Tab _selected={{ color: 'whatsapp.100' }}>Achievements</Tab>
+				<Tab _selected={{ color: 'whatsapp.100', borderBottom: '1px ,whatsapp.100' }}>Reddit Post</Tab>
+				<TabIndicator mt="10" height="2px" bg="whatsapp.100" borderRadius="1px" />
 			</TabList>
 
 			<TabPanels>
