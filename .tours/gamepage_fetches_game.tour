@@ -1,0 +1,25 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Gamepage_fetches_game",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": ""
+    },
+    {
+      "file": "Frontend/src/components/GamePage copy/GamePage.tsx",
+      "description": "We get the ID of the game we just opend \n",
+      "line": 19
+    },
+    {
+      "file": "Frontend/src/components/GamePage copy/GamePage.tsx",
+      "description": "It is passed to our custom hook ",
+      "line": 20
+    },
+    {
+      "file": "Frontend/src/hooks/useGameDetails.ts",
+      "description": "We then fetch the info we need \n",
+      "line": 13
+    }
+  ]
+}

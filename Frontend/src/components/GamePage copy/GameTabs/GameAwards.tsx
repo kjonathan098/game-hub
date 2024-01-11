@@ -37,7 +37,7 @@ const GameAwards = ({ gameDetails }: Props) => {
 					achievements?.results.map((achievement, index) => {
 						return (
 							<React.Fragment key={index}>
-								<Stack direction="row" mb={3} bg={'blackAlpha.600'} p={3} w={'500px'}>
+								<Stack direction="row" mb={3} bg={'blackAlpha.600'} p={3} maxW={'500px'}>
 									<Image src={achievement.image} width={'100px'} objectFit={'cover'} objectPosition={'center'} />
 									<Stack>
 										<Text fontWeight={'bold'}>{achievement.name}</Text>
