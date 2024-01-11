@@ -1,8 +1,9 @@
 import { Box, Button, Center, Image, Spinner, Stack, Tag, Text } from '@chakra-ui/react'
-import { IGameDetails } from '../../interfaces/games.interface'
-import useGameAchievements from '../../hooks/useGameAchievements'
+import { IGameDetails } from '../../../interfaces/games.interface'
+import useGameAchievements from '../../../hooks/useGameAchievements'
 import React from 'react'
-import { GameAwardsSkeleton } from '../../utils/Skeletons'
+import { GameAwardsSkeleton } from '../../../utils/Skeletons'
+import BlendedImage from '../../../utils/BlendedImage'
 
 interface Props {
 	gameDetails: IGameDetails
@@ -19,16 +20,9 @@ interface Achievement {
 const GameAwards = ({ gameDetails }: Props) => {
 	const { achievements, setUrl, loading } = useGameAchievements<Achievement>(`/games/${gameDetails.id}/achievements`)
 
-	// console.log(achievements)
-
 	return (
-		<Box position={'relative'}>
-			<Box position={'absolute'} top={0} width={'100%'} bg={'green'} w={'100%'} h={'500px'}>
-				<Box bgImage={` url(${gameDetails.background_image})`} bgPosition="center" bgRepeat="no-repeat" bgSize="cover" zIndex={1} h={'100%'}>
-					<RadialBg />
-					<Box height="100%" width="100%" bg={'rgba(16, 16, 16, 1)'} opacity={0.5} />
-				</Box>
-			</Box>
+		<Box h={'500px'} position={'relative'}>
+			<BlendedImage img={gameDetails.background_image_additional} />
 
 			<Box position={'relative'} dir="column" maxH={'500px'} overflow={'scroll'} minH={'500px'}>
 				<Center>

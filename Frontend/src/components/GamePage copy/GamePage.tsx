@@ -12,8 +12,8 @@ import SimilarGames from '../../utils/SimilarGames'
 import GameRatingsPercentages from './GameRatingsPercentages/GameRatingsPercentages'
 import { GamePageSkeleton } from '../../utils/Skeletons'
 import { GiGameConsole } from 'react-icons/gi'
-import GameAwards from './RedditPosts'
-import GameTabs from './GameTabs'
+import GameAwards from './GameTabs/RedditPosts'
+import GameTabs from './GameTabs/GameTabs'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -59,14 +59,14 @@ const GamePage = () => {
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			<Box width={{ base: '100vw', lg: '1200px' }} m={{ base: 0, lg: 4 }}>
+			<Stack width={{ base: '100vw', lg: '1200px' }} m={{ base: 0, lg: 4 }}>
 				<Stack spacing={3}>
 					<GameRatingsPercentages ratings={gameDetails.ratings} />
 					<GameReviews gameId={gameDetails.id} />
 				</Stack>
-				<SimilarGames />
 				<GameTabs gameDetails={gameDetails} />
-			</Box>
+				<SimilarGames />
+			</Stack>
 		</>
 	)
 }

@@ -1,7 +1,9 @@
 import { Box, Button, Center, Image, Spinner, Stack, Tag, Text } from '@chakra-ui/react'
-import { IGameDetails } from '../../interfaces/games.interface'
-import useGameAchievements from '../../hooks/useGameAchievements'
+import { IGameDetails } from '../../../interfaces/games.interface'
+import useGameAchievements from '../../../hooks/useGameAchievements'
 import React from 'react'
+import avatar from '../../../assets/gamerAvatar.jpeg'
+import BlendedImage from '../../../utils/BlendedImage'
 
 interface Props {
 	gameDetails: IGameDetails
@@ -24,28 +26,28 @@ const RedditPosts = ({ gameDetails }: Props) => {
 
 	return (
 		<Box position={'relative'}>
-			<Box position={'absolute'} top={0} width={'100%'} bg={'green'} w={'100%'} h={'500px'}>
-				<Box bgImage={` url(${gameDetails.background_image})`} bgPosition="center" bgRepeat="no-repeat" bgSize="cover" zIndex={1} h={'100%'}>
-					<RadialBg />
-					<Box height="100%" width="100%" bg={'rgba(16, 16, 16, 1)'} opacity={0.5} />
-				</Box>
-			</Box>
+			<BlendedImage img={gameDetails.background_image_additional} />
 
-			<Box position={'relative'} dir="column" minH={'500px'} pt={'10%'}>
+			<Box position={'relative'} dir="column" minH={'500px'}>
 				<Center>
-					<Stack spacing={'4'} h={'500px'} overflow={'scroll'}>
+					<Stack spacing={'4'} h={'500px'} overflow={'scroll'} direction={'row'}>
 						{achievements?.results.map((post, index) => {
 							return (
 								<React.Fragment key={index}>
-									<Stack border={'1px'} rounded={'md'} bg={'blackAlpha.500'} w={'500px'} p={2}>
+									<Stack border={'1px'} rounded={'md'} bg={'blackAlpha.700'} minW={'500px'} p={2} maxH={'300px'}>
 										<Stack direction="row">
 											<Center>
-												<Image src={post.image!} width={'50px'} height={'50px'} rounded={'full'} objectFit={'cover'} objectPosition={'center'} />
+												<Image src={post.image || avatar} width={'50px'} height={'50px'} rounded={'full'} objectFit={'cover'} objectPosition={'center'} />
 												<Text>{post.username}</Text>
 											</Center>
 										</Stack>
 										<Text fontWeight={'extrabold'}>{post.name}</Text>
-										<Text maxW={''}>{post.text}</Text>
+										<Text fontSize={'sm'} color={'gray.600'} mt={-11}>
+											{new Date(post.created).toLocaleDateString()}
+										</Text>
+										<Text maxW={''} overflow={'scroll'}>
+											{post.text}
+										</Text>
 									</Stack>
 								</React.Fragment>
 							)
