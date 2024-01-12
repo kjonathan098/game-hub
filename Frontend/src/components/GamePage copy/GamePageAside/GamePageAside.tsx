@@ -9,6 +9,13 @@ interface Props {
 }
 
 const GamePageAside = ({ gameDetails }: Props) => {
+	const sharedTagStyles = {
+		fontWeight: 'bold',
+		rounded: 'md',
+		p: 2,
+		justifyContent: 'center',
+		fontSize: { md: 'lg', lg: '' },
+	}
 	return (
 		<Center h={'100%'}>
 			<Stack justifyContent={'space-around'} h={'100%'} spacing={5}>
@@ -23,15 +30,17 @@ const GamePageAside = ({ gameDetails }: Props) => {
 				<WishListButton size="lg" game={gameDetails} />
 				<CartButton size="lg" game={gameDetails} />
 
-				<Tag fontWeight={'bold'} colorScheme="purple" rounded={'md'} p={2}>
-					Rating {gameDetails.rating}
-				</Tag>
-				<Tag fontWeight={'bold'} colorScheme="orange" rounded={'md'} p={2}>
-					Playtime {gameDetails.playtime}
-				</Tag>
-				<Tag fontWeight={'bold'} colorScheme="pink" rounded={'md'} p={2}>
-					Esrb_Rating {gameDetails.esrb_rating?.name}
-				</Tag>
+				<Stack>
+					<Tag colorScheme="purple" {...sharedTagStyles}>
+						Rating - {gameDetails.rating}
+					</Tag>
+					<Tag colorScheme="orange" {...sharedTagStyles}>
+						Playtime - {gameDetails.playtime}
+					</Tag>
+					<Tag colorScheme="pink" {...sharedTagStyles}>
+						Esrb Rating - {gameDetails.esrb_rating?.name}
+					</Tag>
+				</Stack>
 
 				<GameBuyingOptions gameDetails={gameDetails} />
 				<GameTags gameDetails={gameDetails} />

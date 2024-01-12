@@ -24,6 +24,7 @@ const HomePage = () => {
 			<BannerPromo />
 			<HolidaySpotlight />
 			<TopGames />
+			{/* <Box>Hello</Box> */}
 		</Stack>
 	)
 }

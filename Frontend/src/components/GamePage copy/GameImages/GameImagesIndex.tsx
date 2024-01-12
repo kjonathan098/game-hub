@@ -23,7 +23,7 @@ const GameMainImage = ({ gameDetails }: Props) => {
 					<Center className="swiper-button-prev" bg={'green.300'} rounded={'full'} h={'25px'} w={'25px'} display={{ base: 'none', md: 'flex' }}>
 						<IoIosArrowBack />
 					</Center>{' '}
-					<Box width={{ base: '100%', lg: '400px' }}>
+					<Box width={{ base: '160px', md: '280px', lg: '400px' }}>
 						<GameImages gameDetails={gameDetails} setSelectedImage={setSelectedImage} selectedImage={selectedImage} />
 					</Box>
 					<Center rounded={'full'} bg={'green.300'} className="swiper-button-next" w={'25px'} height={'25px'} display={{ base: 'none', md: 'flex' }}>
@@ -46,9 +46,9 @@ function photoBgStyle(selectedImage?: string) {
 		left: 0,
 		backgroundImage: `url(${selectedImage})`,
 		backgroundSize: 'cover',
-		filter: 'blur(300	px)',
+		filter: 'blur(100px)',
 		zIndex: -1, // Place the overlay behind other content
 		width: 'auto',
-		height: '93%',
+		height: '90%',
 	}
 }
