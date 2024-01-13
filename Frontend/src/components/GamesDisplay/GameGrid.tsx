@@ -7,16 +7,16 @@ import { useContext, useEffect, useState } from 'react'
 import { queryContext } from '../../context/queryProvider'
 
 const GameGrid = () => {
-	const { data, error, loading, nextPage, gamesQuery } = useContext(queryContext)
+	const { data, error, loading, nextPage } = useContext(queryContext)
 	const [hasMore, setHasMore] = useState(true)
-
-	const skeleton = [1, 2, 3, 4, 5, 6]
 
 	function fetchNextPage() {
 		setTimeout(() => {
 			nextPage()
 		}, 500)
 	}
+
+	if (!data) return <>error</>
 
 	return (
 		<>
@@ -31,13 +31,15 @@ const GameGrid = () => {
 						)
 					})}
 					{loading &&
-						skeleton.map((s) => {
-							return (
-								<GameCardContainer key={s}>
-									<GameCardSkeletong key={s} />
-								</GameCardContainer>
-							)
-						})}
+						Array(8)
+							.fill(0)
+							.map((s) => {
+								return (
+									<GameCardContainer key={s}>
+										<GameCardSkeletong key={s} />
+									</GameCardContainer>
+								)
+							})}
 				</SimpleGrid>
 			</InfiniteScroll>
 		</>

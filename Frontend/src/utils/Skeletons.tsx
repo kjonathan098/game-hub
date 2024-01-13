@@ -1,4 +1,5 @@
-import { Box, Button, Center, Grid, GridItem, HStack, Skeleton, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Button, Card, CardBody, Center, Grid, GridItem, HStack, Skeleton, SkeletonText, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
+import GameCardContainer from '../components/GamesDisplay/GameCardContainer'
 
 export const GamesSwiperSkeleton = () => {
 	return (
@@ -105,5 +106,26 @@ export const RedditPostsSkeleton = () => {
 					)
 				})}
 		</Box>
+	)
+}
+
+export const GameCardSkeleton = () => {
+	return (
+		<>
+			{Array(8)
+				.fill(0)
+				.map((_, i) => {
+					return (
+						<GameCardContainer key={i}>
+							<Card>
+								<Skeleton height={'200px'} />
+								<CardBody>
+									<SkeletonText />
+								</CardBody>
+							</Card>
+						</GameCardContainer>
+					)
+				})}
+		</>
 	)
 }

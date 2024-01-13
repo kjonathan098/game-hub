@@ -6,14 +6,7 @@ interface FetchResponse<T> {
 	count: number
 	results: T[]
 }
-// T will get replaced by the type youre passing (interface ex {name: string, age: number})
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
-	// saying that data should be an array of T ([{name: string, age: number}])
-	// export type IgameReviews = {
-	// 	count: number
-	// 	next: string
-	// 	results: IGameReviewResults[]
-	// }
 	const [data, setData] = useState<T[]>([])
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)

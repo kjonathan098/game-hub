@@ -4,15 +4,12 @@ import useGames from '../hooks/useGames'
 
 interface QueryContextValue {
 	gamesQuery: IGamesQuery
-	rapidData: IGame[]
-	data: IGame[]
+	data: IGame[] | null
 	error: string
 	loading: boolean
-	rapidLoading: boolean
 	setGamesQuery: React.Dispatch<React.SetStateAction<IGamesQuery>>
 	searchGenre: (genre: IGenre) => void
 	nextPage: () => void
-	searchText: (searchText: string) => void
 	selectPlatform: (platform: IPlatform) => void
 	sortBy: (sortBy: ISortOption) => void
 	getSimilarGames: (endPoint: string) => void
@@ -26,10 +23,9 @@ interface IProps {
 
 const QueryProvider: React.FC<IProps> = ({ children }) => {
 	const [gamesQuery, setGamesQuery] = useState({} as IGamesQuery)
-	const [rapidGamesQuery, setRapidGamesQuery] = useState({} as IGamesQuery)
 	const [page, setPage] = useState(1)
+
 	const { data, error, loading } = useGames(gamesQuery)
-	const { data: rapidData, loading: rapidLoading } = useGames(rapidGamesQuery)
 
 	const searchGenre = (genre: IGenre) => {
 		setGamesQuery({ ...gamesQuery, genre, page: null })
@@ -38,10 +34,6 @@ const QueryProvider: React.FC<IProps> = ({ children }) => {
 	const nextPage = () => {
 		setGamesQuery({ ...gamesQuery, page: page + 1 })
 		setPage(page + 1)
-	}
-
-	const searchText = (searchText: string) => {
-		setRapidGamesQuery({ ...gamesQuery, searchText })
 	}
 
 	const selectPlatform = (platform: IPlatform) => {
@@ -56,7 +48,7 @@ const QueryProvider: React.FC<IProps> = ({ children }) => {
 		setGamesQuery({ ...gamesQuery, endPoint, page: null })
 	}
 
-	return <queryContext.Provider value={{ data, error, loading, gamesQuery, rapidData, rapidLoading, setGamesQuery, searchGenre, nextPage, searchText, selectPlatform, sortBy, getSimilarGames }}>{children}</queryContext.Provider>
+	return <queryContext.Provider value={{ data, error, loading, gamesQuery, setGamesQuery, searchGenre, nextPage, selectPlatform, sortBy, getSimilarGames }}>{children}</queryContext.Provider>
 }
 
 export default QueryProvider
