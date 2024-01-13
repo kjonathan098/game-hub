@@ -4,7 +4,7 @@ import useGameDetails from '../../hooks/useGameDetails'
 import { useContext, useEffect } from 'react'
 import GameSummary from './GameSummary'
 import { queryContext } from '../../context/queryProvider'
-import { IGamesQuery } from '../../interfaces/games.interface'
+import { IGameDetails, IGamesQuery } from '../../interfaces/games.interface'
 import GameMainImage from './GameImages/GameImagesIndex'
 import GamePageAside from './GamePageAside/GamePageAside'
 import GameReviews from './Reviews/Reviews.index'
@@ -14,10 +14,12 @@ import { GamePageSkeleton } from '../../utils/Skeletons'
 import { GiGameConsole } from 'react-icons/gi'
 import GameAwards from './GameTabs/RedditPosts'
 import GameTabs from './GameTabs/GameTabs'
+import useGameAchievements from '../../hooks/useGameAchievements'
 
 const GamePage = () => {
 	const { id } = useParams()
 	const { data: gameDetails, loading, error } = useGameDetails(id!)
+
 	const { setGamesQuery } = useContext(queryContext)
 
 	useEffect(() => {

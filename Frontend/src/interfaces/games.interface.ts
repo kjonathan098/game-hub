@@ -74,13 +74,24 @@ export interface IAchievement {
 	percent: string
 }
 
+// export interface IReddit {
+// 	id: number
+// 	name: string
+// 	text: string
+// 	image: string
+// 	username: string
+// 	created: string
+// }
+
 export interface IReddit {
 	id: number
 	name: string
 	text: string
-	image: string
+	image: string | null
+	url: string
 	username: string
-	created: string
+	username_url: string
+	created: Date
 }
 
 export type SearchQuery = {
