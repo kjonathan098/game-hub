@@ -18,7 +18,7 @@ const NavBar = () => {
 	const nav = useNavigate()
 
 	return (
-		<HStack padding={'10px'}>
+		<HStack pr={1}>
 			<Image
 				src={logo}
 				boxSize={'60px'}

@@ -17,23 +17,13 @@ import { useTimer } from 'react-timer-hook'
 register()
 
 function App() {
-	const now = new Date()
-
-	const expiryDate = new Date(2024, 0, 13, 12, 0, 0) // Target date and time
-	const differenceInSeconds = (expiryDate.getTime() - now.getTime()) / 1000 // Difference in seconds
-
-	const { seconds, minutes, hours, days, isRunning, start, pause, resume, restart } = useTimer({
-		expiryTimestamp: new Date(now.getTime() + differenceInSeconds * 1000),
-		onExpire: () => console.warn('Timer expired'),
-	})
-
 	return (
 		<AuthProvider>
 			<BrowserRouter>
 				<QueryProvider>
 					<Center>
-						<Box maxW={'1600px'} w={'100%'}>
-							<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
+						<Box maxW={'1100px'} w={'100%'} h={'100%'}>
+							<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }} h={'100%'}>
 								<Show above="lg">
 									<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} bg={'gray.200'} _dark={{ bg: '#272727' }}>
 										<SideBar />
@@ -44,8 +34,8 @@ function App() {
 									<NavBar />
 									<Routes>
 										<Route path="/" element={<HomePage />} />
-										<Route path="/games" element={<GamesDisplay />} />
-										<Route path="/game/:id" element={<GamePage />} />
+										{/* <Route path="/games" element={<GamesDisplay />} />
+										<Route path="/game/:id" element={<GamePage />} /> */}
 									</Routes>
 								</GridItem>
 							</Grid>
@@ -60,28 +50,3 @@ function App() {
 }
 
 export default App
-
-{
-	/* <Box bg={'green'}>
-<HStack bg={'red'}>
-	<Box w={'50%'} position={'relative'}>
-		<Image src={gta6} objectFit={'cover'} objectPosition={'center'} />
-		<HStack position={'absolute'} top={0} bg={'green'}>
-			<Center position={'relative'} h={'80px'} w={'50px'} p={0} bg={'purple'}>
-				<Text fontSize={'5xl'}>{days}</Text>
-				<Box border={'1px'} borderColor={'white'} width={'100%'} h={'1px'} bg={'red'} position={'absolute'} opacity={0.4} />
-			</Center>
-			<Center position={'relative'} h={'40px'} w={'55px'} p={0} bg={'purple'}>
-				<Text fontSize={'5xl'}>{days}</Text>
-				<Box border={'1px'} borderColor={'white'} width={'100%'} h={'1px'} bg={'red'} position={'absolute'} opacity={0.4} />
-			</Center>
-			<Center position={'relative'} px={'10px'} py={'12px'} bg={'purple'}>
-				<Text fontSize={'2xl'}>{seconds}</Text>
-				<Box border={'1px'} borderColor={'white'} width={'100%'} h={'1px'} bg={'red'} position={'absolute'} opacity={0.4} />
-			</Center>
-		</HStack>
-	</Box>
-	<Box>2</Box>
-</HStack>
-</Box> */
-}
