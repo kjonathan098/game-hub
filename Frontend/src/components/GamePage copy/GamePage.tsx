@@ -49,26 +49,26 @@ const GamePage = () => {
 
 	return (
 		<>
-			<Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
-				<GridItem minW={{ base: '100%', lg: '900px' }}>
+			<Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2}>
+				<GridItem>
 					<Stack spacing={4}>
 						<GameMainImage gameDetails={gameDetails} />
 						<GameSummary gameDetails={gameDetails} />
 					</Stack>
 				</GridItem>
 
-				<GridItem p={2} height={'fit-content'}>
+				<GridItem p={2}>
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			<Stack width={{ base: '100vw', lg: '1200px' }} m={{ base: 0, lg: 4 }} spacing={10}>
+			{/* <Stack width={{ base: '100vw', lg: '1200px' }} m={{ base: 0, lg: 4 }} spacing={10}>
 				<Stack spacing={3}>
 					<GameRatingsPercentages ratings={gameDetails.ratings} />
 					<GameReviews gameId={gameDetails.id} />
 				</Stack>
 				<GameTabs gameDetails={gameDetails} />
 				<SimilarGames />
-			</Stack>
+			</Stack> */}
 		</>
 	)
 }

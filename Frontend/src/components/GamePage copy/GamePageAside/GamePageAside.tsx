@@ -16,9 +16,10 @@ const GamePageAside = ({ gameDetails }: Props) => {
 		justifyContent: 'center',
 		fontSize: { md: 'lg', lg: '' },
 	}
+
 	return (
 		<Center h={'100%'}>
-			<Stack justifyContent={'space-around'} h={'100%'} spacing={5}>
+			<Stack justifyContent={'space-around'} h={'100%'} spacing={4}>
 				<Center>
 					<Text fontSize={'3xl'} fontWeight={'extrabold'}>
 						{gameDetails.name}
