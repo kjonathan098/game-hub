@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack, Tag, Text } from '@chakra-ui/react'
+import { Center, Grid, GridItem, Stack, Text } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
 import { useContext, useEffect } from 'react'
 import GameSummary from './GameSummary'
@@ -14,6 +14,7 @@ import { GamePageSkeleton } from '../../utils/Skeletons'
 import { GiGameConsole } from 'react-icons/gi'
 import GameAwards from './GameTabs/RedditPosts'
 import GameTabs from './GameTabs/GameTabs'
+import NetworkError from '../../utils/NetworkError'
 
 const GamePage = () => {
 	const { id } = useParams()
@@ -30,18 +31,7 @@ const GamePage = () => {
 		window.scrollTo({ top: 0, behavior: 'smooth' })
 	}, [id, gameDetails])
 
-	if (error)
-		return (
-			<Center h={'50%'} flexDirection={'column'}>
-				<Text fontSize={'30px'} fontWeight={'extrabold'}>
-					UH OH Something got disconnected!
-				</Text>
-				<GiGameConsole fontSize={'300px'} />
-				<Text fontSize={'30px'} fontWeight={'extrabold'}>
-					Please refresh the page
-				</Text>
-			</Center>
-		)
+	if (error) return <NetworkError />
 
 	if (loading || !gameDetails) return <GamePageSkeleton />
 

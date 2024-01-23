@@ -2,7 +2,7 @@ import { Box, Center, Grid, GridItem, HStack, Image, Show, Stack, Text } from '@
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
-import GamePage from './components/GamePage copy/GamePage'
+import GamePage from './components/GamePage/GamePage'
 import SideBar from './components/SideBar/SideBar'
 import AuthProvider from './context/authProvider'
 import GamesDisplay from './components/GamesDisplay/GamesDisplay'
