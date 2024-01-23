@@ -61,14 +61,14 @@ const GamePage = () => {
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
 			</Grid>
-			{/* <Stack width={{ base: '100vw', lg: '1200px' }} m={{ base: 0, lg: 4 }} spacing={10}>
+			<Stack width={{ base: '100vw', lg: '1200px' }} m={{ base: 0, lg: 4 }} spacing={10}>
 				<Stack spacing={3}>
 					<GameRatingsPercentages ratings={gameDetails.ratings} />
 					<GameReviews gameId={gameDetails.id} />
 				</Stack>
 				<GameTabs gameDetails={gameDetails} />
 				<SimilarGames />
-			</Stack> */}
+			</Stack>
 		</>
 	)
 }

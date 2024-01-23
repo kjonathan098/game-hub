@@ -1,7 +1,7 @@
 import React from 'react'
 import { IGameRatings } from '../../../interfaces/games.interface'
 import { Box, Center, HStack, Image, Stack, Tag, Text } from '@chakra-ui/react'
-import { sortRatings } from '../../../services/sort-game-ratings'
+import { ratingChart, sortRatings } from '../../../services/sort-game-ratings'
 
 interface Props {
 	ratings: IGameRatings[]
@@ -28,11 +28,11 @@ const GameRatingsPercentages = ({ ratings }: Props) => {
 			</Stack>
 			<HStack spacing={{ base: 2, md: 4 }}>
 				<Center w={'100%'}>
-					{sortedRatings.map((rating, index) => {
+					{ratingChart.map((rating, index) => {
 						return (
 							<HStack mr={{ base: 1, md: 3 }} key={index}>
 								<Box bg={rating.color} w={'15px'} h={'15px'} border={'1px'} rounded={'full'} />
-								<Text fontSize={{ base: '10px', md: '15px' }}>{rating.title}</Text>
+								<Text fontSize={{ base: '10px', md: '15px' }}>{rating.name}</Text>
 							</HStack>
 						)
 					})}

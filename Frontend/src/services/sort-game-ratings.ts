@@ -32,3 +32,10 @@ export function sortRatings(ratings: IGameRatings[]) {
 	})
 	return sortedRatingsWithColor
 }
+
+export const ratingChart = [
+	{ name: 'exceptional', color: '#60a058' },
+	{ name: 'recommended', color: '#085856' },
+	{ name: 'meh', color: '#3c103b' },
+	{ name: 'skip', color: '#111810' },
+]

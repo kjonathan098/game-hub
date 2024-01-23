@@ -22,7 +22,7 @@ function App() {
 			<BrowserRouter>
 				<QueryProvider>
 					<Center>
-						<Box maxW={'1600px'} w={'100%'} h={'100%'} bg={'red'}>
+						<Box maxW={'1600px'} w={'100%'} h={'100%'}>
 							<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }} h={'100%'}>
 								<Show above="lg">
 									<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} bg={'gray.200'} _dark={{ bg: '#272727' }}>
@@ -34,7 +34,7 @@ function App() {
 									<NavBar />
 									<Routes>
 										<Route path="/" element={<HomePage />} />
-										{/* <Route path="/games" element={<GamesDisplay />} /> */}
+										<Route path="/games" element={<GamesDisplay />} />
 										<Route path="/game/:id" element={<GamePage />} />
 									</Routes>
 								</GridItem>

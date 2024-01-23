@@ -1,4 +1,4 @@
-import { SimpleGrid } from '@chakra-ui/react'
+import { SimpleGrid, Text } from '@chakra-ui/react'
 import GameCard from './GameCard'
 import GameCardSkeletong from './GameCardSkeletong'
 import GameCardContainer from './GameCardContainer'
@@ -17,10 +17,10 @@ const GameGrid = () => {
 	}
 
 	if (!data) return <>error</>
+	if (error) return <>{error} please refresh</>
 
 	return (
 		<>
-			{error && <li>{error}</li>}
 			<InfiniteScroll dataLength={data.length} next={fetchNextPage} hasMore={hasMore} loader={''}>
 				<SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={10} padding={'10px'}>
 					{data.map((game) => {
