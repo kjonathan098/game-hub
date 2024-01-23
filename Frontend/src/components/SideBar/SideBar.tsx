@@ -13,7 +13,7 @@ const SideBar = () => {
 		nav('/games')
 	}
 	return (
-		<Stack p={2} spacing={10} justifyContent={'space-around'}>
+		<Stack p={2} spacing={10} h={{ base: '100%' }}>
 			<Stack>
 				<Button
 					onClick={() => {

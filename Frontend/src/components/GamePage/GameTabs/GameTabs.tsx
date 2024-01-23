@@ -12,7 +12,6 @@ interface Props {
 }
 
 const GameTabs = ({ gameDetails }: Props) => {
-	// const { achievements, setUrl, loading } = useGameAchievements<Result>(`/games/${gameDetails.id}/reddit`)
 	return (
 		<Tabs>
 			<TabList>

@@ -6,6 +6,7 @@ import WishListButton from '../../utils/WishListButton'
 import { useNavigate } from 'react-router-dom'
 import CartButton from '../../utils/CartButton'
 import GamesSwiper from '../../utils/GamesSwiper'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 const HolidaySpotlight = () => {
 	return (

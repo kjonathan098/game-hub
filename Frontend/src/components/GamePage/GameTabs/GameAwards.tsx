@@ -21,14 +21,6 @@ interface Achievement {
 const GameAwards = ({ gameDetails }: Props) => {
 	const { achievements, setUrl, loading } = useGameAchievements<Achievement>(`/games/${gameDetails.id}/achievements`)
 
-	const fetchNextResults = () => {
-		setUrl(achievements?.next!)
-	}
-
-	const fetchPrevResults = () => {
-		setUrl(achievements?.previous!)
-	}
-
 	return (
 		<>
 			<GameTabGeneric gameDetails={gameDetails} nextLink={achievements?.next} prevLink={achievements?.previous} setUrl={setUrl}>

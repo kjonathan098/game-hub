@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { Box, Center, HStack, Image, Skeleton, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
 import { holidaySpecialMedia } from '../components/HomePage/BannerPromoMedia'
@@ -14,18 +14,11 @@ interface Props {
 	loading?: boolean
 }
 
-const SkeletonCard = () => (
-	<Stack width={{ base: '173px', lg: '230px' }} spacing={3}>
-		<Skeleton height={{ base: '230px', lg: '300px' }} width={{ base: '173px', lg: 'auto' }} rounded={'md'} mr={3} />
-		<Skeleton height="20px" width="80%" />
-		<Skeleton height="20px" width="60%" />
-	</Stack>
-)
-
 const GamesSwiper = ({ title, games, children }: Props) => {
 	const slideViews = useBreakpointValue({ base: 1.2, md: 3.5, lg: 4.5 })
 	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
+	const swiperElRef = useRef(null)
 
 	const handleGameReDirect = (id: number) => {
 		nav(`/game/${id}`, { state: { id } })
@@ -36,8 +29,8 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 	}, [slideViews])
 
 	return (
-		<Stack mt={3}>
-			<Box w={{ base: '100vw', lg: '1200px' }} px={{ base: 2 }}>
+		<Stack mt={3} maxW={'1200px'} w={{ base: '100vw', lg: '100%' }}>
+			<Box px={{ base: 2 }}>
 				<HStack justifyContent={'space-between'} mb={'4'}>
 					<Text fontSize={'lg'} fontStyle={'inherit'}>
 						{title}
@@ -52,7 +45,7 @@ const GamesSwiper = ({ title, games, children }: Props) => {
 					</HStack>
 				</HStack>
 
-				<swiper-container slides-per-view={slideViews} navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
+				<swiper-container ref={swiperElRef} slides-per-view={slideViews} navigation-next-el=".swiper-button-next" navigation-prev-el=".swiper-button-prev">
 					{games.map((game, index) => {
 						return (
 							<React.Fragment key={index}>

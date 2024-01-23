@@ -11,6 +11,8 @@ import { register } from 'swiper/element/bundle'
 import { CiHeart } from 'react-icons/ci'
 import { FaLinkedin } from 'react-icons/fa'
 import Footer from './components/Footer/Footer'
+import gta6 from './assets/gta6.jpeg'
+import { useTimer } from 'react-timer-hook'
 
 register()
 
@@ -20,22 +22,24 @@ function App() {
 			<BrowserRouter>
 				<QueryProvider>
 					<Center>
-						<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }}>
-							<Show above="lg">
-								<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} bg={'gray.200'} _dark={{ bg: '#272727' }}>
-									<SideBar />
-								</GridItem>
-							</Show>
+						<Box maxW={'1600px'} w={'100%'} h={'100%'}>
+							<Grid templateAreas={{ base: 'main', lg: ` "aside main"` }} templateColumns={{ base: '1fr', lg: '200px 1fr' }} h={'100%'}>
+								<Show above="lg">
+									<GridItem area="aside" position={'sticky'} top={0} h={'100vh'} overflow={'scroll'} bg={'gray.200'} _dark={{ bg: '#272727' }}>
+										<SideBar />
+									</GridItem>
+								</Show>
 
-							<GridItem area="main" pl={{ base: '0', lg: '5' }} w={{ base: '100vw', lg: '86vw' }}>
-								<NavBar />
-								<Routes>
-									<Route path="/" element={<HomePage />} />
-									<Route path="/games" element={<GamesDisplay />} />
-									<Route path="/game/:id" element={<GamePage />} />
-								</Routes>
-							</GridItem>
-						</Grid>
+								<GridItem area="main" p={2}>
+									<NavBar />
+									<Routes>
+										<Route path="/" element={<HomePage />} />
+										<Route path="/games" element={<GamesDisplay />} />
+										<Route path="/game/:id" element={<GamePage />} />
+									</Routes>
+								</GridItem>
+							</Grid>
+						</Box>
 					</Center>
 
 					<Footer />
