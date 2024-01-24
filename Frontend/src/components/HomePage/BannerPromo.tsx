@@ -1,11 +1,5 @@
-import { Box, HStack, Image, Stack, Text, Progress, Fade, Center, Tag } from '@chakra-ui/react'
-import fifa from '../../assets/HomePageCarouselPromo/fifa24.avif'
-import alanWake from '../../assets/HomePageCarouselPromo/alanWake.avif'
-import lotr from '../../assets/HomePageCarouselPromo/lotr.avif'
-import mirage from '../../assets/HomePageCarouselPromo/mirage.avif'
-import deadIsland from '../../assets/HomePageCarouselPromo/deadIsland.avif'
-import fifaTittle from '../../assets/HomePageCarouselPromo/fifa_title.png'
-import { useEffect, useState } from 'react'
+import { Box, HStack, Image, Stack, Text, Center, Tag } from '@chakra-ui/react'
+import { useState } from 'react'
 import { bannerMedia } from './BannerPromoMedia'
 import './BannerPromo.css'
 import WishListButton from '../../utils/WishListButton'
@@ -15,7 +9,6 @@ import BannerPromoCarousel from './BannerPromoCarousel'
 
 const BannerPromo = () => {
 	const [currentGame, setCurrentGame] = useState(1)
-	const [progress, setProgress] = useState(0)
 	const nav = useNavigate()
 
 	const handleReDirect = (id: number) => {

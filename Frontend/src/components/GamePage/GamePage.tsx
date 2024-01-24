@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Center, Grid, GridItem, Stack, Text } from '@chakra-ui/react'
+import { Grid, GridItem, Stack } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
 import { useContext, useEffect } from 'react'
 import GameSummary from './GameSummary'
@@ -11,8 +11,7 @@ import GameReviews from './Reviews/Reviews.index'
 import SimilarGames from '../../utils/SimilarGames'
 import GameRatingsPercentages from './GameRatingsPercentages/GameRatingsPercentages'
 import { GamePageSkeleton } from '../../utils/Skeletons'
-import { GiGameConsole } from 'react-icons/gi'
-import GameAwards from './GameTabs/RedditPosts'
+
 import GameTabs from './GameTabs/GameTabs'
 import NetworkError from '../../utils/NetworkError'
 

@@ -1,9 +1,8 @@
-import { Box, HStack, Stack, Text, Image, VStack } from '@chakra-ui/react'
+import { Box, HStack, Stack, Text, Image } from '@chakra-ui/react'
 import avatarGamer from '../../../assets/gamerAvatar.jpeg'
-import { IGameReviewResults, IgameReviews } from '../../../interfaces/games.interface'
+import { IGameReviewResults } from '../../../interfaces/games.interface'
 import useData from '../../../hooks/useDataFetch'
 import { Rating } from 'react-simple-star-rating'
-import { useState } from 'react'
 
 const GameReviews = ({ gameId }: { gameId: number }) => {
 	const { data: gameRevies, loading: loadingReviews } = useData<IGameReviewResults>(`/games/${gameId}/reviews?key=4f125506b6604b8a83e4deeb10165775`)

@@ -1,4 +1,4 @@
-import { DrawerBody, Text, HStack, Image, Stack, Tag, Center, VStack, Box } from '@chakra-ui/react'
+import { DrawerBody, Text, Image, Stack, Tag, VStack, Box } from '@chakra-ui/react'
 import GamePlatforms from '../components/GamesDisplay/GamePlatforms'
 import WishListButton from './WishListButton'
 import CartButton from './CartButton'

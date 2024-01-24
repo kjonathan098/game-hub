@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { IGame, IGamesQuery } from '../interfaces/games.interface'
-import useDataFetch from './useDataFetch'
-import axios, { CanceledError } from 'axios'
+import { IGame } from '../interfaces/games.interface'
+import { CanceledError } from 'axios'
 import apiClient from '../services/api-client'
 
 const useSearch = () => {
@@ -14,7 +13,6 @@ const useSearch = () => {
 		if (!searchQuery.length) return setDataResponse([])
 		setLoading(true)
 
-		const controller = new AbortController()
 		apiClient
 			.get('/games', { params: { search: searchQuery } })
 			.then((res) => {

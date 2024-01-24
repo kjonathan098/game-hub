@@ -1,4 +1,4 @@
-import { IGame, IGameDetails } from '../interfaces/games.interface'
+import { IGame } from '../interfaces/games.interface'
 
 type stripeBody = {
 	price_data: {

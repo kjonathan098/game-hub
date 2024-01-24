@@ -5,14 +5,8 @@ import useData from './useDataFetch'
 interface GalleryValues {
 	src: string
 	sizes?: string | string[] | undefined
-
 	alt?: string | undefined
 	key?: string | undefined
-}
-
-interface ICarousel {
-	original: string
-	thumbnail: string
 }
 
 function useGameScreenShots(id: number) {

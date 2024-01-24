@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { CanceledError } from 'axios'
 import apiClient from '../services/api-client'
 import { IGameDetails } from '../interfaces/games.interface'
-import useData from './useDataFetch'
 
 const useGameDetails = (id: string) => {
 	const [data, setData] = useState<IGameDetails | null>(null)

@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, HStack, Heading, Image, Stack, Tag, Text, VStack } from '@chakra-ui/react'
+import { Box, Card, CardBody, HStack, Heading, Image, Stack, Tag, VStack } from '@chakra-ui/react'
 import { IGame } from '../../interfaces/games.interface'
 import GamePlatforms from './GamePlatforms'
 import Score from './Score'

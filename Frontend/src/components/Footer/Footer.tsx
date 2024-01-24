@@ -1,5 +1,4 @@
 import { Box, Center, Stack, Text, HStack } from '@chakra-ui/react'
-import React from 'react'
 import { CiHeart } from 'react-icons/ci'
 import { FaLinkedin } from 'react-icons/fa'
 

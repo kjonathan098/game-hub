@@ -5,7 +5,6 @@ import { CiGift, CiUser } from 'react-icons/ci'
 import { FiShoppingCart } from 'react-icons/fi'
 import { ApiHander } from '../../fireBase/fireBase.config'
 import gamerAvatar from '../../assets/gamerAvatar.jpeg'
-
 import UserGameListDrawer from './UserGameListDrawer'
 
 const UserOptions = () => {

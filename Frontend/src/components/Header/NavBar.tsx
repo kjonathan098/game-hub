@@ -2,17 +2,12 @@ import { Box, Center, HStack, IconButton, Image } from '@chakra-ui/react'
 import logo from '../../assets/logo.webp'
 import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
-import { Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider } from '@chakra-ui/react'
+import { Menu, MenuButton, MenuList } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import UserOptions from '../SideBar/UserOptions'
-import SideBar from '../SideBar/SideBar'
-import LoginOptions from '../SideBar/LoginOptions'
-import { useContext } from 'react'
-import { authContext } from '../../context/authProvider'
+
 import UserInfo from '../SideBar/UserInfo'
 import { useNavigate } from 'react-router-dom'
 import Nav from '../Nav/Nav'
-interface Props {}
 
 const NavBar = () => {
 	const nav = useNavigate()

@@ -1,7 +1,7 @@
 import { Button, Stack, Text, keyframes } from '@chakra-ui/react'
 import { ApiHander } from '../../fireBase/fireBase.config'
-import { useContext, useState } from 'react'
-import { authContext } from '../../context/authProvider'
+import { useState } from 'react'
+
 import useToastMessage from '../../hooks/useToast'
 const pulse = keyframes`
   0% { background-color: #3b82f6; }
@@ -11,7 +11,6 @@ const pulse = keyframes`
 
 const LoginOptions = () => {
 	const [loading, setLoading] = useState(false)
-	const { user } = useContext(authContext)
 	const { errorToast } = useToastMessage()
 
 	const handleDemoSignIn = async () => {

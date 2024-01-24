@@ -1,7 +1,6 @@
 import { Box, Input, InputGroup, InputLeftElement, Spinner } from '@chakra-ui/react'
-import { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
-import { queryContext } from '../../context/queryProvider'
 import SearchResponse from './SearchResponse'
 import { debounce } from 'lodash'
 import useSearch from '../../hooks/useSearch'
@@ -9,7 +8,7 @@ import useSearch from '../../hooks/useSearch'
 interface Props {}
 
 const SearchInput = ({}: Props) => {
-	const { setSearchQuery, dataResponse, loading, searchQuery } = useSearch()
+	const { setSearchQuery, dataResponse, loading } = useSearch()
 	const [inputValue, setInputValue] = useState('')
 	const [showResults, setShowResults] = useState(false)
 

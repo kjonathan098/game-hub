@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Stack, useBreakpoint, useBreakpointValue } from '@chakra-ui/react'
+import { Box, HStack, Image, Stack } from '@chakra-ui/react'
 import salePromo from '../../assets/couponAdd.avif'
 import featurePromo from '../../assets/feature.avif'
 import rewardsPromo from '../../assets/rewardsAd.avif'

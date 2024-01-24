@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import useDataFetch from './useDataFetch'
+import { useState } from 'react'
 import useDataFetchTest from './useDataFetchTest'
 
 type AchievementsResponse<T> = {

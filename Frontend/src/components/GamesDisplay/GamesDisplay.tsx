@@ -1,6 +1,6 @@
 import HeroBanner from './HeroBanner'
 import GameHeading from './GameHeading'
-import { Box, HStack, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import PlatformSelector from './PlatformSelector'
 import SortGames from './SortGames'
 import GameGrid from './GameGrid'

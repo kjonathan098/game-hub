@@ -1,5 +1,5 @@
-import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack } from '@chakra-ui/react'
-import { CSSProperties, useEffect, useState } from 'react'
+import { Box, Center, HStack, Image } from '@chakra-ui/react'
+import { CSSProperties, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { GameImages } from './GameImagesSwiper'
 import { IGameDetails } from '../../../interfaces/games.interface'

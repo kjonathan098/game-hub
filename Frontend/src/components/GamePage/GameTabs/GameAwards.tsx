@@ -1,9 +1,8 @@
-import { Box, Button, Center, HStack, Image, Spinner, Stack, Tag, Text } from '@chakra-ui/react'
+import { Image, Stack, Tag, Text } from '@chakra-ui/react'
 import { IGameDetails } from '../../../interfaces/games.interface'
 import useGameAchievements from '../../../hooks/useGameAchievements'
 import React from 'react'
 import { GameAwardsSkeleton } from '../../../utils/Skeletons'
-import BlendedImage from '../../../utils/BlendedImage'
 import GameTabGeneric from '../../../utils/GameTabGeneric'
 
 interface Props {
@@ -49,8 +48,8 @@ const GameAwards = ({ gameDetails }: Props) => {
 
 export default GameAwards
 
-function RadialBg() {
-	const radialBg = `radial-gradient(ellipse at center, rgba(16, 16, 16, 0) 0%, rgba(16, 16, 16, 1) 70%)`
+// function RadialBg() {
+// 	const radialBg = `radial-gradient(ellipse at center, rgba(16, 16, 16, 0) 0%, rgba(16, 16, 16, 1) 70%)`
 
-	return <Box height="100%" position="absolute" width="100%" top={0} bg={radialBg} />
-}
+// 	return <Box height="100%" position="absolute" width="100%" top={0} bg={radialBg} />
+// }

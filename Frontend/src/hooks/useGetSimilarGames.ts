@@ -1,4 +1,3 @@
-import React from 'react'
 import useData from './useDataFetch'
 import { IGame } from '../interfaces/games.interface'
 import { genreList } from '../data/genres'

@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import useGenre from '../../hooks/useGenre'
-import { Button, HStack, Image, List, ListItem, Spinner, Box, Collapse, Text, Stack } from '@chakra-ui/react'
+import { Button, HStack, Image, List, ListItem, Spinner, Collapse, Text, Stack } from '@chakra-ui/react'
 import cropImage from '../../services/img-crop'
 import { queryContext } from '../../context/queryProvider'
 import { useLocation, useNavigate } from 'react-router-dom'

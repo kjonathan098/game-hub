@@ -1,4 +1,4 @@
-import { Box, Stack, Tag, TagLabel } from '@chakra-ui/react'
+import { Stack, Tag, TagLabel } from '@chakra-ui/react'
 import { IGameDetails } from '../../../interfaces/games.interface'
 
 interface Props {

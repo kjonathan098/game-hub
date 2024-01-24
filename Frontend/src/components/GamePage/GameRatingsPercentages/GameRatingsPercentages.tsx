@@ -1,6 +1,6 @@
 import React from 'react'
 import { IGameRatings } from '../../../interfaces/games.interface'
-import { Box, Center, HStack, Image, Stack, Tag, Text } from '@chakra-ui/react'
+import { Box, Center, HStack, Stack, Text } from '@chakra-ui/react'
 import { ratingChart, sortRatings } from '../../../services/sort-game-ratings'
 
 interface Props {

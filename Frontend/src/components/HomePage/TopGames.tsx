@@ -1,5 +1,5 @@
-import { Box, HStack, Image, Stack, Text, VStack, Center, Button, useColorModeValue } from '@chakra-ui/react'
-import { BannerMedia, bannerMedia, topSellers } from './BannerPromoMedia'
+import { Box, HStack, Image, Stack, Text, Center, Button, useColorModeValue } from '@chakra-ui/react'
+import { BannerMedia, topSellers } from './BannerPromoMedia'
 import { useState } from 'react'
 
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'

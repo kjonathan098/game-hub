@@ -1,4 +1,4 @@
-import { IGameDetails, IUser } from '../interfaces/games.interface'
+import { IGameDetails } from '../interfaces/games.interface'
 import apiClient from './api-client'
 
 const fetchGameDetails = (id: string): Promise<IGameDetails> => {

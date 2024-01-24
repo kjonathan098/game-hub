@@ -1,4 +1,4 @@
-import { Box, HStack, Image, Stack, Text, VStack } from '@chakra-ui/react'
+import { Box, HStack, Image, Text, VStack } from '@chakra-ui/react'
 import OutsideClickHandler from 'react-outside-click-handler'
 
 import { IGame } from '../../interfaces/games.interface'

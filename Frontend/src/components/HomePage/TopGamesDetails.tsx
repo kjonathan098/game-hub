@@ -1,7 +1,5 @@
-import { Box, Center, Grid, GridItem, Image, Stack, Tag, Text } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { topSellers } from './BannerPromoMedia'
-import CartButton from '../../utils/CartButton'
-import WishListButton from '../../utils/WishListButton'
 import YouTube, { YouTubeProps } from 'react-youtube'
 import { useEffect, useState } from 'react'
 import { useBreakpointValue } from '@chakra-ui/react'

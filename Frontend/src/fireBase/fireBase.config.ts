@@ -4,7 +4,6 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { collection, getDocs, where, query, doc, setDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from 'firebase/auth'
-import { useToast } from '@chakra-ui/react'
 import useToastMessage from '../hooks/useToast'
 
 interface IAPIHandler {
@@ -51,7 +50,7 @@ export const ApiHander: IAPIHandler = {
 		const auth = getAuth()
 		console.log(import.meta.env.VITE_DEMO_EMAIL)
 		try {
-			const res = await signInWithEmailAndPassword(auth, import.meta.env.VITE_DEMO_EMAIL, import.meta.env.VITE_DEMO_PASSWORD)
+			await signInWithEmailAndPassword(auth, import.meta.env.VITE_DEMO_EMAIL, import.meta.env.VITE_DEMO_PASSWORD)
 			return true
 		} catch (error) {
 			return false

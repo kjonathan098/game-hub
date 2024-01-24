@@ -1,4 +1,4 @@
-import { Box, Center, Grid, GridItem, HStack, Image, Show, Stack, Text } from '@chakra-ui/react'
+import { Box, Center, Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/Header/NavBar'
 import QueryProvider from './context/queryProvider'
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
@@ -8,11 +8,8 @@ import AuthProvider from './context/authProvider'
 import GamesDisplay from './components/GamesDisplay/GamesDisplay'
 import HomePage from './components/HomePage/HomePage'
 import { register } from 'swiper/element/bundle'
-import { CiHeart } from 'react-icons/ci'
-import { FaLinkedin } from 'react-icons/fa'
+
 import Footer from './components/Footer/Footer'
-import gta6 from './assets/gta6.jpeg'
-import { useTimer } from 'react-timer-hook'
 
 register()
 

@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, Center, Grid, GridItem, HStack, Skeleton, SkeletonText, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Box, Card, CardBody, Center, Grid, GridItem, HStack, Skeleton, SkeletonText, Stack, useBreakpointValue } from '@chakra-ui/react'
 import GameCardContainer from '../components/GamesDisplay/GameCardContainer'
 
 export const GamesSwiperSkeleton = () => {
@@ -22,7 +22,6 @@ export const GamesSwiperSkeleton = () => {
 }
 
 export const GamePageSkeleton = () => {
-	const slideViews = useBreakpointValue({ base: 1.5, md: 3.5, lg: 4.5 })
 	const imageWidth = useBreakpointValue({ base: '200px', md: '125px', lg: '100px' })
 	const imageHeight = useBreakpointValue({ base: '110px', md: '125px', lg: '70px' })
 	return (

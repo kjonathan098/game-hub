@@ -1,10 +1,7 @@
-import { wrap } from 'popmotion'
 import React, { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { IGameDetails } from '../../../interfaces/games.interface'
 import useGameScreenShots from '../../../hooks/useGameScreenShots'
-import { Box, Center, HStack, Image, Skeleton, useBreakpointValue } from '@chakra-ui/react'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
+import { Box, HStack, Image, Skeleton, useBreakpointValue } from '@chakra-ui/react'
 
 interface Props {
 	gameDetails: IGameDetails
@@ -18,7 +15,7 @@ export const GameImages = ({ gameDetails, setSelectedImage, selectedImage }: Pro
 	const imageHeight = useBreakpointValue({ base: '70px' })
 	const [slidesPerView, setlidesPerView] = useState(slideViews)
 
-	const { galleryArray, error, loading, loadingImages } = useGameScreenShots(gameDetails.id)
+	const { galleryArray, loadingImages } = useGameScreenShots(gameDetails.id)
 
 	useEffect(() => {
 		setlidesPerView(slideViews)

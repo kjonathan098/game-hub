@@ -1,9 +1,6 @@
-import { Box, Button, Center, Image, Spinner, Stack, TabIndicator, Tag, Text } from '@chakra-ui/react'
+import { TabIndicator } from '@chakra-ui/react'
 import { IGameDetails } from '../../../interfaces/games.interface'
-import useGameAchievements from '../../../hooks/useGameAchievements'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
-
-import React from 'react'
 import GameAwards from './GameAwards'
 import RedditPosts from './RedditPosts'
 

@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { IGamesQuery, IGenre, ISortOption, IGame, IPlatform } from '../interfaces/games.interface'
 import useGames from '../hooks/useGames'
 

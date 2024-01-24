@@ -1,7 +1,6 @@
 import { IGame } from '../../interfaces/games.interface'
 import fifaBkg from '../../assets/HomePageCarouselPromo/fifa24.avif'
 import alanWake from '../../assets/HomePageCarouselPromo/alanWake.avif'
-import lotr from '../../assets/HomePageCarouselPromo/lotr.avif'
 import assasins from '../../assets/HomePageCarouselPromo/mirage.avif'
 import deadIsland from '../../assets/HomePageCarouselPromo/deadIsland.avif'
 import fifaTittle from '../../assets/HomePageCarouselPromo/fifa_title.png'

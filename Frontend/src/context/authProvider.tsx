@@ -1,11 +1,10 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { ApiHander } from '../fireBase/fireBase.config'
-import { IGame, IGameDetails, IUser, TUserField } from '../interfaces/games.interface'
+import { IGame, IUser, TUserField } from '../interfaces/games.interface'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import fetchList from '../services/fetch-game-list'
 
 interface IAuthContext {
-	test: string
 	user: IUser | null
 	addToList: (gameId: IGame, field: TUserField) => void
 	removeFromList: (gameId: IGame, field: TUserField) => void
@@ -20,7 +19,6 @@ interface IProps {
 	children: React.ReactNode
 }
 const AuthProvider = ({ children }: IProps) => {
-	const [test, settest] = useState('hello')
 	const [user, setUser] = useState<IUser | null>(null)
 	const [wishList, setWishList] = useState<IGame[]>([])
 	const [cartList, setCartList] = useState<IGame[]>([])
@@ -121,7 +119,7 @@ const AuthProvider = ({ children }: IProps) => {
 		return () => unsubscribe()
 	}, [])
 
-	return <authContext.Provider value={{ test, user, addToList, wishList, cartList, loadingUser, removeFromList }}>{children}</authContext.Provider>
+	return <authContext.Provider value={{ user, addToList, wishList, cartList, loadingUser, removeFromList }}>{children}</authContext.Provider>
 }
 
 export default AuthProvider

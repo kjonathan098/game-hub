@@ -5,7 +5,7 @@ import useGetSimilarGames from '../../hooks/useGetSimilarGames'
 
 const RandomGameGenerator = () => {
 	const [color, setColor] = useState('red')
-	const { similarGames, loading, error } = useGetSimilarGames()
+	const { similarGames, loading } = useGetSimilarGames()
 
 	useEffect(() => {
 		if (!similarGames.length) return

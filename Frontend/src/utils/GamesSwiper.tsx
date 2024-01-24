@@ -1,7 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { Box, Center, HStack, Image, Skeleton, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
-import { holidaySpecialMedia } from '../components/HomePage/BannerPromoMedia'
+import { Box, Center, HStack, Image, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
 import WishListButton from './/WishListButton'
 import { useNavigate } from 'react-router-dom'
 import CartButton from './CartButton'
@@ -16,17 +15,12 @@ interface Props {
 
 const GamesSwiper = ({ title, games, children }: Props) => {
 	const slideViews = useBreakpointValue({ base: 1.2, md: 3.5, lg: 4.5 })
-	const [slidesPerView, setlidesPerView] = useState(slideViews)
 	const nav = useNavigate()
 	const swiperElRef = useRef(null)
 
 	const handleGameReDirect = (id: number) => {
 		nav(`/game/${id}`, { state: { id } })
 	}
-
-	useEffect(() => {
-		setlidesPerView(slideViews)
-	}, [slideViews])
 
 	return (
 		<Stack mt={3} maxW={'1200px'} w={{ base: '100vw', lg: '100%' }}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IGame } from '../interfaces/games.interface'
 import createBodyForStripe from './stripe-body'
 import { loadStripe } from '@stripe/stripe-js'

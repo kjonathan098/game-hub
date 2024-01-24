@@ -1,4 +1,4 @@
-import { IAchievement, IGameDetails } from '../interfaces/games.interface'
+import { IGameDetails } from '../interfaces/games.interface'
 import useData from './useDataFetch'
 
 const useTabsFetch = <T>(game: IGameDetails, route: string) => {

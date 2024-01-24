@@ -2,7 +2,7 @@ import { Button } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import { authContext } from '../context/authProvider'
 import useToastMessage from '../hooks/useToast'
-import { IGame, IGameDetails } from '../interfaces/games.interface'
+import { IGame } from '../interfaces/games.interface'
 
 interface Params {
 	game: IGame

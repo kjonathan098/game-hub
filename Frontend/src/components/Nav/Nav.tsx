@@ -1,5 +1,4 @@
 import { Button, Stack } from '@chakra-ui/react'
-import React from 'react'
 import { FaGamepad } from 'react-icons/fa'
 import { RiGameFill } from 'react-icons/ri'
 import { useNavigate } from 'react-router-dom'

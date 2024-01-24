@@ -1,4 +1,4 @@
-import { Box, Center, Grid, GridItem, HStack, Image, Skeleton, Stack, Tag, Text } from '@chakra-ui/react'
+import { Center, Stack, Tag, Text } from '@chakra-ui/react'
 import { IGameDetails } from '../../../interfaces/games.interface'
 import WishListButton from '../../../utils/WishListButton'
 import GameTags from './GameTags'

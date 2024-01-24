@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
-import { Box, Center, HStack, Image, Stack, Tag, Text, useBreakpointValue } from '@chakra-ui/react'
+import { Tag, Text } from '@chakra-ui/react'
 import { holidaySpecialMedia } from './BannerPromoMedia'
-import WishListButton from '../../utils/WishListButton'
-import { useNavigate } from 'react-router-dom'
-import CartButton from '../../utils/CartButton'
 import GamesSwiper from '../../utils/GamesSwiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
 
 const HolidaySpotlight = () => {
 	return (
