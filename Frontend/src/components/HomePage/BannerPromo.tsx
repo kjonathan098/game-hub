@@ -35,10 +35,10 @@ const BannerPromo = () => {
 								<Text fontWeight={'black'} color={'white'} display={{ base: 'none', md: 'block' }}>
 									{game.description}
 								</Text>
-								<Tag colorScheme="teal" w={'fit-content'} display={{ base: 'none', md: 'block' }}>
+								<Tag colorScheme="teal" w={'fit-content'} p={1} display={{ base: 'none', md: 'block' }}>
 									$30
 								</Tag>
-								<HStack zIndex={2} display={{ base: 'none', md: 'block' }}>
+								<HStack zIndex={2} spacing={2} display={{ base: 'none', md: 'flex' }}>
 									<WishListButton game={game} size={'md'} />
 									<CartButton game={game} size={'md'} />
 								</HStack>
