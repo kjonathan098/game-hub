@@ -37,7 +37,8 @@ import horizonChase from '../../assets/TopRated/horizonChase.avif'
 import tetris from '../../assets/TopRated/tetris.avif'
 import theWolfAmongUs from '../../assets/TopRated/theWolfAmongUs.avif'
 import tyranny from '../../assets/TopRated/tyranny.avif'
-
+import roboCopLogo from '../../assets/HomePageCarouselPromo/roboCopLogo.avif'
+import roboCopBkg from '../../assets/HomePageCarouselPromo/roboCopBkg.jpeg'
 export interface BannerMedia extends IGame {
 	titleLogo: string
 	background: string
@@ -1060,6 +1061,39 @@ export const bannerMedia: BannerMedia[] = [
 		],
 	},
 	{
+		name: 'RoboCop: Rogue City',
+		titleLogo: roboCopLogo,
+		background: roboCopBkg,
+		id: 631942,
+		description: 'Become the iconic part man, part machine, all cop hero as you attempt to bring justice to the dangerous, crime-ridden streets of Old Detroit.',
+		background_image: 'https://media.rawg.io/media/games/2ae/2ae4150474a27f90595c9092917ab2d3.jpg',
+		price: 30,
+		metacritic: 0,
+		parent_platforms: [
+			{
+				platform: {
+					id: 1,
+					name: 'PC',
+					slug: 'pc',
+				},
+			},
+			{
+				platform: {
+					id: 2,
+					name: 'PlayStation',
+					slug: 'playstation',
+				},
+			},
+			{
+				platform: {
+					id: 3,
+					name: 'Xbox',
+					slug: 'xbox',
+				},
+			},
+		],
+	},
+	{
 		name: 'EA SPORTS FC 24',
 		titleLogo: fifaTittle,
 		background: fifaBkg,
@@ -1095,25 +1129,6 @@ export const bannerMedia: BannerMedia[] = [
 					id: 7,
 					name: 'Nintendo',
 					slug: 'nintendo',
-				},
-			},
-		],
-	},
-	{
-		name: 'The Lord of the Rings: Return to Moria',
-		titleLogo: lotrTittle,
-		background: lotr,
-		id: 865101,
-		description: 'Adventure alone or band together on a quest to reclaim the ancient Kingdom of Moria.',
-		background_image: 'https://media.rawg.io/media/screenshots/f0d/f0dd69caad912e5fcc0c29fa953b412e.jpg',
-		price: 30,
-		metacritic: 0,
-		parent_platforms: [
-			{
-				platform: {
-					id: 1,
-					name: 'PC',
-					slug: 'pc',
 				},
 			},
 		],
