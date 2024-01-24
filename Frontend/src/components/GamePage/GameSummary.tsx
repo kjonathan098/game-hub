@@ -1,6 +1,7 @@
 import { Box, Button, Collapse, Text } from '@chakra-ui/react'
 import React from 'react'
 import { IGameDetails } from '../../interfaces/games.interface'
+import ReactHtmlParser from 'react-html-parser'
 
 interface Props {
 	gameDetails: IGameDetails
@@ -23,7 +24,7 @@ const GameSummary = ({ gameDetails }: Props) => {
 				{/* <Text fontSize={'lg'} fontWeight={'bold'}>
 					{ReactHtmlParser(getEnglishText(gameDetails?.description))}
 				</Text> */}
-				<Text fontSize={'lg'}>{getEnglishText(gameDetails?.description)}</Text>
+				<Text fontSize={'lg'}>{ReactHtmlParser(getEnglishText(gameDetails?.description))}</Text>
 			</Collapse>
 			<Button size="sm" onClick={handleToggle} mt="1rem">
 				Show {show ? 'Less' : 'More'}

@@ -6,6 +6,7 @@ import avatar from '../../../assets/gamerAvatar.jpeg'
 import BlendedImage from '../../../utils/BlendedImage'
 import GameTabGeneric from '../../../utils/GameTabGeneric'
 import { RedditPostsSkeleton } from '../../../utils/Skeletons'
+import ReactHtmlParser from 'react-html-parser'
 
 interface Props {
 	gameDetails: IGameDetails
@@ -33,7 +34,7 @@ const RedditPosts = ({ gameDetails }: Props) => {
 									{new Date(post.created).toLocaleDateString()}
 								</Text>
 								<Text maxW={''} overflow={'scroll'}>
-									{post.text}
+									{ReactHtmlParser(post.text)}
 								</Text>
 							</Stack>
 						</React.Fragment>
