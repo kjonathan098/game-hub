@@ -21,9 +21,6 @@ const GameSummary = ({ gameDetails }: Props) => {
 	return (
 		<Box p={4}>
 			<Collapse startingHeight={100} in={show}>
-				{/* <Text fontSize={'lg'} fontWeight={'bold'}>
-					{ReactHtmlParser(getEnglishText(gameDetails?.description))}
-				</Text> */}
 				<Text fontSize={'lg'}>{ReactHtmlParser(getEnglishText(gameDetails?.description))}</Text>
 			</Collapse>
 			<Button size="sm" onClick={handleToggle} mt="1rem">
