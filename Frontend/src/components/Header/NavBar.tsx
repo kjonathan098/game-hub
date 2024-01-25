@@ -1,5 +1,5 @@
 import { Box, Center, HStack, IconButton, Image } from '@chakra-ui/react'
-import logo from '../../assets/logo.webp'
+import logo from '../../assets/logo2.png'
 import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
 import { Menu, MenuButton, MenuList } from '@chakra-ui/react'
