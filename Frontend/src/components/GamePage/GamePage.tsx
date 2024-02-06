@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { Grid, GridItem, Stack } from '@chakra-ui/react'
+import { Box, Grid, GridItem, Stack } from '@chakra-ui/react'
 import useGameDetails from '../../hooks/useGameDetails'
 import { useContext, useEffect } from 'react'
 import GameSummary from './GameSummary'
@@ -35,7 +35,7 @@ const GamePage = () => {
 	if (loading || !gameDetails) return <GamePageSkeleton />
 
 	return (
-		<>
+		<Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
 			<Grid templateColumns={{ base: '1fr', lg: '2fr 1fr' }} gap={2} w={{ base: '100vw', lg: '1200px' }}>
 				<GridItem minW={{ base: '100%', lg: '900px' }}>
 					<Stack spacing={4}>
@@ -43,7 +43,6 @@ const GamePage = () => {
 						<GameSummary gameDetails={gameDetails} />
 					</Stack>
 				</GridItem>
-
 				<GridItem p={2} height={'fit-content'}>
 					<GamePageAside gameDetails={gameDetails} />
 				</GridItem>
@@ -56,7 +55,7 @@ const GamePage = () => {
 				<GameTabs gameDetails={gameDetails} />
 				<SimilarGames />
 			</Stack>
-		</>
+		</Box>
 	)
 }
 
