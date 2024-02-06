@@ -1,4 +1,4 @@
-import { Box, Button, Collapse } from '@chakra-ui/react'
+import { Box, Button, Collapse, Text } from '@chakra-ui/react'
 import React from 'react'
 import { IGameDetails } from '../../interfaces/games.interface'
 
@@ -20,7 +20,7 @@ const GameSummary = ({ gameDetails }: Props) => {
 	return (
 		<Box p={4}>
 			<Collapse startingHeight={100} in={show}>
-				<div dangerouslySetInnerHTML={{ __html: getEnglishText(gameDetails.description) }} />
+				<Text as="div" fontSize={'lg'} dangerouslySetInnerHTML={{ __html: getEnglishText(gameDetails.description) }} />
 			</Collapse>
 			<Button size="sm" onClick={handleToggle} mt="1rem">
 				Show {show ? 'Less' : 'More'}
