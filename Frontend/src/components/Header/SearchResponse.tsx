@@ -30,7 +30,7 @@ const SearchResponse = ({ dataResponse, showResults, setShowResults, setInputVal
 		<>
 			{showResults && dataResponse?.length && (
 				<OutsideClickHandler onOutsideClick={handleClickOutside}>
-					<Box bg={'red'} opacity={1} position={'absolute'} w={{ base: '100vw', lg: '80%' }} top={{ base: '48px', lg: '40px' }} left={{ base: '-100px', lg: '100px' }} h={'300px'} zIndex={99} overflow={'scroll'}>
+					<Box bg={'black'} opacity={1} position={'absolute'} w={{ base: '70vw', lg: '80%' }} top={{ base: '48px', lg: '40px' }} left={{ base: '0px', lg: '100px' }} h={'300px'} zIndex={99} overflow={'scroll'}>
 						<VStack>
 							{dataResponse.map((game) => {
 								return (
